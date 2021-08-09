@@ -17,7 +17,6 @@ struct MainTitleView: View {
                 Text("Heart")
             }
             .font(.largeTitle)
-//            .foregroundColor(.karynNavy)
             .padding(.trailing, 20)
         }
     }

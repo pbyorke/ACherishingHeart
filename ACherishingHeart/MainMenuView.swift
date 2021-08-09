@@ -12,16 +12,16 @@ struct MainMenuView: View {
     @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
-        Form {
-            HStack {
-                VStack(alignment: .leading) {
+        HStack {
+            ScrollView {
+                VStack {
                     NavigationLink(
                         destination: Text("Music")) {
                             Text("Music")
                         }
                     if authenticator.isMaster {
                         NavigationLink(
-                            destination: Text("Master")) {
+                            destination: MasterView() ) {
                                 Text("Master")
                             }
                     }
@@ -31,11 +31,36 @@ struct MainMenuView: View {
                                 Text("Media")
                             }
                     }
+                    if authenticator.isAdmin {
+                        NavigationLink(
+                            destination: AdminView() ) {
+                                Text("Admin")
+                            }
+                    }
+                    if authenticator.isJoyCoach {
+                        NavigationLink(
+                            destination: Text("Joy Coach") ) {
+                                Text("Joy Coach")
+                            }
+                    }
+                    if authenticator.isJCTeacher {
+                        NavigationLink(
+                            destination: Text("Joy Coach Teacher") ) {
+                                Text("Joy Coach Teacher")
+                            }
+                    }
+                    if authenticator.isJCStudent {
+                        NavigationLink(
+                            destination: Text("Joy Coach Student") ) {
+                                Text("Joy Coach Student")
+                            }
+                    }
                 }
-                .font(.title2)
-                Spacer()
             }
         }
+        .frame(width: UIScreen.main.bounds.width - 40)
+        .background(Color(.systemGray6))
+        .font(.title2)
         .padding(.leading, 20)
         .padding(.trailing, 20)
         .padding(.bottom, 40)

@@ -16,6 +16,10 @@ struct Person: Identifiable, Codable {
     var phoneNumber: String
     var isMedia: Bool
     var isMaster: Bool
+    var isAdmin: Bool
+    var isJoyCoach: Bool
+    var isJCTeacher: Bool
+    var isJCStudent: Bool
 }
 
 extension Person {
@@ -28,7 +32,12 @@ extension Person {
             lastName: "",
             phoneNumber: "",
             isMedia: false,
-            isMaster: false
+            isMaster: false,
+            isAdmin: false,
+            isJoyCoach: false,
+            isJCTeacher: false,
+            isJCStudent: false
         )
     }
 }
+

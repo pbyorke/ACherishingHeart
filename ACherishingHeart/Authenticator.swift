@@ -12,6 +12,7 @@ protocol AuthenticatorProtocol {
     func signin() async throws
     func signup() async throws
     func signout() async throws
+    func getPerson(id: String) async throws -> Person?
     var email: String { set get }
     var password: String { set get }
 }
@@ -19,14 +20,32 @@ protocol AuthenticatorProtocol {
 final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     @Published var isLoggedIn: Bool = false
-    private var currentId = ""
     @Published var currentPerson: Person?
+    @Published var persons = [Person]()
     
-    var email = ""
-    var password = ""
-    var firstName = ""
-    var lastName = ""
-    var phoneNumber = ""
+    private var currentId = ""
+    
+    @Trimmed var email = ""
+    @Trimmed var password = ""
+    @Trimmed var firstName = ""
+    @Trimmed var lastName = ""
+    @Trimmed var phoneNumber = ""
+    
+    var isMaster: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.isMaster
+        } else {
+            return false
+        }
+    }
+    
+    var isAdmin: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.isAdmin
+        } else {
+            return false
+        }
+    }
     
     var isMedia: Bool {
         if let currentPerson = currentPerson {
@@ -36,9 +55,25 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
-    var isMaster: Bool {
+    var isJoyCoach: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isMaster
+            return currentPerson.isJoyCoach
+        } else {
+            return false
+        }
+    }
+    
+    var isJCTeacher: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.isJCTeacher
+        } else {
+            return false
+        }
+    }
+    
+    var isJCStudent: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.isJCStudent
         } else {
             return false
         }
@@ -52,8 +87,10 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
             do {
                 if let user = Auth.auth().currentUser {
                     currentId = user.uid
-                    let person = try await storeService.getOneById(collection: .users, type: Person.self, id: currentId)
+                    let persons = try await storeService.getAll(collection: .users, type: Person.self)
+                    let person = persons.first { $0.id == currentId }
                     DispatchQueue.main.async {
+                        self.persons = persons
                         self.currentPerson = person
                         self.isLoggedIn = true
                     }
@@ -63,15 +100,20 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
             } catch {
                 print(error)
             }
-        }
+        }        
     }
     
     func signin() async throws {
         do {
-            print("* * *  \"\(email.trim())\" \"\(password.trim())\"")
-            currentId = try await authService.signin(email: email.trim(), password: password.trim())
-            currentPerson = try await storeService.getOneById(collection: .users, type: Person.self, id: currentId)            
-            isLoggedIn = true
+            let id = try await authService.signin(email: email, password: password)
+            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "id", value: id)
+            let allPersons = try await storeService.getAll(collection: .users, type: Person.self)
+            print("")
+            DispatchQueue.main.async {
+                self.persons = allPersons
+                self.currentPerson = person
+                self.isLoggedIn = true
+            }
         } catch {
             throw(error)
         }
@@ -80,16 +122,20 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     func signup() async throws {
         do {
             let uid = try await authService
-                .signup(email: email.trim(), password: password.trim())
+                .signup(email: email, password: password)
             let person = Person(
                 id: uid,
-                email: email.trim(),
-                password: password.trim(),
-                firstName: firstName.trim(),
-                lastName: lastName.trim(),
-                phoneNumber: phoneNumber.trim(),
+                email: email,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber,
                 isMedia: false,
-                isMaster: false
+                isMaster: false,
+                isAdmin: false,
+                isJoyCoach: false,
+                isJCTeacher: false,
+                isJCStudent: false
             )
         try await storeService
                 .create(person, collection: .users)
@@ -104,6 +150,15 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
             try await authService.signout()
             isLoggedIn = false
             currentPerson = nil
+        } catch {
+            throw error
+        }
+    }
+    
+    func getPerson(id: String) async throws -> Person? {
+        do {
+            let person = try await storeService.getOneById(collection: .users, type: Person.self, id: id)
+            return person
         } catch {
             throw error
         }

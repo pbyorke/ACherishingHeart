@@ -15,7 +15,6 @@ import Firebase
 @main
 struct ACherishingHeartApp: App {
 
-//    @StateObject var authenticator = Authenticator()
     var authenticator = Authenticator()
 
     init() {
@@ -31,7 +30,6 @@ struct ACherishingHeartApp: App {
     
     private func configure() {
         FirebaseApp.configure()
-//        authenticator = Authenticator()
         authenticator.setup()
     }
     

@@ -10,15 +10,27 @@ import SwiftUI
 struct DebugView: View {
 
     @EnvironmentObject var authenticator: Authenticator
-    
+
     var body: some View {
-        HStack {
-            Spacer()
-            Text("Person: ")
+        VStack {
             if let person = authenticator.currentPerson {
-                Text("\(person.firstName) \(person.lastName)")
+                HStack {
+                    Spacer()
+                    Text("\(person.firstName) \(person.lastName)")
+                }
+                HStack {
+                    Spacer()
+                    Text("\(person.id)")
+                }
+                HStack {
+                    Spacer()
+                    Text("count \(authenticator.persons.count) persons")
+                }
             } else {
+                HStack {
+                    Spacer()
                 Text("no currentPerson")
+                }
             }
         }
         .padding(.trailing, 20)

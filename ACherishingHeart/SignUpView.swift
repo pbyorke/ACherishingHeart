@@ -67,7 +67,6 @@ struct SignUpView: View {
                 presentationMode.wrappedValue.dismiss()
             } catch {
                 errorMessage = error.localizedDescription
-                print("* * *  signup \"\(authenticator.email)\"/\"\(authenticator.password)\":\"\(errorMessage)\"")
                 showSignupError = true
             }
         }

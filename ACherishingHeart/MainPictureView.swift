@@ -27,6 +27,7 @@ struct MainPictureView: View {
             }
         }
     }
+    
 }
 
 struct MainPictureView_Previews: PreviewProvider {

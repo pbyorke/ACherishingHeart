@@ -15,8 +15,6 @@ struct SignInView: View {
     @State private var showForgotPassword = false
     @State private var showSigninError = false
     @State private var errorMessage = ""
-//    @State private var email = "" { didSet { authenticator.email = email } }
-//    @State private var password = "" { didSet { authenticator.password = password } }
     
     var body: some View {
         NavigationView {
@@ -53,7 +51,6 @@ struct SignInView: View {
                 presentationMode.wrappedValue.dismiss()
             } catch {
                 errorMessage = error.localizedDescription
-                print("* * *  signin \"\(authenticator.email)\"/\"\(authenticator.password)\":\"\(errorMessage)\"")
                 showSigninError = true
             }
         }
