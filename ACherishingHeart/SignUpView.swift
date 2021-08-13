@@ -16,47 +16,46 @@ struct SignUpView: View {
     @State private var errorMessage = ""
 
     var body: some View {
-        NavigationView {
+        VStack(spacing: 16) {
             VStack(spacing: 16) {
-                VStack(spacing: 16) {
-                    InputTextFieldView(
-                        text: $authenticator.email,
-                        placeholder: "Email",
-                        keyboardType: .emailAddress,
-                        sfSymbol: "envelope"
-                    )
-                    InputPasswordView(
-                        password: $authenticator.password,
-                        placeholder: "Password",
-                        sfSymbol: "lock"
-                    )
-                    Divider()
-                    InputTextFieldView(
-                        text: $authenticator.firstName,
-                        placeholder: "First Name",
-                        keyboardType: .default,
-                        sfSymbol: nil
-                    )
-                    InputTextFieldView(
-                        text: $authenticator.lastName,
-                        placeholder: "Last Name",
-                        keyboardType: .default,
-                        sfSymbol: nil
-                    )
-                    InputTextFieldView(
-                        text: $authenticator.phoneNumber,
-                        placeholder: "Phone Number",
-                        keyboardType: .default,
-                        sfSymbol: nil
-                    )
-                }
-                Spacer()
-                ButtonView(title: "Sign Up", background: .blue, foreground: .white, border: .blue) { signUp() }
-                .alert(errorMessage, isPresented: $showSignupError) { Button("OK", role: .cancel) { } }
+                InputTextFieldView(
+                    text: $authenticator.email,
+                    placeholder: "Email",
+                    keyboardType: .emailAddress,
+                    sfSymbol: "envelope"
+                )
+                InputPasswordView(
+                    password: $authenticator.password,
+                    placeholder: "Password",
+                    sfSymbol: "lock"
+                )
+                Divider()
+                InputTextFieldView(
+                    text: $authenticator.firstName,
+                    placeholder: "First Name",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                InputTextFieldView(
+                    text: $authenticator.lastName,
+                    placeholder: "Last Name",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                InputTextFieldView(
+                    text: $authenticator.phoneNumber,
+                    placeholder: "Phone Number",
+                    keyboardType: .default, 
+                    sfSymbol: nil
+                )
             }
-            .padding(.horizontal, 15)
-            .navigationTitle("Sign Up")
+            Spacer()
+            ButtonView(title: "Sign Up", background: .blue, foreground: .white, border: .blue) { signUp() }
+            .alert(errorMessage, isPresented: $showSignupError) { Button("OK", role: .cancel) { } }
         }
+        .padding(.horizontal, 15)
+        .navigationTitle("Sign Up")
+        .navigationBarHidden(false)
     }
     
     private func signUp() {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */; };
+		C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */; };
 		C10E956726A8A242004CBEB8 /* ACherishingHeartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E956626A8A242004CBEB8 /* ACherishingHeartApp.swift */; };
 		C10E956926A8A242004CBEB8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E956826A8A242004CBEB8 /* MainView.swift */; };
 		C10E956B26A8A242004CBEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10E956A26A8A242004CBEB8 /* Assets.xcassets */; };
@@ -43,11 +45,7 @@
 		C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B3F8A726B22910007F63D2 /* ButtonView.swift */; };
 		C1B3F8AA26B22B75007F63D2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B3F8A926B22B75007F63D2 /* ForgotPasswordView.swift */; };
 		C1B3F8AC26B22C2F007F63D2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B3F8AB26B22C2F007F63D2 /* SignUpView.swift */; };
-		C1B4630C26B344EE0059BCD5 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4630B26B344EE0059BCD5 /* SignInService.swift */; };
-		C1B4630E26B345030059BCD5 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4630D26B345030059BCD5 /* SignInViewModel.swift */; };
-		C1B4631026B345C40059BCD5 /* SignInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4630F26B345C40059BCD5 /* SignInCredentials.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
-		C1D4582D26BCC5F30040C4FB /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4582C26BCC5F30040C4FB /* Village.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputTextFieldView.swift; sourceTree = "<group>"; };
+		C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputPasswordFieldView.swift; sourceTree = "<group>"; };
 		C10E956326A8A242004CBEB8 /* ACherishingHeart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACherishingHeart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10E956626A8A242004CBEB8 /* ACherishingHeartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACherishingHeartApp.swift; sourceTree = "<group>"; };
 		C10E956826A8A242004CBEB8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -102,11 +102,7 @@
 		C1B3F8A726B22910007F63D2 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		C1B3F8A926B22B75007F63D2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		C1B3F8AB26B22C2F007F63D2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		C1B4630B26B344EE0059BCD5 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
-		C1B4630D26B345030059BCD5 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		C1B4630F26B345C40059BCD5 /* SignInCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCredentials.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		C1D4582C26BCC5F30040C4FB /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +214,6 @@
 				C1B3F8A926B22B75007F63D2 /* ForgotPasswordView.swift */,
 				C10E959D26A8A904004CBEB8 /* Main */,
 				C17B7B1526BAD9C60099A5D4 /* Master */,
-				C1B4630A26B344D70059BCD5 /* SIgnIn */,
 				C1B3F89E26B226A2007F63D2 /* SignInView.swift */,
 				C1B3F8AB26B22C2F007F63D2 /* SignUpView.swift */,
 				C123B03C26B636D600733BA3 /* WhyView.swift */,
@@ -242,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				C10E95AE26AF59AB004CBEB8 /* Person.swift */,
-				C1D4582C26BCC5F30040C4FB /* Village.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -281,18 +275,10 @@
 				C1B3F8A126B22711007F63D2 /* InputTextFieldView.swift */,
 				C150222B26B2502F0060232C /* NavigationButtonView.swift */,
 				C1B3F8A326B227C7007F63D2 /* PreviewLayoutComponentModifier.swift */,
+				C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */,
+				C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */,
 			);
 			name = Parts;
-			sourceTree = "<group>";
-		};
-		C1B4630A26B344D70059BCD5 /* SIgnIn */ = {
-			isa = PBXGroup;
-			children = (
-				C1B4630F26B345C40059BCD5 /* SignInCredentials.swift */,
-				C1B4630B26B344EE0059BCD5 /* SignInService.swift */,
-				C1B4630D26B345030059BCD5 /* SignInViewModel.swift */,
-			);
-			name = SIgnIn;
 			sourceTree = "<group>";
 		};
 		C1D3984126B38335006BEE2D /* Services */ = {
@@ -449,17 +435,15 @@
 				C1B3F8A626B2281F007F63D2 /* InputPasswordFieldView.swift in Sources */,
 				C1B3F8AA26B22B75007F63D2 /* ForgotPasswordView.swift in Sources */,
 				C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */,
-				C1B4630E26B345030059BCD5 /* SignInViewModel.swift in Sources */,
 				C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */,
+				C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */,
 				C10E95A426A8AC9B004CBEB8 /* MainMenuView.swift in Sources */,
 				C10E95A126A8AAFA004CBEB8 /* MainTitleView.swift in Sources */,
 				C10E95A826AF55CD004CBEB8 /* MainMenuBarView.swift in Sources */,
 				C123B03D26B636D600733BA3 /* WhyView.swift in Sources */,
 				C1B3F8A426B227C7007F63D2 /* PreviewLayoutComponentModifier.swift in Sources */,
 				C1A665AE26B6434C0086001C /* StoreService.swift in Sources */,
-				C1D4582D26BCC5F30040C4FB /* Village.swift in Sources */,
 				C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */,
-				C1B4630C26B344EE0059BCD5 /* SignInService.swift in Sources */,
 				C14F10C026B9E54200FAEB3F /* AdminView.swift in Sources */,
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
 				C10E956926A8A242004CBEB8 /* MainView.swift in Sources */,
@@ -469,12 +453,12 @@
 				C1B3F8AC26B22C2F007F63D2 /* SignUpView.swift in Sources */,
 				C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */,
 				C10E956726A8A242004CBEB8 /* ACherishingHeartApp.swift in Sources */,
+				C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
 				C161A02D26BB874D005B077A /* MasterPersonView.swift in Sources */,
 				C1B3F89F26B226A2007F63D2 /* SignInView.swift in Sources */,
 				C1A5223626B8C99600370C19 /* DebugView.swift in Sources */,
 				C10E95A626AA0F53004CBEB8 /* Authenticator.swift in Sources */,
-				C1B4631026B345C40059BCD5 /* SignInCredentials.swift in Sources */,
 				C1B3F8A226B22711007F63D2 /* InputTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

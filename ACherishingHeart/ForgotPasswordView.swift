@@ -8,12 +8,35 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text("Forgot Password")
+        VStack(spacing: 16) {
+            InputTextFieldView(text: .constant(""),
+                               placeholder: "Email",
+                               keyboardType: .emailAddress,
+                               sfSymbol: "envelope")
+            ButtonView(title: "Send Password Reset") {
+                forgotPassword()
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .padding(.horizontal, 16)
+        .navigationTitle("Reset Password")
+        .navigationBarHidden(false)
     }
+    
+    private func forgotPassword() {
+        Task.init {
+            authenticator.forgotpassword()
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+
 }
 
-struct ForgotPasswordView_Previews: PreviewProvider {
+struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         ForgotPasswordView()
     }

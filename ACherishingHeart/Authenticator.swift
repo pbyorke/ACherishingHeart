@@ -12,7 +12,9 @@ protocol AuthenticatorProtocol {
     func signin() async throws
     func signup() async throws
     func signout() async throws
-    func getPerson(id: String) async throws -> Person?
+    func forgotpassword() async throws
+    func getPersonBy(recordId: String) async throws -> Person?
+    func getPersonBy(userUID: String) async throws -> Person?
     var email: String { set get }
     var password: String { set get }
 }
@@ -30,6 +32,9 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     @Trimmed var firstName = ""
     @Trimmed var lastName = ""
     @Trimmed var phoneNumber = ""
+    
+    var authService: AuthServiceProtocol = AuthService.shared
+    var storeService: StoreServiceProtocol = StoreService.shared
     
     var isMaster: Bool {
         if let currentPerson = currentPerson {
@@ -79,16 +84,13 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
-    var authService: AuthServiceProtocol = AuthService.shared
-    var storeService: StoreServiceProtocol = StoreService.shared
-    
     func setup() {
         Task.init {
             do {
                 if let user = Auth.auth().currentUser {
                     currentId = user.uid
                     let persons = try await storeService.getAll(collection: .users, type: Person.self)
-                    let person = persons.first { $0.id == currentId }
+                    let person = persons.first { $0.userUID == currentId }
                     DispatchQueue.main.async {
                         self.persons = persons
                         self.currentPerson = person
@@ -97,16 +99,14 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 } else {
                     isLoggedIn = false
                 }
-            } catch {
-                print(error)
-            }
+            } catch { }
         }        
     }
     
     func signin() async throws {
         do {
-            let id = try await authService.signin(email: email, password: password)
-            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "id", value: id)
+            let userUID = try await authService.signin(email: email, password: password)
+            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
             let allPersons = try await storeService.getAll(collection: .users, type: Person.self)
             print("")
             DispatchQueue.main.async {
@@ -121,10 +121,10 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
 
     func signup() async throws {
         do {
-            let uid = try await authService
-                .signup(email: email, password: password)
+            let uid = try await authService.signup(email: email, password: password)
             let person = Person(
-                id: uid,
+                id: "",
+                userUID: uid,
                 email: email,
                 password: password,
                 firstName: firstName,
@@ -137,9 +137,10 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 isJCTeacher: false,
                 isJCStudent: false
             )
-        try await storeService
-                .create(person, collection: .users)
-            isLoggedIn = true
+            try await storeService.create(person, collection: .users)
+            DispatchQueue.main.async {
+                self.isLoggedIn = true
+            }
         } catch {
             throw error
         }
@@ -155,9 +156,22 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
-    func getPerson(id: String) async throws -> Person? {
+    func forgotpassword() {
+        authService.forgotpassword()
+    }
+    
+    func getPersonBy(recordId: String) async throws -> Person? {
         do {
-            let person = try await storeService.getOneById(collection: .users, type: Person.self, id: id)
+            let person = try await storeService.getOneById(collection: .users, type: Person.self, id: recordId)
+            return person
+        } catch {
+            throw error
+        }
+    }
+    
+    func getPersonBy(userUID: String) async throws -> Person? {
+        do {
+            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
             return person
         } catch {
             throw error

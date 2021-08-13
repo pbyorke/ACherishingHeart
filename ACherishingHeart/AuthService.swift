@@ -12,6 +12,7 @@ protocol AuthServiceProtocol {
     func signin(email: String, password: String) async throws -> String
     func signup(email: String, password: String) async throws -> String
     func signout() async throws
+    func forgotpassword()
 }
 
 final class AuthService: AuthServiceProtocol {
@@ -48,6 +49,12 @@ final class AuthService: AuthServiceProtocol {
         } catch {
             throw error
         }
+    }
+    
+    func forgotpassword() {
+        Auth
+            .auth()
+            .sendPasswordReset(withEmail: "pbyorke@gmail.com")
     }
     
 }

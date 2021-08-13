@@ -22,19 +22,24 @@ struct MainMenuBarView: View {
             if authenticator.isLoggedIn {
                 HStack(spacing: 10) {
                     Spacer()
-                    NavigationButtonView(title: "Sign Out", background: .clear, foreground: .blue) { signOut() }
-                    NavigationButtonView(title: "Account", background: .clear, foreground: .blue) { showAccount.toggle() }
-                    .sheet(isPresented: $showAccount, content: { AccountView() })
+                    NavigationLink(destination: SignInView()) {
+                        Button("Sign Out") {
+                            signOut()
+                        }
+                    }
+                    NavigationLink("Account", destination: AccountView())
                 }
             } else {
                 HStack(spacing: 10) {
-                    NavigationButtonView(title: "Why", background: .clear, foreground: .blue) { showWhy.toggle() }
-                    .sheet(isPresented: $showWhy, content: { WhyView() })
+                    NavigationLink("Why", destination: WhyView())
                     Spacer()
-                    NavigationButtonView(title: "Sign In", background: .clear, foreground: .blue) { showSignIn.toggle() }
-                    .sheet(isPresented: $showSignIn, content: { SignInView() })
-                    NavigationButtonView(title: "Sign Up", background: .clear, foreground: .blue) { showSignUp.toggle() }
-                    .sheet(isPresented: $showSignUp, content: { SignUpView() })
+                    NavigationLink("Sign In", destination: SignInView())
+                    NavigationLink("Sign Up", destination: SignUpView())
+                    NavigationLink(destination: SignInView()) {
+                        Button("Sign Out") {
+                            signOut()
+                        }
+                    }
                 }
             }
         }
@@ -49,7 +54,6 @@ struct MainMenuBarView: View {
         Task.init {
             do {
                 try await authenticator.signout()
-                SignInView()
             } catch { print(error) }
         }
     }

@@ -13,7 +13,7 @@ struct MasterView: View {
 
     var body: some View {
         List(authenticator.persons, id: \.id) { person in
-            NavigationLink(destination: MasterPersonView(id: person.id)) {
+            NavigationLink(destination: MasterPersonView(personId: person.id)) {
                 Text("\(person.firstName) \(person.lastName)")
             }
         }

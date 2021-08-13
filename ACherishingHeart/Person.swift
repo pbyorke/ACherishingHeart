@@ -9,6 +9,7 @@ import Foundation
 
 struct Person: Identifiable, Codable {
     var id: String
+    var userUID: String
     var email: String
     var password: String
     var firstName: String
@@ -19,13 +20,14 @@ struct Person: Identifiable, Codable {
     var isAdmin: Bool
     var isJoyCoach: Bool
     var isJCTeacher: Bool
-    var isJCStudent: Bool
+    var isJCStudent: Bool    
 }
 
 extension Person {
     static var new: Person {
         Person(
             id: UUID().uuidString,
+            userUID: "",
             email: "",
             password: "",
             firstName: "",

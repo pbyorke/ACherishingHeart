@@ -22,6 +22,7 @@ struct MainView: View {
                 MainMenuBarView()
             }
             .edgesIgnoringSafeArea(.all)
+            .navigationBarHidden(true)
         }
     }    
 }

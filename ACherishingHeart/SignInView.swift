@@ -17,30 +17,30 @@ struct SignInView: View {
     @State private var errorMessage = ""
     
     var body: some View {
-        NavigationView {
+        VStack(spacing: 16) {
             VStack(spacing: 16) {
-                VStack(spacing: 16) {
-                    InputTextFieldView(
-                        text: $authenticator.email,
-                        placeholder: "Email",
-                        keyboardType: .emailAddress,
-                        sfSymbol: "envelope"
-                    )
-                    InputPasswordView(
-                        password: $authenticator.password,
-                        placeholder: "Password",
-                        sfSymbol: "lock"
-                    )
-                }
-                VStack(spacing: 16) {
-                    ButtonView(title: "Sign In") { signIn() }
-                    .alert(errorMessage, isPresented: $showSigninError) { Button("OK", role: .cancel) { } }
-                    ButtonView(title: "Forgot Password", background: .clear, foreground: .blue, border: .clear) { ForgotPasswordView() }
-                }
+                InputTextFieldView(
+                    text: $authenticator.email,
+                    placeholder: "Email",
+                    keyboardType: .emailAddress,
+                    sfSymbol: "envelope"
+                )
+                InputPasswordView(
+                    password: $authenticator.password,
+                    placeholder: "Password",
+                    sfSymbol: "lock"
+                )
             }
-            .padding(.horizontal, 15)
-            .navigationTitle("Sign In")
+            VStack(spacing: 16) {
+                ButtonView(title: "Sign In") { signIn() }
+                .alert(errorMessage, isPresented: $showSigninError) { Button("OK", role: .cancel) { } }
+                NavigationLink("Forgot Password", destination: ForgotPasswordView())
+            }
+            .sheet(isPresented: $showForgotPassword, content: { ForgotPasswordView() })
         }
+        .padding(.horizontal, 15)
+        .navigationTitle("Sign In")
+        .navigationBarHidden(false)
     }
     
     private func signIn() {
