@@ -9,15 +9,16 @@ import SwiftUI
 
 struct MasterPersonView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
     
     @State private var id = ""
     @State private var userUID = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var phoneNumber = ""
+//    @State private var email = ""
+//    @State private var password = ""
+//    @State private var firstName = ""
+//    @State private var lastName = ""
+//    @State private var phoneNumber = ""
     @State private var isMedia = false
     @State private var isMaster = false
     @State private var isAdmin = false
@@ -37,6 +38,7 @@ struct MasterPersonView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                    .disabled(true)
                 TitledInputTextFieldView (
                     title: "userUID",
                     text: $userUID,
@@ -44,37 +46,40 @@ struct MasterPersonView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                    .disabled(true)
                 TitledInputTextFieldView (
                     title: "Email Address",
-                    text: $email,
+                    text: $authenticator.email,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                    .disabled(true)
                 TitledInputTextFieldView (
                     title: "Password",
-                    text: $password,
+                    text: $authenticator.password,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                    .disabled(true)
                 TitledInputTextFieldView (
                     title: "First Name",
-                    text: $firstName,
+                    text: $authenticator.firstName,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 TitledInputTextFieldView (
                     title: "Last Name",
-                    text: $lastName,
+                    text: $authenticator.lastName,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 TitledInputTextFieldView (
                     title: "Phone Number",
-                    text: $phoneNumber,
+                    text: $authenticator.phoneNumber,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
@@ -100,11 +105,11 @@ struct MasterPersonView: View {
                 if let person = try await authenticator.getPersonBy(recordId: personId) {
                     id = person.id
                     userUID = person.userUID
-                    email = person.email
-                    password = person.password
-                    firstName = person.firstName
-                    lastName = person.lastName
-                    phoneNumber = person.phoneNumber
+                    authenticator.email = person.email
+                    authenticator.password = person.password
+                    authenticator.firstName = person.firstName
+                    authenticator.lastName = person.lastName
+                    authenticator.phoneNumber = person.phoneNumber
                     isMedia = person.isMedia
                     isMaster = person.isMaster
                     isAdmin = person.isAdmin
@@ -121,11 +126,11 @@ struct MasterPersonView: View {
         let person = Person(
             id: id,
             userUID: userUID,
-            email: email,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber,
+            email: authenticator.email,
+            password: authenticator.password,
+            firstName: authenticator.firstName,
+            lastName: authenticator.lastName,
+            phoneNumber: authenticator.phoneNumber,
             isMedia: isMedia,
             isMaster: isMaster,
             isAdmin: isAdmin,
@@ -133,6 +138,10 @@ struct MasterPersonView: View {
             isJCTeacher: isJCTeacher,
             isJCStudent: isJCStudent
         )
+        do {
+            try authenticator.update(person)
+            presentationMode.wrappedValue.dismiss()
+        } catch { }
     }
     
 }

@@ -17,6 +17,7 @@ protocol StoreServiceProtocol {
     func getOneById<T: Decodable>(collection: FirebaseReference, type: T.Type, id: String) async throws -> T?
     func getOneByKey<T:Decodable>(collection: FirebaseReference, type: T.Type, key: String, value: String) async throws -> T?
     func getAll<T: Decodable>(collection: FirebaseReference, type: T.Type) async throws -> [T]
+    func update<T: Encodable & Identifiable>(_ object: T, collection: FirebaseReference) throws
 }
 
 final class StoreService: StoreServiceProtocol {
@@ -97,6 +98,16 @@ final class StoreService: StoreServiceProtocol {
             }
         } catch {
             throw error
+        }
+    }
+    
+    func update<T: Encodable & Identifiable>(_ object: T, collection: FirebaseReference) throws {
+        do {
+            let json = try object.toJson(excluding: ["id"])
+            let id = "\(object.id)"
+            reference(to: collection).document(id).setData(json)
+        } catch {
+            throw FirebaseError.namedError(error.localizedDescription)
         }
     }
     

@@ -9,14 +9,16 @@ import Foundation
 import FirebaseAuth
 
 protocol AuthenticatorProtocol {
+    var email: String { set get }
+    var password: String { set get }
+    
     func signin() async throws
     func signup() async throws
     func signout() async throws
     func forgotpassword() async throws
     func getPersonBy(recordId: String) async throws -> Person?
     func getPersonBy(userUID: String) async throws -> Person?
-    var email: String { set get }
-    var password: String { set get }
+    func update(_ person: Person) async throws
 }
 
 final class Authenticator: ObservableObject, AuthenticatorProtocol {
@@ -178,4 +180,12 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
 
+    func update(_ person: Person) throws {
+        do {
+            try storeService.update(person, collection: .users)
+        } catch {
+            throw error
+        }
+    }
+    
 }
