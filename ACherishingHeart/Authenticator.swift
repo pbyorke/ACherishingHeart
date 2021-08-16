@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol AuthenticatorProtocol {
     var email: String { set get }
@@ -28,6 +29,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     @Published var persons = [Person]()
     
     private var currentId = ""
+    private var personListener: ListenerRegistration?
     
     @Trimmed var email = ""
     @Trimmed var password = ""
@@ -88,33 +90,23 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     func setup() {
         Task.init {
-            do {
-                if let user = Auth.auth().currentUser {
-                    currentId = user.uid
-                    let persons = try await storeService.getAll(collection: .users, type: Person.self)
-                    let person = persons.first { $0.userUID == currentId }
-                    DispatchQueue.main.async {
-                        self.persons = persons
-                        self.currentPerson = person
-                        self.isLoggedIn = true
-                    }
-                } else {
-                    isLoggedIn = false
-                }
-            } catch { }
-        }        
+            if let user = Auth.auth().currentUser {
+                currentId = user.uid
+                isLoggedIn = true
+                listenAllPersons()
+            } else {
+                isLoggedIn = false
+                personListener?.remove()
+            }
+        }
     }
     
     func signin() async throws {
         do {
-            let userUID = try await authService.signin(email: email, password: password)
-            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
-            let allPersons = try await storeService.getAll(collection: .users, type: Person.self)
-            print("")
+            currentId = try await authService.signin(email: email, password: password)
             DispatchQueue.main.async {
-                self.persons = allPersons
-                self.currentPerson = person
                 self.isLoggedIn = true
+                self.listenAllPersons()
             }
         } catch {
             throw(error)
@@ -153,6 +145,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
             try await authService.signout()
             isLoggedIn = false
             currentPerson = nil
+            personListener?.remove()
         } catch {
             throw error
         }
@@ -185,6 +178,24 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
             try storeService.update(person, collection: .users)
         } catch {
             throw error
+        }
+    }
+    
+    private func listenAllPersons() {
+        personListener = Firestore.firestore().collection("users").addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            do {
+                var objects = [Person]()
+                for document in snapshot.documents {
+                    let object = try document.decode(as: Person.self, includingId: true)
+                    objects.append(object)
+                }
+                DispatchQueue.main.async {
+                    self.persons = objects
+                    let person = self.persons.first { $0.userUID == self.currentId }
+                    self.currentPerson = person
+                }
+            } catch { }
         }
     }
     

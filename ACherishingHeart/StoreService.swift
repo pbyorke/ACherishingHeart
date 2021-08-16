@@ -5,6 +5,7 @@
 //  Created by Peter Yorke on 7/31/21.
 //
 
+//import SwiftUI
 import Foundation
 import FirebaseFirestore
 
@@ -17,11 +18,14 @@ protocol StoreServiceProtocol {
     func getOneById<T: Decodable>(collection: FirebaseReference, type: T.Type, id: String) async throws -> T?
     func getOneByKey<T:Decodable>(collection: FirebaseReference, type: T.Type, key: String, value: String) async throws -> T?
     func getAll<T: Decodable>(collection: FirebaseReference, type: T.Type) async throws -> [T]
+//    func listenAll<T: Decodable>(collection: FirebaseReference, type: T.Type)
     func update<T: Encodable & Identifiable>(_ object: T, collection: FirebaseReference) throws
 }
 
 final class StoreService: StoreServiceProtocol {
     
+//    @EnvironmentObject var authenticator: Authenticator
+
     static let shared = StoreService()
     
     private func reference(to collection: FirebaseReference) -> CollectionReference {
@@ -50,7 +54,53 @@ final class StoreService: StoreServiceProtocol {
             throw error
         }
     }
+    
+//    func listenAll<T: Decodable>(collection: FirebaseReference, type: T.Type) throws {
+//        reference(to: .users).addSnapshotListener { (snapshot, error) in
+//          guard let documents = snapshot?.documents else { return }
+//            var objects = [T]()
+//            documents.forEach { document in
+//                let object = try document.decode(as: type.self, includingId: truea)
+//            }
+//        }
+//    }
+        
+//    func listenAll<T: Decodable>(collection: FirebaseReference, type: T.Type) {
+////        reference(to: .users).addSnapshotListener { (snapshot, error) in
+//        Firestore.firestore().collection("users").addSnapshotListener { (snapshot, error) in
+//            var objects = [T]()
+//            try snapshot.documents.forEach { document in
+//                let object = try document.decode(as: type.self, includingId: true)
+//                objects.append(object)
+//            }
+//        }
+//    }
+    
+//    func listenAll<T: Decodable>(collection: FirebaseReference, type: T.Type) throws {
+//        reference(to: collection).addSnapshotListener { snapshot, error in
+//            guard error != nil else { return }
+//            var objects = [T]()
+//            try snapshot?.documents.forEach { document in
+//                let object = try document.decode(as: type.self, includingId: true)
+//                objects.append(object)
+//            }
+//        }
+//    }
 
+//    func listenAll<T: Decodable>(collection: FirebaseReference, type: T.Type) throws {
+//        do {
+//            let snapshot = reference(to: collection).addSnapshotListener { snapshot, error in
+//                var objects = [T]()
+//                try snapshot.documents.forEach { document in
+//                    let object = try document.decode(as: type.self, includingId: true)
+//                    objects.append(object)
+//                }
+//            }
+//        } catch {
+//            throw error
+//        }
+//    }
+    
     func getOneById<T: Decodable>(collection: FirebaseReference, type: T.Type, id: String) async throws -> T? {
         do {
             let snapshot = try await reference(to: collection).whereField(FieldPath.documentID(), isEqualTo: id).getDocuments()

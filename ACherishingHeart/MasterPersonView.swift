@@ -26,7 +26,9 @@ struct MasterPersonView: View {
     @State private var isJCTeacher = false
     @State private var isJCStudent = false
     
-    var personId: String
+    @Binding var person: Person
+    
+//    var personId: String
     
     var body: some View {
         VStack {
@@ -100,26 +102,26 @@ struct MasterPersonView: View {
         .toolbar {
             Button("Save") { save() }
         }
-        .task {
-            do {
-                if let person = try await authenticator.getPersonBy(recordId: personId) {
-                    id = person.id
-                    userUID = person.userUID
-                    authenticator.email = person.email
-                    authenticator.password = person.password
-                    authenticator.firstName = person.firstName
-                    authenticator.lastName = person.lastName
-                    authenticator.phoneNumber = person.phoneNumber
-                    isMedia = person.isMedia
-                    isMaster = person.isMaster
-                    isAdmin = person.isAdmin
-                    isJoyCoach = person.isJoyCoach
-                    isJCTeacher = person.isJCTeacher
-                    isJCStudent = person.isJCStudent
-                }
-            } catch {
-            }
-        }
+//        .task {
+//            do {
+//                if let person = try await authenticator.getPersonBy(recordId: personId) {
+//                    id = person.id
+//                    userUID = person.userUID
+//                    authenticator.email = person.email
+//                    authenticator.password = person.password
+//                    authenticator.firstName = person.firstName
+//                    authenticator.lastName = person.lastName
+//                    authenticator.phoneNumber = person.phoneNumber
+//                    isMedia = person.isMedia
+//                    isMaster = person.isMaster
+//                    isAdmin = person.isAdmin
+//                    isJoyCoach = person.isJoyCoach
+//                    isJCTeacher = person.isJCTeacher
+//                    isJCStudent = person.isJCStudent
+//                }
+//            } catch {
+//            }
+//        }
     }
     
     private func save() {
@@ -146,8 +148,8 @@ struct MasterPersonView: View {
     
 }
 
-struct MasterPersonView_Previews: PreviewProvider {
-    static var previews: some View {
-        MasterPersonView(personId: "dummy")
-    }
-}
+//struct MasterPersonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MasterPersonView(personId: "dummy")
+//    }
+//}
