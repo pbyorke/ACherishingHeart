@@ -1,6 +1,6 @@
 //
 //  MasterView.swift
-//  MasterView
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/2/21.
 //
@@ -15,9 +15,6 @@ struct MasterView: View {
 
     var body: some View {
         List(authenticator.persons, id: \.id) { person in
-//            NavigationLink(destination: MasterPersonView(personId: person.id)) {
-//                Text("\(person.firstName) \(person.lastName)")
-//            }
             NavigationLink(destination: MasterPersonView(person: $person)) {
                 Button("\(person.firstName) \(person.lastName)") {
                     self.person = person
@@ -29,8 +26,8 @@ struct MasterView: View {
     }
 }
 
-//struct MasterView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MasterView()
-//    }
-//}
+struct MasterView_Previews: PreviewProvider {
+    static var previews: some View {
+        MasterView()
+    }
+}

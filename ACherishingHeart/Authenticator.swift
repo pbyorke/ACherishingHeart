@@ -38,7 +38,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     @Trimmed var phoneNumber = ""
     
     var authService: AuthServiceProtocol = AuthService.shared
-    var storeService: StoreServiceProtocol = StoreService.shared
+    var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
     
     var isMaster: Bool {
         if let currentPerson = currentPerson {
@@ -131,7 +131,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 isJCTeacher: false,
                 isJCStudent: false
             )
-            try await storeService.create(person, collection: .users)
+            try await firestoreService.create(person, collection: .users)
             DispatchQueue.main.async {
                 self.isLoggedIn = true
             }
@@ -157,7 +157,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     func getPersonBy(recordId: String) async throws -> Person? {
         do {
-            let person = try await storeService.getOneById(collection: .users, type: Person.self, id: recordId)
+            let person = try await firestoreService.getOneById(collection: .users, type: Person.self, id: recordId)
             return person
         } catch {
             throw error
@@ -166,7 +166,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     func getPersonBy(userUID: String) async throws -> Person? {
         do {
-            let person = try await storeService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
+            let person = try await firestoreService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
             return person
         } catch {
             throw error
@@ -175,7 +175,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
 
     func update(_ person: Person) throws {
         do {
-            try storeService.update(person, collection: .users)
+            try firestoreService.update(person, collection: .users)
         } catch {
             throw error
         }

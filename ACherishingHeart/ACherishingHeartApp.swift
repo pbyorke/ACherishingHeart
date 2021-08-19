@@ -8,6 +8,14 @@
 // TheCherishingHeart.oldStyle/     most complete
 // ACherishingHeart.2/              tundsdev version
 //
+// google swiftui Storage.storage()
+//
+// https://firebase.google.com/docs/storage/ios/upload-files
+// https://firebase.google.com/docs/storage/ios/download-files
+// https://firebase.google.com/docs/storage/ios/list-files
+//
+// https://www.youtube.com/watch?v=YaMKOTWdT6U (Building a SwiftUI app for iOS and macOS)
+//
 
 import SwiftUI
 import Firebase

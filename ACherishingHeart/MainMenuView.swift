@@ -27,7 +27,7 @@ struct MainMenuView: View {
                     }
                     if authenticator.isMedia {
                         NavigationLink(
-                            destination: Text("Media")) {
+                            destination: MediaView() ) {
                                 Text("Media")
                             }
                     }

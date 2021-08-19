@@ -1,6 +1,6 @@
 //
 //  MasterPersonView.swift
-//  MasterPersonView
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/4/21.
 //
@@ -14,11 +14,6 @@ struct MasterPersonView: View {
     
     @State private var id = ""
     @State private var userUID = ""
-//    @State private var email = ""
-//    @State private var password = ""
-//    @State private var firstName = ""
-//    @State private var lastName = ""
-//    @State private var phoneNumber = ""
     @State private var isMedia = false
     @State private var isMaster = false
     @State private var isAdmin = false
@@ -27,8 +22,6 @@ struct MasterPersonView: View {
     @State private var isJCStudent = false
     
     @Binding var person: Person
-    
-//    var personId: String
     
     var body: some View {
         VStack {
