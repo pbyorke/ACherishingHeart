@@ -20,6 +20,7 @@ protocol AuthenticatorProtocol {
     func getPersonBy(recordId: String) async throws -> Person?
     func getPersonBy(userUID: String) async throws -> Person?
     func update(_ person: Person) async throws
+    func clear()
 }
 
 final class Authenticator: ObservableObject, AuthenticatorProtocol {
@@ -39,6 +40,14 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var authService: AuthServiceProtocol = AuthService.shared
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
+    
+    func clear() {
+        email = ""
+        password = ""
+        firstName = ""
+        lastName = ""
+        phoneNumber = ""
+    }
     
     var isMaster: Bool {
         if let currentPerson = currentPerson {
@@ -131,8 +140,11 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 isJCTeacher: false,
                 isJCStudent: false
             )
-            try await firestoreService.create(person, collection: .users)
+            try await firestoreService.create(person, collection: .persons)
             DispatchQueue.main.async {
+                self.listenAllPersons()
+                self.currentId = uid
+                self.currentPerson = person
                 self.isLoggedIn = true
             }
         } catch {
@@ -157,7 +169,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     func getPersonBy(recordId: String) async throws -> Person? {
         do {
-            let person = try await firestoreService.getOneById(collection: .users, type: Person.self, id: recordId)
+            let person = try await firestoreService.getOneById(collection: .persons, type: Person.self, id: recordId)
             return person
         } catch {
             throw error
@@ -166,7 +178,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     func getPersonBy(userUID: String) async throws -> Person? {
         do {
-            let person = try await firestoreService.getOneByKey(collection: .users, type: Person.self, key: "userUID", value: userUID)
+            let person = try await firestoreService.getOneByKey(collection: .persons, type: Person.self, key: "userUID", value: userUID)
             return person
         } catch {
             throw error
@@ -175,14 +187,14 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
 
     func update(_ person: Person) throws {
         do {
-            try firestoreService.update(person, collection: .users)
+            try firestoreService.update(person, collection: .persons)
         } catch {
             throw error
         }
     }
     
     private func listenAllPersons() {
-        personListener = Firestore.firestore().collection("users").addSnapshotListener { snapshot, error in
+        personListener = Firestore.firestore().collection("persons").addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { return }
             do {
                 var objects = [Person]()

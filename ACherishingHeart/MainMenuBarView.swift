@@ -34,7 +34,7 @@ struct MainMenuBarView: View {
                     NavigationLink("Why", destination: WhyView())
                     Spacer()
                     NavigationLink("Sign In", destination: SignInView())
-                    NavigationLink("Sign Up", destination: SignUpView())
+                    NavigationLink("Sign Up", destination: SignUpView(erase: true))
                     NavigationLink(destination: SignInView()) {
                         Button("Sign Out") {
                             signOut()

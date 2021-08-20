@@ -14,6 +14,8 @@ struct SignUpView: View {
 
     @State private var showSignupError = false
     @State private var errorMessage = ""
+    
+    var erase: Bool = false
 
     var body: some View {
         VStack(spacing: 16) {
@@ -52,6 +54,9 @@ struct SignUpView: View {
             Spacer()
             ButtonView(title: "Sign Up", background: .blue, foreground: .white, border: .blue) { signUp() }
             .alert(errorMessage, isPresented: $showSignupError) { Button("OK", role: .cancel) { } }
+        }
+        .onAppear {
+            authenticator.clear()
         }
         .padding(.horizontal, 15)
         .navigationTitle("Sign Up")

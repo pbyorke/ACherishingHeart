@@ -20,6 +20,10 @@ struct DebugView: View {
                 }
                 HStack {
                     Spacer()
+                    Text("\(person.userUID)")
+                }
+                HStack {
+                    Spacer()
                     Text("\(person.id)")
                 }
                 HStack {

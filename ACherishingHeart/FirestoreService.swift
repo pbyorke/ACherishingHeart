@@ -9,9 +9,10 @@ import Foundation
 import FirebaseFirestore
 
 enum FirestoreType: String {
-    case users
+    case persons
     case songs
     case albums
+    case albumsToSongs
 }
 
 protocol FirestoreServiceProtocol {

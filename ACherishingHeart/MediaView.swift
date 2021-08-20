@@ -15,9 +15,9 @@ struct MediaView: View {
     var body: some View {
         TabView {
             AlbumsView()
-                .tabItem{Label("Albums", systemImage: "doc.on.doc") }
+                .tabItem{Label("Albums", systemImage: "folder") }
             SongsView()
-                .tabItem{Label("Songs", systemImage: "doc") }
+                .tabItem{Label("Songs", systemImage: "music.quarternote.3") }
         }
         .navigationTitle(Text("Media Master"))
 //        List {

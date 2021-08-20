@@ -1,5 +1,5 @@
 //
-//  MasterPersonView.swift
+//  PersonView.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/4/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MasterPersonView: View {
+struct PersonView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
@@ -141,8 +141,8 @@ struct MasterPersonView: View {
     
 }
 
-//struct MasterPersonView_Previews: PreviewProvider {
+//struct PersonView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MasterPersonView(personId: "dummy")
+//        PersonView(personId: "dummy")
 //    }
 //}
