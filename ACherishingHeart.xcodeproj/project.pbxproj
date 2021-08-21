@@ -34,7 +34,6 @@
 		C11F206126B0F9BA0042A6CE /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C11F206026B0F9BA0042A6CE /* FirebaseStorageSwift-Beta */; };
 		C123B03D26B636D600733BA3 /* WhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123B03C26B636D600733BA3 /* WhyView.swift */; };
 		C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */; };
-		C14F10C026B9E54200FAEB3F /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F10BF26B9E54200FAEB3F /* AdminView.swift */; };
 		C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150222B26B2502F0060232C /* NavigationButtonView.swift */; };
 		C161A02D26BB874D005B077A /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161A02C26BB874D005B077A /* PersonView.swift */; };
 		C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164B5D126CFE201004CD3FF /* TitledText.swift */; };
@@ -104,7 +103,6 @@
 		C11D4AC126CCB3AD002A7880 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		C123B03C26B636D600733BA3 /* WhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyView.swift; sourceTree = "<group>"; };
 		C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trimmed.swift; sourceTree = "<group>"; };
-		C14F10BF26B9E54200FAEB3F /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		C150222B26B2502F0060232C /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		C161A02C26BB874D005B077A /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		C164B5D126CFE201004CD3FF /* TitledText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledText.swift; sourceTree = "<group>"; };
@@ -233,23 +231,12 @@
 		C10E959C26A8A8F4004CBEB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C185EEBC26CEA46500E3AD7B /* AccountsView.swift */,
-				C10E95AB26AF5759004CBEB8 /* AccountView.swift */,
-				C14F10BF26B9E54200FAEB3F /* AdminView.swift */,
-				C11D4AC126CCB3AD002A7880 /* AlbumsView.swift */,
-				C185EEB826CEA41100E3AD7B /* AlbumView.swift */,
-				C1A5223526B8C99600370C19 /* DebugView.swift */,
-				C1B3F8A926B22B75007F63D2 /* ForgotPasswordView.swift */,
+				C1FB342926D0BA6200A76D33 /* Account */,
+				C1FB342B26D0BABF00A76D33 /* Administration */,
 				C10E959D26A8A904004CBEB8 /* Main */,
-				C1A5223726B8DF5C00370C19 /* MasterView.swift */,
-				C1BCB74C26CB3AED00465BD6 /* MediaView.swift */,
-				C185EEB626CEA3D100E3AD7B /* PersonsView.swift */,
-				C161A02C26BB874D005B077A /* PersonView.swift */,
-				C1B3F89E26B226A2007F63D2 /* SignInView.swift */,
-				C1B3F8AB26B22C2F007F63D2 /* SignUpView.swift */,
-				C11D4ABF26CCA8A5002A7880 /* SongsView.swift */,
-				C185EEBA26CEA44E00E3AD7B /* SongVIew.swift */,
-				C123B03C26B636D600733BA3 /* WhyView.swift */,
+				C1FB342A26D0BA9300A76D33 /* Miscellaneous */,
+				C1FB342826D0BA3700A76D33 /* Music */,
+				C1FB342726D0BA0D00A76D33 /* Person */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -319,6 +306,56 @@
 				C1BCB74A26CB310700465BD6 /* StorageService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		C1FB342726D0BA0D00A76D33 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				C185EEB626CEA3D100E3AD7B /* PersonsView.swift */,
+				C161A02C26BB874D005B077A /* PersonView.swift */,
+			);
+			name = Person;
+			sourceTree = "<group>";
+		};
+		C1FB342826D0BA3700A76D33 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C11D4AC126CCB3AD002A7880 /* AlbumsView.swift */,
+				C185EEB826CEA41100E3AD7B /* AlbumView.swift */,
+				C11D4ABF26CCA8A5002A7880 /* SongsView.swift */,
+				C185EEBA26CEA44E00E3AD7B /* SongVIew.swift */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		C1FB342926D0BA6200A76D33 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C185EEBC26CEA46500E3AD7B /* AccountsView.swift */,
+				C10E95AB26AF5759004CBEB8 /* AccountView.swift */,
+				C1B3F8A926B22B75007F63D2 /* ForgotPasswordView.swift */,
+				C1B3F89E26B226A2007F63D2 /* SignInView.swift */,
+				C1B3F8AB26B22C2F007F63D2 /* SignUpView.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		C1FB342A26D0BA9300A76D33 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				C1A5223526B8C99600370C19 /* DebugView.swift */,
+				C123B03C26B636D600733BA3 /* WhyView.swift */,
+			);
+			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		C1FB342B26D0BABF00A76D33 /* Administration */ = {
+			isa = PBXGroup;
+			children = (
+				C1A5223726B8DF5C00370C19 /* MasterView.swift */,
+				C1BCB74C26CB3AED00465BD6 /* MediaView.swift */,
+			);
+			name = Administration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,7 +517,6 @@
 				C185EEB726CEA3D100E3AD7B /* PersonsView.swift in Sources */,
 				C1A665AE26B6434C0086001C /* FirestoreService.swift in Sources */,
 				C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */,
-				C14F10C026B9E54200FAEB3F /* AdminView.swift in Sources */,
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
 				C10E956926A8A242004CBEB8 /* MainView.swift in Sources */,
 				C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */,

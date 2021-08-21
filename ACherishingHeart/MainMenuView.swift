@@ -15,47 +15,71 @@ struct MainMenuView: View {
         HStack {
             ScrollView {
                 VStack {
-                    NavigationLink(
-                        destination: Text("Music")) {
-                            Text("Music")
+                    VStack(spacing: 10) {
+                        HStack {
+                            NavigationLink(
+                                destination: Text("Music")) {
+                                    Text("Music")
+                                }
+                            Spacer()
                         }
-                    if authenticator.isMaster {
-                        NavigationLink(
-                            destination: MasterView() ) {
-                                Text("Master")
+                        if authenticator.isMaster {
+                            HStack {
+                                NavigationLink(
+                                    destination: MasterView() ) {
+                                        Text("Master")
+                                    }
+                                Spacer()
                             }
-                    }
-                    if authenticator.isMedia {
-                        NavigationLink(
-                            destination: MediaView() ) {
-                                Text("Media")
+                        }
+                        if authenticator.isMedia {
+                            HStack {
+                                NavigationLink(
+                                    destination: MediaView() ) {
+                                        Text("Media")
+                                    }
+                                Spacer()
                             }
-                    }
-                    if authenticator.isAdmin {
-                        NavigationLink(
-                            destination: PersonsView(masterView: false) ) {
-                                Text("Admin")
+                        }
+                        if authenticator.isAdmin {
+                            HStack {
+                                NavigationLink(
+                                    destination: PersonsView(masterView: false) ) {
+                                        Text("Admin")
+                                    }
+                                Spacer()
                             }
-                    }
-                    if authenticator.isJoyCoach {
-                        NavigationLink(
-                            destination: Text("Joy Coach") ) {
-                                Text("Joy Coach")
+                        }
+                        if authenticator.isJoyCoach {
+                            HStack {
+                                NavigationLink(
+                                    destination: Text("Joy Coach") ) {
+                                        Text("Joy Coach")
+                                    }
+                                Spacer()
                             }
-                    }
-                    if authenticator.isJCTeacher {
-                        NavigationLink(
-                            destination: Text("Joy Coach Teacher") ) {
-                                Text("Joy Coach Teacher")
+                        }
+                        if authenticator.isJCTeacher {
+                            HStack {
+                                NavigationLink(
+                                    destination: Text("Joy Coach Teacher") ) {
+                                        Text("Joy Coach Teacher")
+                                    }
+                                Spacer()
                             }
-                    }
-                    if authenticator.isJCStudent {
-                        NavigationLink(
-                            destination: Text("Joy Coach Student") ) {
-                                Text("Joy Coach Student")
+                        }
+                        if authenticator.isJCStudent {
+                            HStack {
+                                NavigationLink(
+                                    destination: Text("Joy Coach Student") ) {
+                                        Text("Joy Coach Student")
+                                    }
+                                Spacer()
                             }
+                        }
                     }
                 }
+                .padding(20)
             }
         }
         .frame(width: UIScreen.main.bounds.width - 40)
@@ -68,8 +92,10 @@ struct MainMenuView: View {
     
 }
 
+#if DEBUG
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
     }
 }
+#endif

@@ -10,35 +10,43 @@ import SwiftUI
 struct MediaView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
+    
     @State private var entries = [Entry]()
     
     var body: some View {
-        TabView {
-            AlbumsView()
-                .tabItem{Label("Albums", systemImage: "folder") }
-            SongsView()
-                .tabItem{Label("Songs", systemImage: "music.quarternote.3") }
+        HStack {
+            ScrollView {
+                VStack {
+                    VStack(spacing: 10) {
+                        HStack {
+                            NavigationLink(
+                                destination: AlbumsView()) {
+                                    Text("Albums")
+                                }
+                            Spacer()
+                        }
+                        HStack {
+                            NavigationLink(
+                                destination: SongsView()) {
+                                    Text("Songs")
+                                }
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                    .padding(20)
+                }
+            }
         }
-        .navigationTitle(Text("Media Master"))
-//        List {
-//            ForEach(entries) { entry in
-//                HStack {
-//                    Text(entry.name)
-//                    Spacer()
-//                    Text(entry.bucket)
-//                }
-//            }
-//        }
-//        .padding()
-//        .navigationTitle(Text("Songs in cloud"))
-//        .task {
-//            self.entries = await storageService.listAllMusic()
-//        }
+        .navigationTitle( Text("Media Administrator") )
+        .font(.title2)
     }
 }
 
+#if DEBUG
 struct MediaView_Previews: PreviewProvider {
     static var previews: some View {
         MediaView()
     }
 }
+#endif

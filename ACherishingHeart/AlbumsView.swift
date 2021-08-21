@@ -10,18 +10,34 @@ import SwiftUI
 struct AlbumsView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
+    
     @State private var albums = [Album]()
     
     var body: some View {
-        List {
-            ForEach(albums) { album in
-                HStack {
-                    Text(album.name)
+        HStack {
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(albums) { album in
+                        HStack {
+                            NavigationLink(destination: AlbumView()) {
+                                Text(album.name)
+                            }
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
         .padding()
-        .navigationTitle(Text("Albums in cloud"))
+        .navigationTitle( Text("Albums") )
+        .font(.title2)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: AlbumView()) {
+                    Image(systemName: "plus")
+                }
+            }
+        }
         .onAppear {
             Task.init {
                 do {
@@ -30,10 +46,13 @@ struct AlbumsView: View {
             }
         }
     }
+    
 }
 
+#if DEBUG
 struct AlbumsView_Previews: PreviewProvider {
     static var previews: some View {
         AlbumsView()
     }
 }
+#endif
