@@ -38,6 +38,8 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     @Trimmed var firstName = ""
     @Trimmed var lastName = ""
     @Trimmed var phoneNumber = ""
+    var inactive = false
+    var delinquent = false
     var media = false
     var master = false
     var admin = false
@@ -54,6 +56,8 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         firstName = ""
         lastName = ""
         phoneNumber = ""
+        inactive = false
+        delinquent = false
         media = false
         master = false
         admin = false
@@ -68,12 +72,30 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         firstName = person.firstName
         lastName = person.lastName
         phoneNumber = person.phoneNumber
+        inactive = person.inactive
+        delinquent = person.delinquent
         media = person.media
         master = person.master
         admin = person.admin
         joyCoach = person.joyCoach
         JCTeacher = person.JCTeacher
         JCStudent = person.JCStudent
+    }
+    
+    var isInactive: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.inactive
+        } else {
+            return false
+        }
+    }
+    
+    var isDelinquent: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.delinquent
+        } else {
+            return false
+        }
     }
     
     var isMaster: Bool {
@@ -160,6 +182,8 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 firstName: firstName,
                 lastName: lastName,
                 phoneNumber: phoneNumber,
+                inactive: false,
+                delinquent: false,
                 media: false,
                 master: false,
                 admin: false,
@@ -238,4 +262,20 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
+//    Auth.auth().currentUser?.updateEmail(to: email) { error in
+//      // ...
+//    }
+    
+//    Auth.auth().currentUser?.sendEmailVerification { error in
+//      // ...
+//    }
+    
+//    Auth.auth().currentUser?.updatePassword(to: password) { error in
+//      // ...
+//    }
+        
+//    Auth.auth().sendPasswordReset(withEmail: email) { error in
+//      // ...
+//    }
+        
 }

@@ -18,20 +18,7 @@ struct PersonView: View {
     var body: some View {
         VStack {
             Group {
-                if masterView {
-                    TitledInputTextFieldView(
-                        title: "Email Address",
-                        text: $authenticator.email,
-                        placeholder: "",
-                        keyboardType: .default,
-                        sfSymbol: nil
-                    )
-                } else {
-                    TitledText(
-                        title: "Email Address",
-                        text: person.email
-                    )
-                }
+                Text(person.email)
                 TitledInputTextFieldView(
                     title: "First Name",
                     text: $authenticator.firstName,
@@ -55,6 +42,10 @@ struct PersonView: View {
                 )
             }
             Group {
+                if masterView {
+                    Toggle("Inactive", isOn: $authenticator.inactive)
+                    Toggle("Delinquent", isOn: $authenticator.delinquent)
+                }
                 Toggle("Media", isOn: $authenticator.media)
                 if masterView {
                     Toggle("Master", isOn: $authenticator.master)
@@ -85,6 +76,8 @@ struct PersonView: View {
             firstName: authenticator.firstName,
             lastName: authenticator.lastName,
             phoneNumber: authenticator.phoneNumber,
+            inactive: authenticator.inactive,
+            delinquent: authenticator.delinquent,
             media: authenticator.media,
             master: authenticator.master,
             admin: authenticator.admin,
@@ -100,8 +93,13 @@ struct PersonView: View {
     
 }
 
-//struct PersonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PersonView(personId: "dummy")
-//    }
-//}
+#if DEBUG
+struct PersonView_Previews: PreviewProvider {
+    static var previews: some View {
+        PersonView(
+            person: Person.new,
+            masterView: true
+        )
+    }
+}
+#endif

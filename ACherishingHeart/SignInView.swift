@@ -16,6 +16,8 @@ struct SignInView: View {
     @State private var showSigninError = false
     @State private var errorMessage = ""
     
+    var erase: Bool = false
+
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 16) {
@@ -37,6 +39,9 @@ struct SignInView: View {
                 NavigationLink("Forgot Password", destination: ForgotPasswordView())
             }
             .sheet(isPresented: $showForgotPassword, content: { ForgotPasswordView() })
+        }
+        .onAppear {
+            authenticator.clear()
         }
         .padding(.horizontal, 15)
         .navigationTitle("Sign In")

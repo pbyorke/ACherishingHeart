@@ -15,6 +15,8 @@ struct Person: Identifiable, Codable {
     var firstName: String
     var lastName: String
     var phoneNumber: String
+    var inactive: Bool
+    var delinquent: Bool
     var media: Bool
     var master: Bool
     var admin: Bool
@@ -33,6 +35,8 @@ extension Person {
             firstName: "",
             lastName: "",
             phoneNumber: "",
+            inactive: false,
+            delinquent: false,
             media: false,
             master: false,
             admin: false,

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     
-//    @EnvironmentObject var authenticator: Authenticator
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -18,7 +16,7 @@ struct MainView: View {
                 MainTitleView()
                 MainMenuView()
                 Spacer()
-                DebugView()
+//                DebugView()
                 MainMenuBarView()
             }
             .edgesIgnoringSafeArea(.all)

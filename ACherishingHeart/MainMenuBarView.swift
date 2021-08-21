@@ -33,8 +33,8 @@ struct MainMenuBarView: View {
                 HStack(spacing: 10) {
                     NavigationLink("Why", destination: WhyView())
                     Spacer()
-                    NavigationLink("Sign In", destination: SignInView())
-                    NavigationLink("Sign Up", destination: SignUpView(erase: true))
+                    NavigationLink("Sign In", destination: SignInView(erase: true) )
+                    NavigationLink("Sign Up", destination: SignUpView(erase: true) )
                     NavigationLink(destination: SignInView()) {
                         Button("Sign Out") {
                             signOut()
