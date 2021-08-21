@@ -33,7 +33,7 @@ struct MainMenuView: View {
                     }
                     if authenticator.isAdmin {
                         NavigationLink(
-                            destination: AdminView() ) {
+                            destination: PersonsView(masterView: false) ) {
                                 Text("Admin")
                             }
                     }

@@ -21,6 +21,7 @@ protocol AuthenticatorProtocol {
     func getPersonBy(userUID: String) async throws -> Person?
     func update(_ person: Person) async throws
     func clear()
+    func fill(person: Person)
 }
 
 final class Authenticator: ObservableObject, AuthenticatorProtocol {
@@ -37,7 +38,13 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     @Trimmed var firstName = ""
     @Trimmed var lastName = ""
     @Trimmed var phoneNumber = ""
-    
+    var media = false
+    var master = false
+    var admin = false
+    var joyCoach = false
+    var JCTeacher = false
+    var JCStudent = false
+
     var authService: AuthServiceProtocol = AuthService.shared
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
     
@@ -47,11 +54,31 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         firstName = ""
         lastName = ""
         phoneNumber = ""
+        media = false
+        master = false
+        admin = false
+        joyCoach = false
+        JCTeacher = false
+        JCStudent = false
+    }
+    
+    func fill(person: Person) {
+        email = person.email
+        password = person.password
+        firstName = person.firstName
+        lastName = person.lastName
+        phoneNumber = person.phoneNumber
+        media = person.media
+        master = person.master
+        admin = person.admin
+        joyCoach = person.joyCoach
+        JCTeacher = person.JCTeacher
+        JCStudent = person.JCStudent
     }
     
     var isMaster: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isMaster
+            return currentPerson.master
         } else {
             return false
         }
@@ -59,7 +86,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var isAdmin: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isAdmin
+            return currentPerson.admin
         } else {
             return false
         }
@@ -67,7 +94,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var isMedia: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isMedia
+            return currentPerson.media
         } else {
             return false
         }
@@ -75,7 +102,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var isJoyCoach: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isJoyCoach
+            return currentPerson.joyCoach
         } else {
             return false
         }
@@ -83,7 +110,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var isJCTeacher: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isJCTeacher
+            return currentPerson.JCTeacher
         } else {
             return false
         }
@@ -91,7 +118,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     
     var isJCStudent: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.isJCStudent
+            return currentPerson.JCStudent
         } else {
             return false
         }
@@ -133,12 +160,12 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 firstName: firstName,
                 lastName: lastName,
                 phoneNumber: phoneNumber,
-                isMedia: false,
-                isMaster: false,
-                isAdmin: false,
-                isJoyCoach: false,
-                isJCTeacher: false,
-                isJCStudent: false
+                media: false,
+                master: false,
+                admin: false,
+                joyCoach: false,
+                JCTeacher: false,
+                JCStudent: false
             )
             try await firestoreService.create(person, collection: .persons)
             DispatchQueue.main.async {

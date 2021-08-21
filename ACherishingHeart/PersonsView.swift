@@ -11,15 +11,13 @@ struct PersonsView: View {
     
     @EnvironmentObject var authenticator: Authenticator
     
-    @State var selectedPerson: Person = Person.new
+    var masterView: Bool
     
     var body: some View {
         List {
             ForEach(authenticator.persons) { person in
-                NavigationLink(destination: PersonView(person: $selectedPerson)) {
-                    Button("\(person.firstName) \(person.lastName)") {
-                        selectedPerson = person
-                    }
+                NavigationLink(destination: PersonView(person: person, masterView: masterView)) {
+                    Button("\(person.firstName) \(person.lastName)") { }
                 }
             }
         }
@@ -28,8 +26,8 @@ struct PersonsView: View {
     }
 }
 
-struct PersonsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonsView()
-    }
-}
+//struct PersonsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PersonsView()
+//    }
+//}

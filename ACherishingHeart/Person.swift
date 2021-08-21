@@ -15,12 +15,12 @@ struct Person: Identifiable, Codable {
     var firstName: String
     var lastName: String
     var phoneNumber: String
-    var isMedia: Bool
-    var isMaster: Bool
-    var isAdmin: Bool
-    var isJoyCoach: Bool
-    var isJCTeacher: Bool
-    var isJCStudent: Bool    
+    var media: Bool
+    var master: Bool
+    var admin: Bool
+    var joyCoach: Bool
+    var JCTeacher: Bool
+    var JCStudent: Bool
 }
 
 extension Person {
@@ -33,12 +33,12 @@ extension Person {
             firstName: "",
             lastName: "",
             phoneNumber: "",
-            isMedia: false,
-            isMaster: false,
-            isAdmin: false,
-            isJoyCoach: false,
-            isJCTeacher: false,
-            isJCStudent: false
+            media: false,
+            master: false,
+            admin: false,
+            joyCoach: false,
+            JCTeacher: false,
+            JCStudent: false
         )
     }
 }

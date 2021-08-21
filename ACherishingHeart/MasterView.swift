@@ -15,7 +15,7 @@ struct MasterView: View {
 
     var body: some View {
         TabView {
-            PersonsView()
+            PersonsView(masterView: true)
                 .tabItem{Label("People", systemImage: "person.2") }
             AlbumsView()
                 .tabItem{Label("Albums", systemImage: "folder") }
