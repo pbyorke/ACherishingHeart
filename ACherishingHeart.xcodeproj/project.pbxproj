@@ -33,6 +33,7 @@
 		C11F205F26B0F9BA0042A6CE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C11F205E26B0F9BA0042A6CE /* FirebaseStorage */; };
 		C11F206126B0F9BA0042A6CE /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C11F206026B0F9BA0042A6CE /* FirebaseStorageSwift-Beta */; };
 		C123B03D26B636D600733BA3 /* WhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123B03C26B636D600733BA3 /* WhyView.swift */; };
+		C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12EE89126D140F4004D5E2B /* PrettyLink.swift */; };
 		C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */; };
 		C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150222B26B2502F0060232C /* NavigationButtonView.swift */; };
 		C161A02D26BB874D005B077A /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161A02C26BB874D005B077A /* PersonView.swift */; };
@@ -102,6 +103,7 @@
 		C11D4ABF26CCA8A5002A7880 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		C11D4AC126CCB3AD002A7880 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		C123B03C26B636D600733BA3 /* WhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyView.swift; sourceTree = "<group>"; };
+		C12EE89126D140F4004D5E2B /* PrettyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyLink.swift; sourceTree = "<group>"; };
 		C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trimmed.swift; sourceTree = "<group>"; };
 		C150222B26B2502F0060232C /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		C161A02C26BB874D005B077A /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				C1B3F8A526B2281F007F63D2 /* InputPasswordFieldView.swift */,
 				C1B3F8A126B22711007F63D2 /* InputTextFieldView.swift */,
 				C150222B26B2502F0060232C /* NavigationButtonView.swift */,
+				C12EE89126D140F4004D5E2B /* PrettyLink.swift */,
 				C1B3F8A326B227C7007F63D2 /* PreviewLayoutComponentModifier.swift */,
 				C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */,
 				C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */,
@@ -506,6 +509,7 @@
 				C11D4ABD26CC89DA002A7880 /* Album.swift in Sources */,
 				C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */,
 				C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */,
+				C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */,
 				C185EEB926CEA41100E3AD7B /* AlbumView.swift in Sources */,
 				C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */,
 				C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */,

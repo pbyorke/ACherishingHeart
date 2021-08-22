@@ -18,20 +18,8 @@ struct MediaView: View {
             ScrollView {
                 VStack {
                     VStack(spacing: 10) {
-                        HStack {
-                            NavigationLink(
-                                destination: AlbumsView()) {
-                                    Text("Albums")
-                                }
-                            Spacer()
-                        }
-                        HStack {
-                            NavigationLink(
-                                destination: SongsView()) {
-                                    Text("Songs")
-                                }
-                            Spacer()
-                        }
+                        PrettyLink(text: "Albums", action: AlbumsView())
+                        PrettyLink(text: "Songs", action: SongsView())
                         Spacer()
                     }
                     .padding(20)

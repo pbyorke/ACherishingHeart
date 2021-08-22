@@ -16,66 +16,24 @@ struct MainMenuView: View {
             ScrollView {
                 VStack {
                     VStack(spacing: 10) {
-                        HStack {
-                            NavigationLink(
-                                destination: Text("Music")) {
-                                    Text("Music")
-                                }
-                            Spacer()
-                        }
+                        PrettyLink(text: "Music", action: Text("Music"))
                         if authenticator.isMaster {
-                            HStack {
-                                NavigationLink(
-                                    destination: MasterView() ) {
-                                        Text("Master")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Master", action: MasterView())
                         }
                         if authenticator.isMedia {
-                            HStack {
-                                NavigationLink(
-                                    destination: MediaView() ) {
-                                        Text("Media")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Media", action: MediaView())
                         }
                         if authenticator.isAdmin {
-                            HStack {
-                                NavigationLink(
-                                    destination: PersonsView(masterView: false) ) {
-                                        Text("Admin")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Admin", action: PersonsView(masterView: false))
                         }
                         if authenticator.isJoyCoach {
-                            HStack {
-                                NavigationLink(
-                                    destination: Text("Joy Coach") ) {
-                                        Text("Joy Coach")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Joy Coach", action: Text("Joy Coach"))
                         }
                         if authenticator.isJCTeacher {
-                            HStack {
-                                NavigationLink(
-                                    destination: Text("Joy Coach Teacher") ) {
-                                        Text("Joy Coach Teacher")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Joy Coach Teacher", action: Text("Joy Coach Teacher"))
                         }
                         if authenticator.isJCStudent {
-                            HStack {
-                                NavigationLink(
-                                    destination: Text("Joy Coach Student") ) {
-                                        Text("Joy Coach Student")
-                                    }
-                                Spacer()
-                            }
+                            PrettyLink(text: "Joy Coach Student", action: Text("Joy Coach Student"))
                         }
                     }
                 }
