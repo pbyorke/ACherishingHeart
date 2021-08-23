@@ -22,8 +22,10 @@ struct PrettyLink<TargetView: View>: View {
     }
 }
 
+#if DEBUG
 struct PrettyLink_Previews: PreviewProvider {
     static var previews: some View {
         PrettyLink(text: "Dummy", action: Text("Dummy"))
     }
 }
+#endif

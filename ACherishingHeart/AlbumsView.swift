@@ -18,12 +18,7 @@ struct AlbumsView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     ForEach(albums) { album in
-                        HStack {
-                            NavigationLink(destination: AlbumView()) {
-                                Text(album.name)
-                            }
-                            Spacer()
-                        }
+                        PrettyLink(text: album.name, action: AlbumView())
                     }
                 }
             }
