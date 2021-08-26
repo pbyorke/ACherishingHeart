@@ -12,23 +12,24 @@ struct CloudFilesView: View {
     @EnvironmentObject var storageService: StorageService
     
     @State private var files = [CloudFile]()
+    @State private var file = CloudFile.new
     
     var body: some View {
         HStack {
             ScrollView {
                 VStack(spacing: 10) {
                     ForEach(files) { file in
-                        PrettyLink(label: file.name, destination: CloudFileView()) { }
+                        PrettyLink(label: file.name, destination: CloudFileView(file: $file)) { self.file = file }
                     }
                 }
+                .padding()
+                .font(.title2)
+                .navigationTitle( Text("Files in the Cloud") )
             }
-        }
-        .padding()
-        .font(.title2)
-        .navigationTitle( Text("Files in the Cloud") )
-        .onAppear {
-            Task.init {
-                self.files = await storageService.allCloudFiles()
+            .onAppear {
+                Task.init {
+                    self.files = await storageService.allCloudFiles()
+                }
             }
         }
     }

@@ -24,3 +24,15 @@ struct CloudFile: Identifiable {
     }
     
 }
+
+extension CloudFile {
+    static var new: CloudFile {
+        CloudFile(
+            id: UUID().uuidString,
+            fullPath: "",
+            bucket: "",
+            name: "",
+            description: ""
+        )
+    }
+}

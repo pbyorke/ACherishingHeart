@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct CloudFileView: View {
+
+    @Binding var file: CloudFile
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 16) {
+            VStack(spacing: 16) {
+                TitledText(title: "ID", text: file.id)
+                TitledText(title: "Full path", text: file.fullPath)
+                TitledText(title: "Bucket", text: file.bucket)
+                TitledText(title: "Name", text: file.name)
+                TitledText(title: "Description", text: file.description)
+            }
+            .padding()
+            .font(.title2)
+            .navigationTitle( Text("File in the Cloud") )
+        }
     }
 }
 
+#if DEBUG
 struct CloudFIleView_Previews: PreviewProvider {
+    @State static var file = CloudFile.new
     static var previews: some View {
-        CloudFileView()
+        CloudFileView(file: $file)
     }
 }
+#endif
