@@ -54,6 +54,7 @@ struct PersonView: View {
                 Toggle("Joy Coach", isOn: $authenticator.joyCoach)
                 Toggle("Joy Coach Teacher", isOn: $authenticator.JCTeacher)
                 Toggle("Joy Coach Student", isOn: $authenticator.JCStudent)
+                Toggle("Subscriber", isOn: $authenticator.subscriber)
             }
             Spacer()
         }
@@ -83,7 +84,8 @@ struct PersonView: View {
             admin: authenticator.admin,
             joyCoach: authenticator.joyCoach,
             JCTeacher: authenticator.JCTeacher,
-            JCStudent: authenticator.JCStudent
+            JCStudent: authenticator.JCStudent,
+            subscriber: authenticator.subscriber
         )
         do {
             try authenticator.update(person)

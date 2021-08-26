@@ -11,7 +11,7 @@ struct MediaView: View {
     
     @EnvironmentObject var storageService: StorageService
 
-    @State private var entries = [StorageEntry]()
+    @State private var entries = [CloudFile]()
     
     var body: some View {
         HStack {
@@ -20,6 +20,7 @@ struct MediaView: View {
                     VStack(spacing: 10) {
                         PrettyLink(label: "Folders", destination: FoldersView()) { }
                         PrettyLink(label: "Items", destination: ItemsView()) { }
+                        PrettyLink(label: "Cloud Files", destination: CloudFilesView()) { }
                         Spacer()
                     }
                     .padding(20)

@@ -42,6 +42,8 @@
 		C185EEB926CEA41100E3AD7B /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEB826CEA41100E3AD7B /* FolderView.swift */; };
 		C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBA26CEA44E00E3AD7B /* ItemView.swift */; };
 		C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBC26CEA46500E3AD7B /* AccountsView.swift */; };
+		C192F8FC26D838E000EBF0FE /* CloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */; };
+		C192F8FE26D83B3A00EBF0FE /* CloudFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */; };
 		C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193352E26B77B60005202D1 /* DocumentSnapshot+Utils.swift */; };
 		C1A5223626B8C99600370C19 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A5223526B8C99600370C19 /* DebugView.swift */; };
 		C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A5223726B8DF5C00370C19 /* MasterView.swift */; };
@@ -57,7 +59,7 @@
 		C1B7F26C26CE9A0B0038EFC4 /* FolderToItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7F26B26CE9A0B0038EFC4 /* FolderToItem.swift */; };
 		C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74A26CB310700465BD6 /* StorageService.swift */; };
 		C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74C26CB3AED00465BD6 /* MediaView.swift */; };
-		C1BCB74F26CB472F00465BD6 /* StorageEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74E26CB472F00465BD6 /* StorageEntry.swift */; };
+		C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74E26CB472F00465BD6 /* CloudFile.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,8 @@
 		C185EEB826CEA41100E3AD7B /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		C185EEBA26CEA44E00E3AD7B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C185EEBC26CEA46500E3AD7B /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFilesView.swift; sourceTree = "<group>"; };
+		C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFileView.swift; sourceTree = "<group>"; };
 		C193352E26B77B60005202D1 /* DocumentSnapshot+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentSnapshot+Utils.swift"; sourceTree = "<group>"; };
 		C1A5223526B8C99600370C19 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		C1A5223726B8DF5C00370C19 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
@@ -127,7 +131,7 @@
 		C1B7F26B26CE9A0B0038EFC4 /* FolderToItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderToItem.swift; sourceTree = "<group>"; };
 		C1BCB74A26CB310700465BD6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		C1BCB74C26CB3AED00465BD6 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
-		C1BCB74E26CB472F00465BD6 /* StorageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEntry.swift; sourceTree = "<group>"; };
+		C1BCB74E26CB472F00465BD6 /* CloudFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFile.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,11 +262,11 @@
 		C10E95AD26AF5988004CBEB8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C1BCB74E26CB472F00465BD6 /* CloudFile.swift */,
 				C11D4ABC26CC89DA002A7880 /* Folder.swift */,
 				C1B7F26B26CE9A0B0038EFC4 /* FolderToItem.swift */,
 				C11D4ABA26CC89CB002A7880 /* Item.swift */,
 				C10E95AE26AF59AB004CBEB8 /* Person.swift */,
-				C1BCB74E26CB472F00465BD6 /* StorageEntry.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -323,6 +327,8 @@
 		C1FB342826D0BA3700A76D33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
+				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
 				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
 				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
@@ -511,6 +517,7 @@
 				C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */,
 				C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */,
 				C185EEB926CEA41100E3AD7B /* FolderView.swift in Sources */,
+				C192F8FC26D838E000EBF0FE /* CloudFilesView.swift in Sources */,
 				C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */,
 				C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */,
 				C10E95A426A8AC9B004CBEB8 /* MainMenuView.swift in Sources */,
@@ -529,6 +536,7 @@
 				C1B3F8AC26B22C2F007F63D2 /* SignUpView.swift in Sources */,
 				C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */,
 				C10E956726A8A242004CBEB8 /* ACherishingHeartApp.swift in Sources */,
+				C192F8FE26D83B3A00EBF0FE /* CloudFileView.swift in Sources */,
 				C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */,
 				C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
@@ -540,7 +548,7 @@
 				C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */,
 				C1B7F26C26CE9A0B0038EFC4 /* FolderToItem.swift in Sources */,
 				C1B3F89F26B226A2007F63D2 /* SignInView.swift in Sources */,
-				C1BCB74F26CB472F00465BD6 /* StorageEntry.swift in Sources */,
+				C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */,
 				C1A5223626B8C99600370C19 /* DebugView.swift in Sources */,
 				C10E95A626AA0F53004CBEB8 /* Authenticator.swift in Sources */,
 				C1B3F8A226B22711007F63D2 /* InputTextFieldView.swift in Sources */,

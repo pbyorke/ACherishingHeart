@@ -46,6 +46,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     var joyCoach = false
     var JCTeacher = false
     var JCStudent = false
+    var subscriber = false
 
     var authService: AuthServiceProtocol = AuthService.shared
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
@@ -64,6 +65,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         joyCoach = false
         JCTeacher = false
         JCStudent = false
+        subscriber = false
     }
     
     func fill(person: Person) {
@@ -80,6 +82,7 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         joyCoach = person.joyCoach
         JCTeacher = person.JCTeacher
         JCStudent = person.JCStudent
+        subscriber = person.subscriber
     }
     
     var isInactive: Bool {
@@ -189,7 +192,8 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
                 admin: false,
                 joyCoach: false,
                 JCTeacher: false,
-                JCStudent: false
+                JCStudent: false,
+                subscriber: false
             )
             try await firestoreService.create(person, collection: .persons)
             DispatchQueue.main.async {

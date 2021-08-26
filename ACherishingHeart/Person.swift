@@ -23,6 +23,7 @@ struct Person: Identifiable, Codable {
     var joyCoach: Bool
     var JCTeacher: Bool
     var JCStudent: Bool
+    var subscriber: Bool
 }
 
 extension Person {
@@ -42,7 +43,8 @@ extension Person {
             admin: false,
             joyCoach: false,
             JCTeacher: false,
-            JCStudent: false
+            JCStudent: false,
+            subscriber: false
         )
     }
 }

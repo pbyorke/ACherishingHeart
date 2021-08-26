@@ -13,7 +13,7 @@ enum StorageType: String {
 }
 
 protocol StorageServiceProtocol {
-//    func listAllMusic() async -> [StorageEntry]
+    func allCloudFiles() async -> [CloudFile]
     func listAllItems() async throws -> [Item]
     func listAllFolders() async throws -> [Folder]
 }
@@ -27,26 +27,26 @@ final class StorageService: ObservableObject, StorageServiceProtocol {
         return Storage.storage().reference().child(collection.rawValue)
     }
     
-//    func listAllMusic() async -> [StorageEntry] {
-//        var entries = [StorageEntry]()
-//        do {
-//            let result = try await reference(to: .music).listAll()
-//            for item in result.items {
-//                let entry = StorageEntry(
-//                    id: item.fullPath,
-//                    fullPath: item.fullPath,
-//                    bucket: item.bucket,
-//                    name: item.name,
-//                    description: item.description
-//                )
-//                entry.dump()
-//                entries.append(entry)
-//            }
-//            return entries
-//        } catch {
-//            return entries
-//        }
-//    }
+    func allCloudFiles() async -> [CloudFile] {
+        var entries = [CloudFile]()
+        do {
+            let result = try await reference(to: .music).listAll()
+            for item in result.items {
+                let entry = CloudFile(
+                    id: item.fullPath,
+                    fullPath: item.fullPath,
+                    bucket: item.bucket,
+                    name: item.name,
+                    description: item.description
+                )
+                entry.dump()
+                entries.append(entry)
+            }
+            return entries
+        } catch {
+            return entries
+        }
+    }
 
     func listAllItems() async throws -> [Item] {
         do {

@@ -10,15 +10,12 @@ import SwiftUI
 struct ItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
-//    @EnvironmentObject var authenticator: Authenticator
     @EnvironmentObject var storageService: StorageService
-
-//    var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
     
     @State private var name = ""
     var add = false
     @Binding var item: Item
-
+    
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 16) {
@@ -28,6 +25,41 @@ struct ItemView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                InputTextFieldView(
+                    text: $item.bucket,
+                    placeholder: "Bucket",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                Group {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Button("Music") { item.type = .music }
+                            .font(item.type == .music ? .body.bold() : .body)
+                            .foregroundColor(item.type == .music ? .green : .blue)
+                            Spacer()
+                        }
+                        HStack {
+                            Button("Video") { item.type = .video }
+                            .font(item.type == .video ? .body.bold() : .body)
+                            .foregroundColor(item.type == .video ? .green : .blue)
+                            Spacer()
+                        }
+                        HStack {
+                            Button("Document") { item.type = .document }
+                            .font(item.type == .document ? .body.bold() : .body)
+                            .foregroundColor(item.type == .document ? .green : .blue)
+                            Spacer()
+                        }
+                        HStack {
+                            Button("Unknown") { item.type = .unknown }
+                            .font(item.type == .unknown ? .body.bold() : .body)
+                            .foregroundColor(item.type == .unknown ? .green : .blue)
+                            Spacer()
+                        }
+                    }
+                    .padding()
+                }
             }
             Spacer()
         }
@@ -60,6 +92,7 @@ struct ItemView_Previews: PreviewProvider {
     @State static var item = Item.new
     static var previews: some View {
         ItemView(add: false, item: $item)
+            .preview(with: "Add or update an Item")
     }
 }
 #endif

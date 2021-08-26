@@ -1,5 +1,5 @@
 //
-//  Entry.swift
+//  CloudFile.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/16/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StorageEntry: Identifiable {
+struct CloudFile: Identifiable {
     var id: String
     var fullPath: String
     var bucket: String
