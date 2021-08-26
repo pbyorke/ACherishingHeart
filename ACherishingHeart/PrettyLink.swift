@@ -1,6 +1,6 @@
 //
 //  PrettyLink.swift
-//  PrettyLink
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/21/21.
 //
@@ -9,15 +9,20 @@
 
 import SwiftUI
 
-struct PrettyLink<TargetView: View>: View {
-    var text: String
-    var action: TargetView
+struct PrettyLink<Target: View>: View {
+    typealias Handler = () -> Void
+    var label = ""
+    var destination: Target
+    var action: Handler
     var body: some View {
-        NavigationLink(destination: action) {
-            HStack {
-                Text(text)
-                Spacer()
+        HStack {
+            NavigationLink(destination: destination) {
+                Text(label)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                action()
+            })
+            Spacer()
         }
     }
 }
@@ -25,7 +30,8 @@ struct PrettyLink<TargetView: View>: View {
 #if DEBUG
 struct PrettyLink_Previews: PreviewProvider {
     static var previews: some View {
-        PrettyLink(text: "Dummy", action: Text("Dummy"))
+        PrettyLink(label: "Dummy", destination: Text("Dummy")) { }
+        .preview(with: "some string")
     }
 }
 #endif

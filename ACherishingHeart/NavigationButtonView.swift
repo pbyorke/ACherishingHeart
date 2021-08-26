@@ -31,7 +31,6 @@ struct NavigationButtonView: View {
     var body: some View {
         Button(action: handler, label: {
             Text(title)
-//                .frame(maxWidth: .infinity, maxHeight: 50)
         })
             .background(background)
             .foregroundColor(foreground)
@@ -39,6 +38,7 @@ struct NavigationButtonView: View {
     }
 }
 
+#if DEBUG
 struct NavigationButtonView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -52,3 +52,4 @@ struct NavigationButtonView_Previews: PreviewProvider {
         }
     }
 }
+#endif

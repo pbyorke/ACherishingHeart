@@ -78,6 +78,7 @@ struct SignUpView: View {
     
 }
 
+#if DEBUG
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -85,3 +86,4 @@ struct SignUpView_Previews: PreviewProvider {
         }
     }
 }
+#endif

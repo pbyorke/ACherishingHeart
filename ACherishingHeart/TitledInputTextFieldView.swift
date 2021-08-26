@@ -43,6 +43,7 @@ struct TitledInputTextFieldView: View {
     }
 }
 
+#if DEBUG
 struct TitledInputTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -65,3 +66,4 @@ struct TitledInputTextFieldView_Previews: PreviewProvider {
         }
     }
 }
+#endif

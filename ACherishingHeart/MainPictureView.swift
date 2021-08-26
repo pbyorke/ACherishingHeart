@@ -27,11 +27,12 @@ struct MainPictureView: View {
             }
         }
     }
-    
 }
 
+#if DEBUG
 struct MainPictureView_Previews: PreviewProvider {
     static var previews: some View {
         MainPictureView()
     }
 }
+#endif

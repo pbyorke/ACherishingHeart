@@ -1,6 +1,6 @@
 //
 //  PersonsView.swift
-//  PersonsView
+//  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
 //
@@ -26,8 +26,10 @@ struct PersonsView: View {
     }
 }
 
-//struct PersonsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PersonsView()
-//    }
-//}
+#if DEBUG
+struct PersonsView_Previews: PreviewProvider {
+    static var previews: some View {
+        PersonsView(masterView: true)
+    }
+}
+#endif

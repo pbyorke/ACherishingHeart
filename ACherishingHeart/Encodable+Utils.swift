@@ -13,8 +13,7 @@ enum FirebaseError: Error {
     case notFound
 }
 
-extension Encodable {
-    
+extension Encodable {    
     func toJson(excluding keys: [String] = [String]()) throws -> [String: Any] {
         let objectData = try JSONEncoder().encode(self)
         let jsonObject = try JSONSerialization.jsonObject(with: objectData, options: [])

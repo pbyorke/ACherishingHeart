@@ -20,8 +20,7 @@ struct PreviewLayoutComponentModifier: ViewModifier {
     
 }
 
-extension View {
-    
+extension View {    
     func preview(with name: String) -> some View {
         self.modifier(PreviewLayoutComponentModifier(name: name))
     }

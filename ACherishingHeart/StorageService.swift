@@ -13,12 +13,12 @@ enum StorageType: String {
 }
 
 protocol StorageServiceProtocol {
-    func listAllMusic() async -> [Entry]
-    func listAllSongs() async throws -> [Song]
-    func listAllAlbums() async throws -> [Album]
+//    func listAllMusic() async -> [StorageEntry]
+    func listAllItems() async throws -> [Item]
+    func listAllFolders() async throws -> [Folder]
 }
 
-final class StorageService: StorageServiceProtocol {
+final class StorageService: ObservableObject, StorageServiceProtocol {
     
     static let shared = StorageService()
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
@@ -27,39 +27,47 @@ final class StorageService: StorageServiceProtocol {
         return Storage.storage().reference().child(collection.rawValue)
     }
     
-    func listAllMusic() async -> [Entry] {
-        var entries = [Entry]()
-        do {
-            let result = try await reference(to: .music).listAll()
-            for item in result.items {
-                let entry = Entry(
-                    id: item.fullPath,
-                    fullPath: item.fullPath,
-                    bucket: item.bucket,
-                    name: item.name,
-                    description: item.description
-                )
-                entry.dump()
-                entries.append(entry)
-            }
-            return entries
-        } catch {
-            return entries
-        }
-    }
+//    func listAllMusic() async -> [StorageEntry] {
+//        var entries = [StorageEntry]()
+//        do {
+//            let result = try await reference(to: .music).listAll()
+//            for item in result.items {
+//                let entry = StorageEntry(
+//                    id: item.fullPath,
+//                    fullPath: item.fullPath,
+//                    bucket: item.bucket,
+//                    name: item.name,
+//                    description: item.description
+//                )
+//                entry.dump()
+//                entries.append(entry)
+//            }
+//            return entries
+//        } catch {
+//            return entries
+//        }
+//    }
 
-    func listAllSongs() async throws -> [Song] {
+    func listAllItems() async throws -> [Item] {
         do {
-            let songs = try await firestoreService.getAll(collection: .songs, type: Song.self)
+            let songs = try await firestoreService.getAll(collection: .items, type: Item.self)
             return songs
         } catch { throw error }
     }
-    
-    func listAllAlbums() async throws -> [Album] {
+
+    func listAllFolders() async throws -> [Folder] {
         do {
-            let albums = try await firestoreService.getAll(collection: .albums, type: Album.self)
-            return albums
+            let folders = try await firestoreService.getAll(collection: .folders, type: Folder.self)
+            return folders
         } catch { throw error }
+    }
+    
+    func updateItem(_ item: Item) throws {
+        do {
+            try firestoreService.update(item, collection: .items)
+        } catch {
+            throw error
+        }
     }
     
 }

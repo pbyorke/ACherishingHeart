@@ -1,34 +1,34 @@
 //
-//  SongsView.swift
-//  SongsView
+//  FoldersView.swift
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/17/21.
 //
 
 import SwiftUI
 
-struct SongsView: View {
+struct FoldersView: View {
     
-    var storageService: StorageServiceProtocol = StorageService.shared
-    
-    @State private var songs = [Song]()
+    @EnvironmentObject var storageService: StorageService
+
+    @State private var albums = [Folder]()
     
     var body: some View {
         HStack {
             ScrollView {
                 VStack(spacing: 10) {
-                    ForEach(songs) { song in
-                        PrettyLink(text: song.name, action: SongView())
+                    ForEach(albums) { album in
+                        PrettyLink(label: album.name, destination: FolderView()) { }
                     }
                 }
             }
         }
         .padding()
-        .navigationTitle( Text("Songs") )
+        .navigationTitle( Text("Folders") )
         .font(.title2)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: AlbumView()) {
+                NavigationLink(destination: FolderView()) {
                     Image(systemName: "plus")
                 }
             }
@@ -36,7 +36,7 @@ struct SongsView: View {
         .onAppear {
             Task.init {
                 do {
-                    self.songs = try await storageService.listAllSongs()
+                    self.albums = try await storageService.listAllFolders()
                 }
             }
         }
@@ -45,9 +45,9 @@ struct SongsView: View {
 }
 
 #if DEBUG
-struct SongsView_Previews: PreviewProvider {
+struct FoldersView_Previews: PreviewProvider {
     static var previews: some View {
-        SongsView()
+        FoldersView()
     }
 }
 #endif

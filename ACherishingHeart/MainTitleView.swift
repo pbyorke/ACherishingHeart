@@ -22,8 +22,10 @@ struct MainTitleView: View {
     }
 }
 
+#if DEBUG
 struct MainTitleView_Previews: PreviewProvider {
     static var previews: some View {
         MainTitleView()
     }
 }
+#endif

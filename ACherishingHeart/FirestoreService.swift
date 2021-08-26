@@ -10,9 +10,9 @@ import FirebaseFirestore
 
 enum FirestoreType: String {
     case persons
-    case songs
-    case albums
-    case albumsToSongs
+    case items
+    case folders
+    case foldersToItems
 }
 
 protocol FirestoreServiceProtocol {
@@ -21,6 +21,8 @@ protocol FirestoreServiceProtocol {
     func getOneByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String) async throws -> T?
     func getAll<T: Decodable>(collection: FirestoreType, type: T.Type) async throws -> [T]
     func update<T: Encodable & Identifiable>(_ object: T, collection: FirestoreType) throws
+    func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String) async throws -> [T]
+    func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: Int) async throws -> [T]
 }
 
 final class FirestoreService: FirestoreServiceProtocol {
@@ -73,6 +75,20 @@ final class FirestoreService: FirestoreServiceProtocol {
     }
     
     func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String) async throws -> [T] {
+        do {
+            let snapshot = try await reference(to: collection).whereField(key, isEqualTo: value).getDocuments()
+            var objects = [T]()
+            try snapshot.documents.forEach { document in
+                let object = try document.decode(as: type.self)
+                objects.append(object)
+            }
+            return objects
+        } catch {
+            throw error
+        }
+    }
+    
+    func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: Int) async throws -> [T] {
         do {
             let snapshot = try await reference(to: collection).whereField(key, isEqualTo: value).getDocuments()
             var objects = [T]()

@@ -1,20 +1,20 @@
 //
-//  Song.swift
-//  Song
+//  Folder.swift
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/17/21.
 //
 
 import Foundation
 
-struct Song: Identifiable, Codable {
+struct Folder: Identifiable, Codable {
     var id: String
     var name: String
 }
 
-extension Song {
-    static var new: Song {
-        Song(
+extension Folder {
+    static var new: Folder {
+        Folder(
             id: UUID().uuidString,
             name: ""
         )

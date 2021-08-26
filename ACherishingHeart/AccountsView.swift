@@ -1,6 +1,6 @@
 //
 //  AccountsView.swift
-//  AccountsView
+//  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
 //
@@ -13,8 +13,10 @@ struct AccountsView: View {
     }
 }
 
+#if DEBUG
 struct AccountsView_Previews: PreviewProvider {
     static var previews: some View {
         AccountsView()
     }
 }
+#endif

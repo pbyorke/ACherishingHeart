@@ -9,17 +9,17 @@ import SwiftUI
 
 struct MediaView: View {
     
-    var storageService: StorageServiceProtocol = StorageService.shared
-    
-    @State private var entries = [Entry]()
+    @EnvironmentObject var storageService: StorageService
+
+    @State private var entries = [StorageEntry]()
     
     var body: some View {
         HStack {
             ScrollView {
                 VStack {
                     VStack(spacing: 10) {
-                        PrettyLink(text: "Albums", action: AlbumsView())
-                        PrettyLink(text: "Songs", action: SongsView())
+                        PrettyLink(label: "Folders", destination: FoldersView()) { }
+                        PrettyLink(label: "Items", destination: ItemsView()) { }
                         Spacer()
                     }
                     .padding(20)

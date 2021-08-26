@@ -16,24 +16,24 @@ struct MainMenuView: View {
             ScrollView {
                 VStack {
                     VStack(spacing: 10) {
-                        PrettyLink(text: "Music", action: Text("Music"))
+                        PrettyLink(label: "Music", destination: Text("Music")) { }
                         if authenticator.isMaster {
-                            PrettyLink(text: "Master", action: MasterView())
+                            PrettyLink(label: "Master", destination: MasterView()) { }
                         }
                         if authenticator.isMedia {
-                            PrettyLink(text: "Media", action: MediaView())
+                            PrettyLink(label: "Media", destination: MediaView()) { }
                         }
                         if authenticator.isAdmin {
-                            PrettyLink(text: "Admin", action: PersonsView(masterView: false))
+                            PrettyLink(label: "Admin", destination: PersonsView(masterView: false)) { }
                         }
                         if authenticator.isJoyCoach {
-                            PrettyLink(text: "Joy Coach", action: Text("Joy Coach"))
+                            PrettyLink(label: "Joy Coach", destination: Text("Joy Coach")) { }
                         }
                         if authenticator.isJCTeacher {
-                            PrettyLink(text: "Joy Coach Teacher", action: Text("Joy Coach Teacher"))
+                            PrettyLink(label: "Joy Coach Teacher", destination: Text("Joy Coach Teacher")) { }
                         }
                         if authenticator.isJCStudent {
-                            PrettyLink(text: "Joy Coach Student", action: Text("Joy Coach Student"))
+                            PrettyLink(label: "Joy Coach Student", destination: Text("Joy Coach Student")) { }
                         }
                     }
                 }

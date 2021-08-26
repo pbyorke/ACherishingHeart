@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Entry: Identifiable {
+struct StorageEntry: Identifiable {
     var id: String
     var fullPath: String
     var bucket: String

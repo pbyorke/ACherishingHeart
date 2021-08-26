@@ -9,33 +9,30 @@ import SwiftUI
 
 struct MasterView: View {
     
-    @EnvironmentObject var authenticator: Authenticator
-
     @State private var person = Person.new
 
     var body: some View {
-        TabView {
-            PersonsView(masterView: true)
-                .tabItem{Label("People", systemImage: "person.2") }
-            AlbumsView()
-                .tabItem{Label("Albums", systemImage: "folder") }
-            SongsView()
-                .tabItem{Label("Songs", systemImage: "music.quarternote.3") }
+        HStack {
+            ScrollView {
+                VStack {
+                    VStack(spacing: 10) {
+                        PrettyLink(label: "Media", destination: MediaView()) { }
+                        PrettyLink(label: "People", destination: PersonsView(masterView: true)) { }
+                        Spacer()
+                    }
+                    .padding(20)
+                }
+            }
         }
-//        List(authenticator.persons, id: \.id) { person in
-//            NavigationLink(destination: PersonView(person: $person)) {
-//                Button("\(person.firstName) \(person.lastName)") {
-//                    self.person = person
-//                }
-//            }
-//        }
-//        .padding()
-//        .navigationTitle(Text("All Persons"))
+        .navigationTitle("Master")
+        .font(.title2)
     }
 }
 
+#if DEBUG
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
         MasterView()
     }
 }
+#endif
