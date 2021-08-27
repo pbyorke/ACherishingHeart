@@ -12,13 +12,14 @@ struct FoldersView: View {
     @EnvironmentObject var storageService: StorageService
 
     @State private var albums = [Folder]()
+    @State private var folder = Folder.new
     
     var body: some View {
         HStack {
             ScrollView {
                 VStack(spacing: 10) {
-                    ForEach(albums) { album in
-                        PrettyLink(label: album.name, destination: FolderView()) { }
+                    ForEach(albums) { folder in
+                        PrettyLink(label: folder.name, destination: FolderView(add: false, folder: $folder)) { self.folder = folder }
                     }
                 }
             }
@@ -28,7 +29,7 @@ struct FoldersView: View {
         .font(.title2)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: FolderView()) {
+                NavigationLink(destination: FolderView(add: true, folder: $folder)) {
                     Image(systemName: "plus")
                 }
             }

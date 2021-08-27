@@ -12,7 +12,6 @@ struct ItemView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var storageService: StorageService
     
-    @State private var name = ""
     var add = false
     @Binding var item: Item
     

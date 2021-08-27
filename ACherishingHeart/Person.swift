@@ -15,15 +15,15 @@ struct Person: Identifiable, Codable {
     var firstName:      String { didSet { firstName   = firstName.trim() } }
     var lastName:       String { didSet { lastName    = lastName.trim() } }
     var phoneNumber:    String { didSet { phoneNumber = phoneNumber.trim() } }
-    var inactive:       Bool
-    var delinquent:     Bool
-    var media:          Bool
-    var master:         Bool
-    var admin:          Bool
+    var inactive:       Bool // been made inactive on purpose
+    var delinquent:     Bool // behind on monthly dues
+    var media:          Bool // has permission to change items and folders
+    var master:         Bool // can do everything
+    var admin:          Bool // has permission to deal with persons
     var joyCoach:       Bool
     var JCTeacher:      Bool
     var JCStudent:      Bool
-    var subscriber:     Bool
+    var subscriber:     Bool // is paying for music
 }
 
 extension Person {

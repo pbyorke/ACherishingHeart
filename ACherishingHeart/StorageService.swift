@@ -70,4 +70,12 @@ final class StorageService: ObservableObject, StorageServiceProtocol {
         }
     }
     
+    func updateFolder(_ folder: Folder) throws {
+        do {
+            try firestoreService.update(folder, collection: .folders)
+        } catch {
+            throw error
+        }
+    }
+    
 }
