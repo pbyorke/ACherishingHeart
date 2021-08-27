@@ -15,6 +15,7 @@ struct SignInView: View {
     @State private var showForgotPassword = false
     @State private var showSigninError = false
     @State private var errorMessage = ""
+    @State private var person = Person.new
     
     var erase: Bool = false
 
@@ -22,13 +23,13 @@ struct SignInView: View {
         VStack(spacing: 16) {
             VStack(spacing: 16) {
                 InputTextFieldView(
-                    text: $authenticator.email,
+                    text: $person.email,
                     placeholder: "Email",
                     keyboardType: .emailAddress,
                     sfSymbol: "envelope"
                 )
                 InputPasswordView(
-                    password: $authenticator.password,
+                    password: $person.password,
                     placeholder: "Password",
                     sfSymbol: "lock"
                 )
@@ -40,9 +41,6 @@ struct SignInView: View {
             }
             .sheet(isPresented: $showForgotPassword, content: { ForgotPasswordView() })
         }
-        .onAppear {
-            authenticator.clear()
-        }
         .padding(.horizontal, 15)
         .navigationTitle("Sign In")
         .navigationBarHidden(false)
@@ -51,7 +49,7 @@ struct SignInView: View {
     private func signIn() {
         Task.init {
             do {
-                try await authenticator.signin()
+                try await authenticator.signin(person: person)
                 showSigninError = false
                 presentationMode.wrappedValue.dismiss()
             } catch {

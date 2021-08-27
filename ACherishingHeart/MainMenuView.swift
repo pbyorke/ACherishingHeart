@@ -35,6 +35,9 @@ struct MainMenuView: View {
                         if authenticator.isJCStudent {
                             PrettyLink(label: "Joy Coach Student", destination: Text("Joy Coach Student")) { }
                         }
+                        if authenticator.isSubscriber {
+                            PrettyLink(label: "Subscriber", destination: Text("Subscriber")) { }
+                        }
                     }
                 }
                 .padding(20)

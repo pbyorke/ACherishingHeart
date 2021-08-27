@@ -10,18 +10,13 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AuthenticatorProtocol {
-    var email: String { set get }
-    var password: String { set get }
-    
-    func signin() async throws
-    func signup() async throws
+    func signin(person: Person) async throws
+    func signup(person: Person) async throws
     func signout() async throws
     func forgotpassword() async throws
     func getPersonBy(recordId: String) async throws -> Person?
     func getPersonBy(userUID: String) async throws -> Person?
     func update(_ person: Person) async throws
-    func clear()
-    func fill(person: Person)
 }
 
 final class Authenticator: ObservableObject, AuthenticatorProtocol {
@@ -33,57 +28,8 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
     private var currentId = ""
     private var personListener: ListenerRegistration?
     
-    @Trimmed var email = ""
-    @Trimmed var password = ""
-    @Trimmed var firstName = ""
-    @Trimmed var lastName = ""
-    @Trimmed var phoneNumber = ""
-    var inactive = false
-    var delinquent = false
-    var media = false
-    var master = false
-    var admin = false
-    var joyCoach = false
-    var JCTeacher = false
-    var JCStudent = false
-    var subscriber = false
-
     var authService: AuthServiceProtocol = AuthService.shared
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
-    
-    func clear() {
-        email = ""
-        password = ""
-        firstName = ""
-        lastName = ""
-        phoneNumber = ""
-        inactive = false
-        delinquent = false
-        media = false
-        master = false
-        admin = false
-        joyCoach = false
-        JCTeacher = false
-        JCStudent = false
-        subscriber = false
-    }
-    
-    func fill(person: Person) {
-        email = person.email
-        password = person.password
-        firstName = person.firstName
-        lastName = person.lastName
-        phoneNumber = person.phoneNumber
-        inactive = person.inactive
-        delinquent = person.delinquent
-        media = person.media
-        master = person.master
-        admin = person.admin
-        joyCoach = person.joyCoach
-        JCTeacher = person.JCTeacher
-        JCStudent = person.JCStudent
-        subscriber = person.subscriber
-    }
     
     var isInactive: Bool {
         if let currentPerson = currentPerson {
@@ -149,6 +95,14 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
+    var isSubscriber: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.subscriber
+        } else {
+            return false
+        }
+    }
+    
     func setup() {
         Task.init {
             if let user = Auth.auth().currentUser {
@@ -162,9 +116,9 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
     
-    func signin() async throws {
+    func signin(person: Person) async throws {
         do {
-            currentId = try await authService.signin(email: email, password: password)
+            currentId = try await authService.signin(email: person.email, password: person.password)
             DispatchQueue.main.async {
                 self.isLoggedIn = true
                 self.listenAllPersons()
@@ -174,17 +128,17 @@ final class Authenticator: ObservableObject, AuthenticatorProtocol {
         }
     }
 
-    func signup() async throws {
+    func signup(person: Person) async throws {
         do {
-            let uid = try await authService.signup(email: email, password: password)
+            let uid = try await authService.signup(email: person.email, password: person.password)
             let person = Person(
                 id: "",
                 userUID: uid,
-                email: email,
-                password: password,
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
+                email: person.email,
+                password: person.password,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                phoneNumber: person.phoneNumber,
                 inactive: false,
                 delinquent: false,
                 media: false,

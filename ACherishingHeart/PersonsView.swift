@@ -12,12 +12,15 @@ struct PersonsView: View {
     @EnvironmentObject var authenticator: Authenticator
     
     var masterView: Bool
+    @State private var person = Person.new
     
     var body: some View {
-        List {
-            ForEach(authenticator.persons) { person in
-                NavigationLink(destination: PersonView(person: person, masterView: masterView)) {
-                    Button("\(person.firstName) \(person.lastName)") { }
+        HStack {
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(authenticator.persons) { person in
+                        PrettyLink(label: "\(person.firstName) \(person.lastName)", destination: PersonView(person: $person, masterView: masterView)) { self.person = person }
+                    }
                 }
             }
         }

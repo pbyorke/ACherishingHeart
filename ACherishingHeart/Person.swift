@@ -8,22 +8,22 @@
 import Foundation
 
 struct Person: Identifiable, Codable {
-    var id: String
-    var userUID: String
-    var email: String
-    var password: String
-    var firstName: String
-    var lastName: String
-    var phoneNumber: String
-    var inactive: Bool
-    var delinquent: Bool
-    var media: Bool
-    var master: Bool
-    var admin: Bool
-    var joyCoach: Bool
-    var JCTeacher: Bool
-    var JCStudent: Bool
-    var subscriber: Bool
+    var id:             String
+    var userUID:        String
+    var email:          String { didSet { email       = email.trim() } }
+    var password:       String { didSet { password    = password.trim() } }
+    var firstName:      String { didSet { firstName   = firstName.trim() } }
+    var lastName:       String { didSet { lastName    = lastName.trim() } }
+    var phoneNumber:    String { didSet { phoneNumber = phoneNumber.trim() } }
+    var inactive:       Bool
+    var delinquent:     Bool
+    var media:          Bool
+    var master:         Bool
+    var admin:          Bool
+    var joyCoach:       Bool
+    var JCTeacher:      Bool
+    var JCStudent:      Bool
+    var subscriber:     Bool
 }
 
 extension Person {

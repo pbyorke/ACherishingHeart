@@ -8,8 +8,8 @@
 import Foundation
 
 struct Folder: Identifiable, Codable {
-    var id: String
-    var name: String
+    var id:     String
+    var name:   String { didSet { name = name.trim() } }
 }
 
 extension Folder {

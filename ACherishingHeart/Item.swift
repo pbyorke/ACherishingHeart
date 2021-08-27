@@ -24,10 +24,10 @@ enum ItemType: Int, Codable, CaseIterable {
 }
 
 struct Item: Identifiable, Codable {
-    var id: String
-    var name: String
-    var bucket: String
-    var type: ItemType
+    var id:     String { didSet { id = id.trim() } }
+    var name:   String { didSet { name = name.trim() } }
+    var bucket: String { didSet { bucket = bucket.trim() } }
+    var type:   ItemType
 }
 
 extension Item {

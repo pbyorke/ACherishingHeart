@@ -12,30 +12,35 @@ struct PersonView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
     
-    var person: Person
+    @Binding var person: Person
     var masterView: Bool
     
     var body: some View {
         VStack {
             Group {
-                Text(person.email)
+                HStack {
+                    Spacer()
+                    Text(person.email)
+                        .font(.title)
+                    Spacer()
+                }
                 TitledInputTextFieldView(
                     title: "First Name",
-                    text: $authenticator.firstName,
+            text: $person.firstName,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 TitledInputTextFieldView(
                     title: "Last Name",
-                    text: $authenticator.lastName,
+                    text: $person.lastName,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 TitledInputTextFieldView(
                     title: "Phone Number",
-                    text: $authenticator.phoneNumber,
+                    text: $person.phoneNumber,
                     placeholder: "",
                     keyboardType: .default,
                     sfSymbol: nil
@@ -43,18 +48,18 @@ struct PersonView: View {
             }
             Group {
                 if masterView {
-                    Toggle("Inactive", isOn: $authenticator.inactive)
-                    Toggle("Delinquent", isOn: $authenticator.delinquent)
+                    Toggle("Inactive", isOn: $person.inactive)
+                    Toggle("Delinquent", isOn: $person.delinquent)
                 }
-                Toggle("Media", isOn: $authenticator.media)
+                Toggle("Media", isOn: $person.media)
                 if masterView {
-                    Toggle("Master", isOn: $authenticator.master)
-                    Toggle("Admin", isOn: $authenticator.admin)
+                    Toggle("Master", isOn: $person.master)
+                    Toggle("Admin", isOn: $person.admin)
                 }
-                Toggle("Joy Coach", isOn: $authenticator.joyCoach)
-                Toggle("Joy Coach Teacher", isOn: $authenticator.JCTeacher)
-                Toggle("Joy Coach Student", isOn: $authenticator.JCStudent)
-                Toggle("Subscriber", isOn: $authenticator.subscriber)
+                Toggle("Joy Coach", isOn: $person.joyCoach)
+                Toggle("Joy Coach Teacher", isOn: $person.JCTeacher)
+                Toggle("Joy Coach Student", isOn: $person.JCStudent)
+                Toggle("Subscriber", isOn: $person.subscriber)
             }
             Spacer()
         }
@@ -63,30 +68,9 @@ struct PersonView: View {
         .toolbar {
             Button("Save") { save() }
         }
-        .onAppear {
-            authenticator.fill(person: person)
-        }
     }
     
     private func save() {
-        let person = Person(
-            id: person.id,
-            userUID: person.userUID,
-            email: authenticator.email,
-            password: authenticator.password,
-            firstName: authenticator.firstName,
-            lastName: authenticator.lastName,
-            phoneNumber: authenticator.phoneNumber,
-            inactive: authenticator.inactive,
-            delinquent: authenticator.delinquent,
-            media: authenticator.media,
-            master: authenticator.master,
-            admin: authenticator.admin,
-            joyCoach: authenticator.joyCoach,
-            JCTeacher: authenticator.JCTeacher,
-            JCStudent: authenticator.JCStudent,
-            subscriber: authenticator.subscriber
-        )
         do {
             try authenticator.update(person)
             presentationMode.wrappedValue.dismiss()
@@ -97,11 +81,10 @@ struct PersonView: View {
 
 #if DEBUG
 struct PersonView_Previews: PreviewProvider {
+    @State static var person = Person.new
     static var previews: some View {
-        PersonView(
-            person: Person.new,
-            masterView: true
-        )
+        PersonView(person: $person, masterView: true)
+            .preview(with: "Add or update a Person")
     }
 }
 #endif

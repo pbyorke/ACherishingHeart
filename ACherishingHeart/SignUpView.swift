@@ -14,6 +14,7 @@ struct SignUpView: View {
 
     @State private var showSignupError = false
     @State private var errorMessage = ""
+    @State private var person = Person.new
     
     var erase: Bool = false
 
@@ -21,31 +22,31 @@ struct SignUpView: View {
         VStack(spacing: 16) {
             VStack(spacing: 16) {
                 InputTextFieldView(
-                    text: $authenticator.email,
+                    text: $person.email,
                     placeholder: "Email",
                     keyboardType: .emailAddress,
                     sfSymbol: "envelope"
                 )
                 InputPasswordView(
-                    password: $authenticator.password,
+                    password: $person.password,
                     placeholder: "Password",
                     sfSymbol: "lock"
                 )
                 Divider()
                 InputTextFieldView(
-                    text: $authenticator.firstName,
+                    text: $person.firstName,
                     placeholder: "First Name",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 InputTextFieldView(
-                    text: $authenticator.lastName,
+                    text: $person.lastName,
                     placeholder: "Last Name",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
                 InputTextFieldView(
-                    text: $authenticator.phoneNumber,
+                    text: $person.phoneNumber,
                     placeholder: "Phone Number",
                     keyboardType: .default, 
                     sfSymbol: nil
@@ -55,9 +56,6 @@ struct SignUpView: View {
             ButtonView(title: "Sign Up", background: .blue, foreground: .white, border: .blue) { signUp() }
             .alert(errorMessage, isPresented: $showSignupError) { Button("OK", role: .cancel) { } }
         }
-        .onAppear {
-            authenticator.clear()
-        }
         .padding(.horizontal, 15)
         .navigationTitle("Sign Up")
         .navigationBarHidden(false)
@@ -66,7 +64,7 @@ struct SignUpView: View {
     private func signUp() {
         Task.init {
             do {
-                try await authenticator.signup()
+                try await authenticator.signup(person: person)
                 showSignupError = false
                 presentationMode.wrappedValue.dismiss()
             } catch {
