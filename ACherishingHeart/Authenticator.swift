@@ -37,6 +37,14 @@ final class Authenticator: ObservableObject {
         }
     }
     
+    var isMedia: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.media
+        } else {
+            return false
+        }
+    }
+    
     var isMaster: Bool {
         if let currentPerson = currentPerson {
             return currentPerson.master
@@ -53,9 +61,17 @@ final class Authenticator: ObservableObject {
         }
     }
     
-    var isMedia: Bool {
+    var isFinance: Bool {
         if let currentPerson = currentPerson {
-            return currentPerson.media
+            return currentPerson.finance
+        } else {
+            return false
+        }
+    }
+    
+    var isSubscriber: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.subscriber
         } else {
             return false
         }
@@ -80,14 +96,6 @@ final class Authenticator: ObservableObject {
     var isJCStudent: Bool {
         if let currentPerson = currentPerson {
             return currentPerson.JCStudent
-        } else {
-            return false
-        }
-    }
-    
-    var isSubscriber: Bool {
-        if let currentPerson = currentPerson {
-            return currentPerson.subscriber
         } else {
             return false
         }
@@ -122,22 +130,24 @@ final class Authenticator: ObservableObject {
         do {
             let uid = try await authService.signup(email: person.email, password: person.password)
             let person = Person(
-                id: "",
-                userUID: uid,
-                email: person.email,
-                password: person.password,
-                firstName: person.firstName,
-                lastName: person.lastName,
-                phoneNumber: person.phoneNumber,
-                inactive: false,
-                delinquent: false,
-                media: false,
-                master: false,
-                admin: false,
-                joyCoach: false,
-                JCTeacher: false,
-                JCStudent: false,
-                subscriber: false
+                id:             "",
+                userUID:        uid,
+                email:          person.email,
+                password:       person.password,
+                firstName:      person.firstName,
+                lastName:       person.lastName,
+                phoneNumber:    person.phoneNumber,
+                inactive:       false,
+                delinquent:     false,
+                media:          false,
+                master:         false,
+                admin:          false,
+                finance:        false,
+                subscriber:     false,
+                joyCoach:       false,
+                JCTeacher:      false,
+                JCStudent:      false,
+                promisedRate:   person.promisedRate
             )
             try await firestoreService.create(person, collection: .persons)
             DispatchQueue.main.async {

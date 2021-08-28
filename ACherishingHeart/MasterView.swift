@@ -22,6 +22,10 @@ struct MasterView: View {
                     PrettyLink(label: "People", destination: PersonsView(masterView: true)) { }
                     Spacer()
                 }
+                HStack {
+                    PrettyLink(label: "Finance", destination: FinanceView()) { }
+                    Spacer()
+                }
             }
             .padding(20)
         }

@@ -37,6 +37,12 @@ struct MainMenuView: View {
                             Spacer()
                         }
                     }
+                    if authenticator.isFinance {
+                        HStack {
+                            PrettyLink(label: "Finance", destination: FinanceView()) { }
+                            Spacer()
+                        }
+                    }
                     if authenticator.isJoyCoach {
                         HStack {
                             PrettyLink(label: "Joy Coach", destination: Text("Joy Coach")) { }

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MediaView: View {
     
-    @State private var entries = [CloudFile]()
-    
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
