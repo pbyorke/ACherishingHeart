@@ -24,12 +24,19 @@ struct ItemView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
-                InputTextFieldView(
-                    text: $item.bucket,
-                    placeholder: "Bucket",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
+                HStack {
+                    InputTextFieldView(
+                        text: $item.bucket,
+                        placeholder: "Bucket",
+                        keyboardType: .default,
+                        sfSymbol: nil
+                    )
+                    NavigationLink(destination: CloudFilesView(bucket: $item.bucket)) {
+                        Image(systemName: "arrow.right")
+                    }
+                    .padding(.leading, 10)
+                    .padding(.trailing, 0)
+                }
                 Group {
                     VStack(alignment: .leading) {
                         HStack {
@@ -57,10 +64,7 @@ struct ItemView: View {
                             Spacer()
                         }
                     }
-                    .padding()
-                }
-                Group {
-                    EmbeddedCloudFilesView()
+                    .padding(20)
                 }
             }
             Spacer()

@@ -9,17 +9,24 @@ import SwiftUI
 
 struct CloudFilesView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     var storageService: StorageServiceProtocol = StorageService.shared
 
     @State private var files = [CloudFile]()
     @State private var file = CloudFile.new
+    @Binding var bucket: String
     
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(files) { file in
                     HStack {
-                        PrettyLink(label: file.name, destination: CloudFileView(file: $file)) { self.file = file }
+                        Button(action: {
+                            bucket = file.bucket
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Text("\(file.name)")
+                        })
                         Spacer()
                     }
                 }
@@ -38,8 +45,9 @@ struct CloudFilesView: View {
 
 #if DEBUG
 struct CloudFilesView_Previews: PreviewProvider {
+    @State static var bucket = ""
     static var previews: some View {
-        CloudFilesView()
+        CloudFilesView(bucket: $bucket)
     }
 }
 #endif

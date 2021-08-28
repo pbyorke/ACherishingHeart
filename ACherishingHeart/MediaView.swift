@@ -22,10 +22,6 @@ struct MediaView: View {
                     PrettyLink(label: "Items", destination: ItemsView()) { }
                     Spacer()
                 }
-                HStack {
-                    PrettyLink(label: "Cloud Files", destination: CloudFilesView()) { }
-                    Spacer()
-                }
             }
             .padding(20)
         }
