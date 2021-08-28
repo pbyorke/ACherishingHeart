@@ -7,19 +7,29 @@
 
 import Foundation
 import FirebaseStorage
+import CoreMIDI
 
 enum StorageType: String {
     case music
 }
 
-protocol StorageServiceProtocol {
-    func allCloudFiles() async -> [CloudFile]
-    func listAllItems() async throws -> [Item]
-    func listAllFolders() async throws -> [Folder]
-}
+//protocol StorageServiceProtocol {
+//    func allCloudFiles() async -> [CloudFile]
+//    func listAllItems() async throws -> [Item]
+//    func listAllFolders() async throws -> [Folder]
+//
+//
+//
+////    func itemsInFolder(folderId: String) async throws -> [Item]
+//    func itemsInFolder(folderId: String) async throws
+//
+//
+//
+//}
 
-final class StorageService: ObservableObject, StorageServiceProtocol {
-    
+//final class StorageService: ObservableObject, StorageServiceProtocol {
+final class StorageService: ObservableObject {
+
     static let shared = StorageService()
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
 
@@ -62,9 +72,25 @@ final class StorageService: ObservableObject, StorageServiceProtocol {
         } catch { throw error }
     }
     
+    func createItem(_ item: Item) async throws {
+        do {
+            try await firestoreService.create(item, collection: .items)
+        } catch {
+            throw error
+        }
+    }
+    
     func updateItem(_ item: Item) throws {
         do {
             try firestoreService.update(item, collection: .items)
+        } catch {
+            throw error
+        }
+    }
+    
+    func createFolder(_ folder: Folder) async throws {
+        do {
+            try await firestoreService.create(folder, collection: .folders)
         } catch {
             throw error
         }
@@ -78,4 +104,17 @@ final class StorageService: ObservableObject, StorageServiceProtocol {
         }
     }
     
+    func itemsInFolder(folderId: String) async throws -> [Item] {
+        do {
+            let links = try await firestoreService.getAllByKey(collection: .foldersToItems, type: FolderToItem.self, key: "folderId", value: folderId)
+            var items = [Item]()
+            for link in links {
+                if let item = try await firestoreService.getOneById(collection: .items, type: Item.self, id: link.itemId) {
+                    items.append(item)
+                }
+            }
+            return items
+        } catch { throw error }
+    }
+
 }

@@ -59,6 +59,9 @@ struct ItemView: View {
                     }
                     .padding()
                 }
+                Group {
+                    EmbeddedCloudFilesView()
+                }
             }
             Spacer()
         }
@@ -78,9 +81,15 @@ struct ItemView: View {
     }
     
     private func update() {
-        do {
-            try storageService.updateItem(item)
-        } catch { }
+        Task.init {
+            do {
+                if add {
+                    try await storageService.createItem(item)
+                } else {
+                    try storageService.updateItem(item)
+                }
+            } catch { }
+        }
         presentationMode.wrappedValue.dismiss()
     }
     

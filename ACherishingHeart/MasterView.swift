@@ -12,17 +12,18 @@ struct MasterView: View {
     @State private var person = Person.new
 
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack {
-                    VStack(spacing: 10) {
-                        PrettyLink(label: "Media", destination: MediaView()) { }
-                        PrettyLink(label: "People", destination: PersonsView(masterView: true)) { }
-                        Spacer()
-                    }
-                    .padding(20)
+        ScrollView {
+            VStack(spacing: 10) {
+                HStack {
+                    PrettyLink(label: "Media", destination: MediaView()) { }
+                    Spacer()
+                }
+                HStack {
+                    PrettyLink(label: "People", destination: PersonsView(masterView: true)) { }
+                    Spacer()
                 }
             }
+            .padding(20)
         }
         .navigationTitle("Master")
         .font(.title2)

@@ -9,18 +9,19 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-protocol AuthenticatorProtocol {
-    func signin(person: Person) async throws
-    func signup(person: Person) async throws
-    func signout() async throws
-    func forgotpassword() async throws
-    func getPersonBy(recordId: String) async throws -> Person?
-    func getPersonBy(userUID: String) async throws -> Person?
-    func update(_ person: Person) async throws
-}
+//protocol AuthenticatorProtocol {
+//    func signin(person: Person) async throws
+//    func signup(person: Person) async throws
+//    func signout() async throws
+//    func forgotpassword() async throws
+//    func getPersonBy(recordId: String) async throws -> Person?
+//    func getPersonBy(userUID: String) async throws -> Person?
+//    func update(_ person: Person) async throws
+//}
 
-final class Authenticator: ObservableObject, AuthenticatorProtocol {
-    
+//final class Authenticator: ObservableObject, AuthenticatorProtocol {
+final class Authenticator: ObservableObject {
+
     @Published var isLoggedIn: Bool = false
     @Published var currentPerson: Person?
     @Published var persons = [Person]()

@@ -25,6 +25,7 @@ struct FolderView: View {
                     sfSymbol: nil
                 )
             }
+            ItemsInFolderView(folder: $folder)
             Spacer()
         }
         .toolbar {
@@ -43,9 +44,15 @@ struct FolderView: View {
     }
     
     private func update() {
-        do {
-            try storageService.updateFolder(folder)
-        } catch { }
+        Task.init {
+            do {
+                if add {
+                    try await storageService.createFolder(folder)
+                } else {
+                    try storageService.updateFolder(folder)
+                }
+            } catch { }
+        }
         presentationMode.wrappedValue.dismiss()
     }
     

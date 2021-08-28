@@ -10,21 +10,22 @@ import SwiftUI
 struct FoldersView: View {
     
     @EnvironmentObject var storageService: StorageService
-
+    
     @State private var albums = [Folder]()
     @State private var folder = Folder.new
     
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(albums) { folder in
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(albums) { folder in
+                    HStack {
                         PrettyLink(label: folder.name, destination: FolderView(add: false, folder: $folder)) { self.folder = folder }
+                        Spacer()
                     }
                 }
             }
+            .padding(20)
         }
-        .padding()
         .navigationTitle( Text("Folders") )
         .font(.title2)
         .toolbar {

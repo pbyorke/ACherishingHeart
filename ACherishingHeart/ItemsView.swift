@@ -15,20 +15,18 @@ struct ItemsView: View {
     @State private var item = Item.new
     
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(items) { item in
-                        HStack {
-                            PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
-                            Spacer()
-                            Text("\(item.type.title)")
-                        }
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(items) { item in
+                    HStack {
+                        PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
+                        Spacer()
+                        Text("\(item.type.title)")
                     }
                 }
             }
+            .padding(20)
         }
-        .padding()
         .navigationTitle( Text("Items") )
         .font(.title2)
         .toolbar {

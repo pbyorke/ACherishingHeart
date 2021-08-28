@@ -23,6 +23,7 @@
 		C10E95A826AF55CD004CBEB8 /* MainMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95A726AF55CD004CBEB8 /* MainMenuBarView.swift */; };
 		C10E95AC26AF5759004CBEB8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95AB26AF5759004CBEB8 /* AccountView.swift */; };
 		C10E95AF26AF59AB004CBEB8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95AE26AF59AB004CBEB8 /* Person.swift */; };
+		C118EA9D26D9C950001431BB /* AddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118EA9C26D9C950001431BB /* AddItemsView.swift */; };
 		C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABA26CC89CB002A7880 /* Item.swift */; };
 		C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABC26CC89DA002A7880 /* Folder.swift */; };
 		C11D4AC026CCA8A5002A7880 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */; };
@@ -34,6 +35,8 @@
 		C11F206126B0F9BA0042A6CE /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C11F206026B0F9BA0042A6CE /* FirebaseStorageSwift-Beta */; };
 		C123B03D26B636D600733BA3 /* WhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123B03C26B636D600733BA3 /* WhyView.swift */; };
 		C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12EE89126D140F4004D5E2B /* PrettyLink.swift */; };
+		C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */; };
+		C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */; };
 		C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */; };
 		C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150222B26B2502F0060232C /* NavigationButtonView.swift */; };
 		C1547C4826D86116007204CE /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1547C4726D86116007204CE /* String+Utils.swift */; };
@@ -101,12 +104,15 @@
 		C10E95A726AF55CD004CBEB8 /* MainMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuBarView.swift; sourceTree = "<group>"; };
 		C10E95AB26AF5759004CBEB8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C10E95AE26AF59AB004CBEB8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		C118EA9C26D9C950001431BB /* AddItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsView.swift; sourceTree = "<group>"; };
 		C11D4ABA26CC89CB002A7880 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C11D4ABC26CC89DA002A7880 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		C11D4AC126CCB3AD002A7880 /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
 		C123B03C26B636D600733BA3 /* WhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyView.swift; sourceTree = "<group>"; };
 		C12EE89126D140F4004D5E2B /* PrettyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyLink.swift; sourceTree = "<group>"; };
+		C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCloudFilesView.swift; sourceTree = "<group>"; };
+		C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolderView.swift; sourceTree = "<group>"; };
 		C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trimmed.swift; sourceTree = "<group>"; };
 		C150222B26B2502F0060232C /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		C1547C4726D86116007204CE /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -332,10 +338,13 @@
 			children = (
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
+				C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */,
 				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
 				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
+				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
 				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
+				C118EA9C26D9C950001431BB /* AddItemsView.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 				C10E95AF26AF59AB004CBEB8 /* Person.swift in Sources */,
 				C1B3F8A626B2281F007F63D2 /* InputPasswordFieldView.swift in Sources */,
 				C11D4AC226CCB3AD002A7880 /* FoldersView.swift in Sources */,
+				C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */,
 				C1B3F8AA26B22B75007F63D2 /* ForgotPasswordView.swift in Sources */,
 				C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */,
 				C1547C4826D86116007204CE /* String+Utils.swift in Sources */,
@@ -545,8 +555,10 @@
 				C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
 				C161A02D26BB874D005B077A /* PersonView.swift in Sources */,
+				C118EA9D26D9C950001431BB /* AddItemsView.swift in Sources */,
 				C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */,
 				C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */,
+				C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */,
 				C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */,
 				C11D4AC026CCA8A5002A7880 /* ItemsView.swift in Sources */,
 				C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */,

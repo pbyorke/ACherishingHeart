@@ -10,22 +10,26 @@ import SwiftUI
 struct MediaView: View {
     
     @EnvironmentObject var storageService: StorageService
-
+    
     @State private var entries = [CloudFile]()
     
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack {
-                    VStack(spacing: 10) {
-                        PrettyLink(label: "Folders", destination: FoldersView()) { }
-                        PrettyLink(label: "Items", destination: ItemsView()) { }
-                        PrettyLink(label: "Cloud Files", destination: CloudFilesView()) { }
-                        Spacer()
-                    }
-                    .padding(20)
+        ScrollView {
+            VStack(spacing: 10) {
+                HStack {
+                    PrettyLink(label: "Folders", destination: FoldersView()) { }
+                    Spacer()
+                }
+                HStack {
+                    PrettyLink(label: "Items", destination: ItemsView()) { }
+                    Spacer()
+                }
+                HStack {
+                    PrettyLink(label: "Cloud Files", destination: CloudFilesView()) { }
+                    Spacer()
                 }
             }
+            .padding(20)
         }
         .navigationTitle( Text("Media Administrator") )
         .font(.title2)

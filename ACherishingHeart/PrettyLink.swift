@@ -10,19 +10,32 @@
 import SwiftUI
 
 struct PrettyLink<Target: View>: View {
+    
     typealias Handler = () -> Void
-    var label = ""
+    
+    var label: String? = ""
+    var image: String? = ""
     var destination: Target
     var action: Handler
+    
     var body: some View {
         HStack {
             NavigationLink(destination: destination) {
-                Text(label)
+                if let label = label {
+                    if label != "" {
+                        Text(label)
+                    }
+                }
+                if let image = image {
+                    if image != "" {
+                        Image(systemName: image)
+                    }
+                }
             }
             .simultaneousGesture(TapGesture().onEnded {
                 action()
             })
-            Spacer()
+//            Spacer()
         }
     }
 }

@@ -12,46 +12,68 @@ struct MainMenuView: View {
     @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
-        HStack {
+        VStack {
             ScrollView {
-                VStack {
-                    VStack(spacing: 10) {
+                VStack(spacing: 10) {
+                    HStack {
                         PrettyLink(label: "Music", destination: Text("Music")) { }
-                        if authenticator.isMaster {
+                        Spacer()
+                    }
+                    if authenticator.isMaster {
+                        HStack {
                             PrettyLink(label: "Master", destination: MasterView()) { }
+                            Spacer()
                         }
-                        if authenticator.isMedia {
+                    }
+                    if authenticator.isMedia {
+                        HStack {
                             PrettyLink(label: "Media", destination: MediaView()) { }
+                            Spacer()
                         }
-                        if authenticator.isAdmin {
+                    }
+                    if authenticator.isAdmin {
+                        HStack {
                             PrettyLink(label: "Admin", destination: PersonsView(masterView: false)) { }
+                            Spacer()
                         }
-                        if authenticator.isJoyCoach {
+                    }
+                    if authenticator.isJoyCoach {
+                        HStack {
                             PrettyLink(label: "Joy Coach", destination: Text("Joy Coach")) { }
+                            Spacer()
                         }
-                        if authenticator.isJCTeacher {
+                    }
+                    if authenticator.isJCTeacher {
+                        HStack {
                             PrettyLink(label: "Joy Coach Teacher", destination: Text("Joy Coach Teacher")) { }
+                            Spacer()
                         }
-                        if authenticator.isJCStudent {
+                    }
+                    if authenticator.isJCStudent {
+                        HStack {
                             PrettyLink(label: "Joy Coach Student", destination: Text("Joy Coach Student")) { }
+                            Spacer()
                         }
-                        if authenticator.isSubscriber {
+                    }
+                    if authenticator.isSubscriber {
+                        HStack {
                             PrettyLink(label: "Subscriber", destination: Text("Subscriber")) { }
+                            Spacer()
                         }
                     }
                 }
                 .padding(20)
             }
         }
-        .frame(width: UIScreen.main.bounds.width - 40)
-        .background(Color(.systemGray6))
-        .font(.title2)
-        .padding(.leading, 20)
-        .padding(.trailing, 20)
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(20)
+        .padding(.horizontal, 20)
         .padding(.bottom, 40)
+        .font(.title2)
     }
     
 }
+
 
 #if DEBUG
 struct MainMenuView_Previews: PreviewProvider {
