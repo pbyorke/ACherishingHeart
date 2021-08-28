@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FoldersView: View {
     
-    @EnvironmentObject var storageService: StorageService
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     @State private var albums = [Folder]()
     @State private var folder = Folder.new
     

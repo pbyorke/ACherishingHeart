@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ItemsView: View {
     
-    @EnvironmentObject var storageService: StorageService
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     @State private var items = [Item]()
     @State private var item = Item.new
     

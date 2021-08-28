@@ -10,7 +10,7 @@ import SwiftUI
 struct PersonsView: View {
     
     @EnvironmentObject var authenticator: Authenticator
-    
+
     var masterView: Bool
     @State private var person = Person.new
     

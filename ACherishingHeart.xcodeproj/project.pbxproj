@@ -300,7 +300,6 @@
 		C1B3F8A026B226FB007F63D2 /* Parts */ = {
 			isa = PBXGroup;
 			children = (
-				C10E95A526AA0F53004CBEB8 /* Authenticator.swift */,
 				C1B3F8A726B22910007F63D2 /* ButtonView.swift */,
 				C1B3F8A526B2281F007F63D2 /* InputPasswordFieldView.swift */,
 				C1B3F8A126B22711007F63D2 /* InputTextFieldView.swift */,
@@ -317,6 +316,7 @@
 		C1D3984126B38335006BEE2D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C10E95A526AA0F53004CBEB8 /* Authenticator.swift */,
 				C1D3984226B3834C006BEE2D /* AuthService.swift */,
 				C1A665AD26B6434C0086001C /* FirestoreService.swift */,
 				C1BCB74A26CB310700465BD6 /* StorageService.swift */,

@@ -10,8 +10,8 @@ import SwiftUI
 struct FolderView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var storageService: StorageService
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     var add = false
     @Binding var folder: Folder
     

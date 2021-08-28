@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MediaView: View {
     
-    @EnvironmentObject var storageService: StorageService
-    
     @State private var entries = [CloudFile]()
     
     var body: some View {

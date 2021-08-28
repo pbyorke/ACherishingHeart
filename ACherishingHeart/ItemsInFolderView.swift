@@ -1,6 +1,6 @@
 //
 //  ItemsInFolderView.swift
-//  ItemsInFolderView
+//  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/27/21.
 //
@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ItemsInFolderView: View {
     
-    @EnvironmentObject var storageService: StorageService
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     @Binding var folder: Folder
     @State private var items = [Item]()
     

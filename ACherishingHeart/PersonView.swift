@@ -11,7 +11,7 @@ struct PersonView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
-    
+
     @Binding var person: Person
     var masterView: Bool
     

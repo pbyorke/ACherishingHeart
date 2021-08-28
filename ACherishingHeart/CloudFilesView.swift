@@ -9,27 +9,28 @@ import SwiftUI
 
 struct CloudFilesView: View {
     
-    @EnvironmentObject var storageService: StorageService
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     @State private var files = [CloudFile]()
     @State private var file = CloudFile.new
     
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(files) { file in
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(files) { file in
+                    HStack {
                         PrettyLink(label: file.name, destination: CloudFileView(file: $file)) { self.file = file }
+                        Spacer()
                     }
                 }
-                .padding()
-                .font(.title2)
-                .navigationTitle( Text("Files in the Cloud") )
             }
-            .onAppear {
-                Task.init {
-                    self.files = await storageService.allCloudFiles()
-                }
+            .padding(20)
+        }
+        .navigationTitle( Text("Files in the Cloud") )
+        .font(.title2)
+        .onAppear {
+            Task.init {
+                self.files = await storageService.allCloudFiles()
             }
         }
     }

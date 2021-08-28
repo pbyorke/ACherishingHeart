@@ -13,9 +13,21 @@ enum StorageType: String {
     case music
 }
 
-final class StorageService: ObservableObject {
+protocol StorageServiceProtocol {
+    func allCloudFiles() async -> [CloudFile]
+    func listAllItems() async throws -> [Item]
+    func listAllFolders() async throws -> [Folder]
+    func createItem(_ item: Item) async throws
+    func updateItem(_ item: Item) throws
+    func createFolder(_ folder: Folder) async throws
+    func updateFolder(_ folder: Folder) throws
+    func itemsInFolder(folderId: String) async throws -> [Item]
+}
+
+final class StorageService: StorageServiceProtocol {
 
     static let shared = StorageService()
+    
     var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
 
     private func reference(to collection: StorageType) -> StorageReference {
