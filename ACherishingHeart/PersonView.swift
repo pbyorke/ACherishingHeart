@@ -53,6 +53,7 @@ struct PersonView: View {
                     if masterView {
                         Toggle("Master", isOn: $person.master)
                         Toggle("Admin", isOn: $person.admin)
+                        Toggle("Finance", isOn: $person.finance)
                     }
                     Toggle("Joy Coach", isOn: $person.joyCoach)
                     Toggle("Joy Coach Teacher", isOn: $person.JCTeacher)

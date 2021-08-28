@@ -1,5 +1,10 @@
 //
-//  FolderView.swift
+//  CourseView.swift
+//  CourseView
+//
+//  Created by Peter Yorke on 8/28/21.
+////
+//  ItemView.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
@@ -7,26 +12,30 @@
 
 import SwiftUI
 
-struct FolderView: View {
+struct CourseView: View {
     
     @Environment(\.presentationMode) var presentationMode
     var storageService: StorageServiceProtocol = StorageService.shared
 
     var add = false
-    @Binding var folder: Folder
+    @Binding var course: Course
     
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 16) {
                 InputTextFieldView(
-                    text: $folder.name,
+                    text: $course.name,
                     placeholder: "Name",
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                InputTextFieldView(
+                    text: $course.description,
+                    placeholder: "Description",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
             }
-            ItemsInFolderView(folder: $folder)
-            CoursesInFolderView(folder: $folder)
             Spacer()
         }
         .toolbar {
@@ -41,16 +50,16 @@ struct FolderView: View {
             }
         }
         .padding(.horizontal, 15)
-        .navigationTitle("Folder")
+        .navigationTitle("Course")
     }
     
     private func update() {
         Task.init {
             do {
                 if add {
-                    try await storageService.createFolder(folder)
+                    try await storageService.createCourse(course)
                 } else {
-                    try storageService.updateFolder(folder)
+                    try storageService.updateCourse(course)
                 }
             } catch { }
         }
@@ -60,11 +69,11 @@ struct FolderView: View {
 }
 
 #if DEBUG
-struct FolderView_Previews: PreviewProvider {
-    @State static var folder = Folder.new
+struct COurseView_Previews: PreviewProvider {
+    @State static var course = Course.new
     static var previews: some View {
-        FolderView(add: false, folder: $folder)
-            .preview(with: "Add or update a Folder")
+        CourseView(add: false, course: $course)
+            .preview(with: "Add or update a Course")
     }
 }
 #endif

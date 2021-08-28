@@ -20,6 +20,10 @@ struct MediaView: View {
                     PrettyLink(label: "Items", destination: ItemsView()) { }
                     Spacer()
                 }
+                HStack {
+                    PrettyLink(label: "Courses", destination: CoursesView()) { }
+                    Spacer()
+                }
             }
             .padding(20)
         }

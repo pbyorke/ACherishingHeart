@@ -42,6 +42,10 @@
 		C14A46A826DAF01200FAAE9E /* FolderToCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */; };
 		C14A46AB26DAF23600FAAE9E /* FinanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AA26DAF23600FAAE9E /* FinanceView.swift */; };
 		C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */; };
+		C14A46AF26DAF93D00FAAE9E /* CoursesInFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */; };
+		C14A46B126DAFA2400FAAE9E /* AddCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */; };
+		C14A46B326DAFC5100FAAE9E /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46B226DAFC5100FAAE9E /* CoursesView.swift */; };
+		C14A46B526DAFD8C00FAAE9E /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46B426DAFD8C00FAAE9E /* CourseView.swift */; };
 		C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */; };
 		C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C150222B26B2502F0060232C /* NavigationButtonView.swift */; };
 		C1547C4826D86116007204CE /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1547C4726D86116007204CE /* String+Utils.swift */; };
@@ -124,6 +128,10 @@
 		C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderToCourse.swift; sourceTree = "<group>"; };
 		C14A46AA26DAF23600FAAE9E /* FinanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceView.swift; sourceTree = "<group>"; };
 		C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
+		C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInFolder.swift; sourceTree = "<group>"; };
+		C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoursesView.swift; sourceTree = "<group>"; };
+		C14A46B226DAFC5100FAAE9E /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		C14A46B426DAFD8C00FAAE9E /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		C14F10BD26B9DA3000FAEB3F /* Trimmed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trimmed.swift; sourceTree = "<group>"; };
 		C150222B26B2502F0060232C /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		C1547C4726D86116007204CE /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -362,9 +370,13 @@
 		C1FB342826D0BA3700A76D33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */,
 				C118EA9C26D9C950001431BB /* AddItemsView.swift */,
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
+				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
+				C14A46B226DAFC5100FAAE9E /* CoursesView.swift */,
+				C14A46B426DAFD8C00FAAE9E /* CourseView.swift */,
 				C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */,
 				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
 				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
@@ -546,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14A46AF26DAF93D00FAAE9E /* CoursesInFolder.swift in Sources */,
 				C10E95AF26AF59AB004CBEB8 /* Person.swift in Sources */,
 				C1B3F8A626B2281F007F63D2 /* InputPasswordFieldView.swift in Sources */,
 				C11D4AC226CCB3AD002A7880 /* FoldersView.swift in Sources */,
@@ -568,6 +581,7 @@
 				C123B03D26B636D600733BA3 /* WhyView.swift in Sources */,
 				C1B3F8A426B227C7007F63D2 /* PreviewLayoutComponentModifier.swift in Sources */,
 				C185EEB726CEA3D100E3AD7B /* PersonsView.swift in Sources */,
+				C14A46B526DAFD8C00FAAE9E /* CourseView.swift in Sources */,
 				C1A665AE26B6434C0086001C /* FirestoreService.swift in Sources */,
 				C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */,
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
@@ -592,11 +606,13 @@
 				C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */,
 				C11D4AC026CCA8A5002A7880 /* ItemsView.swift in Sources */,
 				C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */,
+				C14A46B126DAFA2400FAAE9E /* AddCoursesView.swift in Sources */,
 				C1B7F26C26CE9A0B0038EFC4 /* FolderToItem.swift in Sources */,
 				C14A46A426DAE89500FAAE9E /* Payment.swift in Sources */,
 				C1B3F89F26B226A2007F63D2 /* SignInView.swift in Sources */,
 				C14A46A826DAF01200FAAE9E /* FolderToCourse.swift in Sources */,
 				C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */,
+				C14A46B326DAFC5100FAAE9E /* CoursesView.swift in Sources */,
 				C1A5223626B8C99600370C19 /* DebugView.swift in Sources */,
 				C10E95A626AA0F53004CBEB8 /* Authenticator.swift in Sources */,
 				C1B3F8A226B22711007F63D2 /* InputTextFieldView.swift in Sources */,

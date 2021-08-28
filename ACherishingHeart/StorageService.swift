@@ -16,12 +16,16 @@ enum StorageType: String {
 protocol StorageServiceProtocol {
     func allCloudFiles() async -> [CloudFile]
     func listAllItems() async throws -> [Item]
+    func listAllCourses() async throws -> [Course]
     func listAllFolders() async throws -> [Folder]
     func createItem(_ item: Item) async throws
     func updateItem(_ item: Item) throws
+    func createCourse(_ course: Course) async throws
+    func updateCourse(_ course: Course) throws
     func createFolder(_ folder: Folder) async throws
     func updateFolder(_ folder: Folder) throws
     func itemsInFolder(folderId: String) async throws -> [Item]
+    func coursesInFolder(folderId: String) async throws -> [Course]
 }
 
 final class StorageService: StorageServiceProtocol {
@@ -57,8 +61,15 @@ final class StorageService: StorageServiceProtocol {
 
     func listAllItems() async throws -> [Item] {
         do {
-            let songs = try await firestoreService.getAll(collection: .items, type: Item.self)
-            return songs
+            let items = try await firestoreService.getAll(collection: .items, type: Item.self)
+            return items
+        } catch { throw error }
+    }
+
+    func listAllCourses() async throws -> [Course] {
+        do {
+            let courses = try await firestoreService.getAll(collection: .courses, type: Course.self)
+            return courses
         } catch { throw error }
     }
 
@@ -80,6 +91,22 @@ final class StorageService: StorageServiceProtocol {
     func updateItem(_ item: Item) throws {
         do {
             try firestoreService.update(item, collection: .items)
+        } catch {
+            throw error
+        }
+    }
+    
+    func createCourse(_ course: Course) async throws {
+        do {
+            try await firestoreService.create(course, collection: .courses)
+        } catch {
+            throw error
+        }
+    }
+    
+    func updateCourse(_ course: Course) throws {
+        do {
+            try firestoreService.update(course, collection: .courses)
         } catch {
             throw error
         }
@@ -111,6 +138,19 @@ final class StorageService: StorageServiceProtocol {
                 }
             }
             return items
+        } catch { throw error }
+    }
+
+    func coursesInFolder(folderId: String) async throws -> [Course] {
+        do {
+            let links = try await firestoreService.getAllByKey(collection: .foldersToCourses, type: FolderToCourse.self, key: "folderId", value: folderId)
+            var courses = [Course]()
+            for link in links {
+                if let course = try await firestoreService.getOneById(collection: .courses, type: Course.self, id: link.courseId) {
+                    courses.append(course)
+                }
+            }
+            return courses
         } catch { throw error }
     }
 
