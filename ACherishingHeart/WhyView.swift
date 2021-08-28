@@ -16,9 +16,10 @@ struct WhyView: View {
     }
 }
 
+#if DEBUG
 struct WhyView_Previews: PreviewProvider {
     static var previews: some View {
         WhyView()
     }
 }
-
+#endif

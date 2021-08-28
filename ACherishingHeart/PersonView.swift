@@ -17,53 +17,52 @@ struct PersonView: View {
     
     var body: some View {
         VStack {
-            Group {
-                HStack {
-                    Spacer()
+            ScrollView {
+                Group {
                     Text(person.email)
                         .font(.title)
-                    Spacer()
+                    TitledInputTextFieldView(
+                        title: "First Name",
+                        text: $person.firstName,
+                        placeholder: "",
+                        keyboardType: .default,
+                        sfSymbol: nil
+                    )
+                    TitledInputTextFieldView(
+                        title: "Last Name",
+                        text: $person.lastName,
+                        placeholder: "",
+                        keyboardType: .default,
+                        sfSymbol: nil
+                    )
+                    TitledInputTextFieldView(
+                        title: "Phone Number",
+                        text: $person.phoneNumber,
+                        placeholder: "",
+                        keyboardType: .default,
+                        sfSymbol: nil
+                    )
                 }
-                TitledInputTextFieldView(
-                    title: "First Name",
-            text: $person.firstName,
-                    placeholder: "",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-                TitledInputTextFieldView(
-                    title: "Last Name",
-                    text: $person.lastName,
-                    placeholder: "",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-                TitledInputTextFieldView(
-                    title: "Phone Number",
-                    text: $person.phoneNumber,
-                    placeholder: "",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
+                .padding(.trailing, 10)
+                Group {
+                    if masterView {
+                        Toggle("Inactive", isOn: $person.inactive)
+                        Toggle("Delinquent", isOn: $person.delinquent)
+                    }
+                    Toggle("Media", isOn: $person.media)
+                    if masterView {
+                        Toggle("Master", isOn: $person.master)
+                        Toggle("Admin", isOn: $person.admin)
+                    }
+                    Toggle("Joy Coach", isOn: $person.joyCoach)
+                    Toggle("Joy Coach Teacher", isOn: $person.JCTeacher)
+                    Toggle("Joy Coach Student", isOn: $person.JCStudent)
+                    Toggle("Subscriber", isOn: $person.subscriber)
+                }
+                .padding(.trailing, 10)
             }
-            Group {
-                if masterView {
-                    Toggle("Inactive", isOn: $person.inactive)
-                    Toggle("Delinquent", isOn: $person.delinquent)
-                }
-                Toggle("Media", isOn: $person.media)
-                if masterView {
-                    Toggle("Master", isOn: $person.master)
-                    Toggle("Admin", isOn: $person.admin)
-                }
-                Toggle("Joy Coach", isOn: $person.joyCoach)
-                Toggle("Joy Coach Teacher", isOn: $person.JCTeacher)
-                Toggle("Joy Coach Student", isOn: $person.JCStudent)
-                Toggle("Subscriber", isOn: $person.subscriber)
-            }
-            Spacer()
         }
-        .padding()
+        .padding(20)
         .navigationTitle("Edit Person")
         .toolbar {
             Button("Save") { save() }

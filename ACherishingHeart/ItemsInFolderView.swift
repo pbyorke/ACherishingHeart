@@ -49,9 +49,6 @@ struct ItemsInFolderView: View {
         }
     }
     
-//    private func addItems() {
-//        AddItemsView(folder: $folder)
-//    }
 }
 
 #if DEBUG

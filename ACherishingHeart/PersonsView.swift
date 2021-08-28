@@ -15,17 +15,19 @@ struct PersonsView: View {
     @State private var person = Person.new
     
     var body: some View {
-        HStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(authenticator.persons) { person in
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(authenticator.persons) { person in
+                    HStack {
                         PrettyLink(label: "\(person.firstName) \(person.lastName)", destination: PersonView(person: $person, masterView: masterView)) { self.person = person }
+                        Spacer()
                     }
                 }
             }
+            .padding(20)
         }
-        .padding()
         .navigationTitle(Text("Persons"))
+        .font(.title2)
     }
 }
 

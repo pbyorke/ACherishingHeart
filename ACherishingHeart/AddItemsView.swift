@@ -1,6 +1,6 @@
 //
 //  AddItemsView.swift
-//  AddItemsView
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/27/21.
 //
@@ -16,9 +16,11 @@ struct AddItemsView: View {
     }
 }
 
+#if DEBUG
 struct AddItemsView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
         AddItemsView(folder: $folder)
     }
 }
+#endif

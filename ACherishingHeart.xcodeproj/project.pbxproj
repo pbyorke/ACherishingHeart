@@ -336,6 +336,7 @@
 		C1FB342826D0BA3700A76D33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				C118EA9C26D9C950001431BB /* AddItemsView.swift */,
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
 				C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */,
@@ -344,7 +345,6 @@
 				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
 				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
-				C118EA9C26D9C950001431BB /* AddItemsView.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";

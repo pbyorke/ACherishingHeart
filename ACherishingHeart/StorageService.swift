@@ -13,21 +13,6 @@ enum StorageType: String {
     case music
 }
 
-//protocol StorageServiceProtocol {
-//    func allCloudFiles() async -> [CloudFile]
-//    func listAllItems() async throws -> [Item]
-//    func listAllFolders() async throws -> [Folder]
-//
-//
-//
-////    func itemsInFolder(folderId: String) async throws -> [Item]
-//    func itemsInFolder(folderId: String) async throws
-//
-//
-//
-//}
-
-//final class StorageService: ObservableObject, StorageServiceProtocol {
 final class StorageService: ObservableObject {
 
     static let shared = StorageService()
