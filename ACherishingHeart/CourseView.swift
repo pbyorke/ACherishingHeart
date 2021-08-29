@@ -1,13 +1,8 @@
 //
 //  CourseView.swift
-//  CourseView
-//
-//  Created by Peter Yorke on 8/28/21.
-////
-//  ItemView.swift
 //  ACherishingHeart
 //
-//  Created by Pete Yorke on 8/19/21.
+//  Created by Peter Yorke on 8/28/21.
 //
 
 import SwiftUI
@@ -22,20 +17,18 @@ struct CourseView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            VStack(spacing: 16) {
-                InputTextFieldView(
-                    text: $course.name,
-                    placeholder: "Name",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-                InputTextFieldView(
-                    text: $course.description,
-                    placeholder: "Description",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-            }
+            InputTextFieldView(
+                text: $course.name,
+                placeholder: "Name",
+                keyboardType: .default,
+                sfSymbol: nil
+            )
+            InputTextFieldView(
+                text: $course.description,
+                placeholder: "Description",
+                keyboardType: .default,
+                sfSymbol: nil
+            )
             Spacer()
         }
         .toolbar {

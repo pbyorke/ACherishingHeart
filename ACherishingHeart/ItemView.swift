@@ -16,7 +16,6 @@ struct ItemView: View {
     @Binding var item: Item
     
     var body: some View {
-        VStack(spacing: 16) {
             VStack(spacing: 16) {
                 InputTextFieldView(
                     text: $item.name,
@@ -66,9 +65,8 @@ struct ItemView: View {
                     }
                     .padding(20)
                 }
+                Spacer()
             }
-            Spacer()
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: update) {

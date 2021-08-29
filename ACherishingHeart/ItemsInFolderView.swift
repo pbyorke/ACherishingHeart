@@ -13,7 +13,7 @@ struct ItemsInFolderView: View {
 
     @Binding var folder: Folder
     @State private var items = [Item]()
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -23,16 +23,13 @@ struct ItemsInFolderView: View {
                     PrettyLink(image: "plus", destination: AddItemsView(folder: $folder)) { }
                 }
             }
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(items) { item in
-                        HStack {
-                            Text("\(item.name)")
-                            Spacer()
-                            Text("\(item.bucket)")
-                        }
+            List(items, id: \.id) { item in
+                Text("\(item.name)")
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Swipe(symbol: "minus.square.fill", color: .red) { delete(item: item) }
+                        Swipe(symbol: "arrow.down.square.fill", color: .green) { moveDown(item: item) }
+                        Swipe(symbol: "arrow.up.square.fill", color: .green) { moveUp(item: item) }
                     }
-                }
             }
         }
         .padding(20)
@@ -47,6 +44,18 @@ struct ItemsInFolderView: View {
                 }
             } catch { }
         }
+    }
+    
+    private func delete(item: Item) {
+        print("* * *  delete")
+    }
+    
+    private func  moveUp(item: Item) {
+        print("* * *  up")
+    }
+    
+    private func  moveDown(item: Item) {
+        print("* * *  down")
     }
     
 }

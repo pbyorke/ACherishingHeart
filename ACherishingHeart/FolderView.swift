@@ -17,14 +17,12 @@ struct FolderView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            VStack(spacing: 16) {
-                InputTextFieldView(
-                    text: $folder.name,
-                    placeholder: "Name",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-            }
+            InputTextFieldView(
+                text: $folder.name,
+                placeholder: "Name",
+                keyboardType: .default,
+                sfSymbol: nil
+            )
             ItemsInFolderView(folder: $folder)
             CoursesInFolderView(folder: $folder)
             Spacer()

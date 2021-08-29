@@ -74,6 +74,7 @@
 		C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74A26CB310700465BD6 /* StorageService.swift */; };
 		C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74C26CB3AED00465BD6 /* MediaView.swift */; };
 		C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74E26CB472F00465BD6 /* CloudFile.swift */; };
+		C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,7 @@
 		C1BCB74A26CB310700465BD6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		C1BCB74C26CB3AED00465BD6 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		C1BCB74E26CB472F00465BD6 /* CloudFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFile.swift; sourceTree = "<group>"; };
+		C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -340,6 +342,7 @@
 				C150222B26B2502F0060232C /* NavigationButtonView.swift */,
 				C12EE89126D140F4004D5E2B /* PrettyLink.swift */,
 				C1B3F8A326B227C7007F63D2 /* PreviewLayoutComponentModifier.swift */,
+				C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */,
 				C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */,
 				C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */,
 				C164B5D126CFE201004CD3FF /* TitledText.swift */,
@@ -584,6 +587,7 @@
 				C14A46B526DAFD8C00FAAE9E /* CourseView.swift in Sources */,
 				C1A665AE26B6434C0086001C /* FirestoreService.swift in Sources */,
 				C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */,
+				C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */,
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
 				C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */,
 				C10E956926A8A242004CBEB8 /* MainView.swift in Sources */,

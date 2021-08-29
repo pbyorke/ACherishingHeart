@@ -1,6 +1,6 @@
 //
 //  CoursesInFolder.swift
-//  CoursesInFolder
+//  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/28/21.
 //
@@ -23,14 +23,13 @@ struct CoursesInFolderView: View {
                     PrettyLink(image: "plus", destination: AddCoursesView(folder: $folder)) { }
                 }
             }
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(courses) { course in
-                        HStack {
-                            Text("\(course.name)")
-                        }
+            List(courses, id: \.id) { course in
+                Text("\(course.name)")
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Swipe(symbol: "minus.square.fill", color: .red) { delete(course: course) }
+                        Swipe(symbol: "arrow.down.square.fill", color: .green) { moveDown(course: course) }
+                        Swipe(symbol: "arrow.up.square.fill", color: .green) { moveUp(course: course) }
                     }
-                }
             }
         }
         .padding(20)
@@ -45,6 +44,18 @@ struct CoursesInFolderView: View {
                 }
             } catch { }
         }
+    }
+    
+    private func delete(course: Course) {
+        print("* * *  delete")
+    }
+    
+    private func  moveUp(course: Course) {
+        print("* * *  up")
+    }
+    
+    private func  moveDown(course: Course) {
+        print("* * *  down")
     }
     
 }
