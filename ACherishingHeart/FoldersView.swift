@@ -15,19 +15,24 @@ struct FoldersView: View {
     @State private var folder = Folder.new
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                ForEach(albums) { folder in
-                    HStack {
-                        PrettyLink(label: folder.name, destination: FolderView(add: false, folder: $folder)) { self.folder = folder }
-                        Spacer()
+        VStack {
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(albums) { folder in
+                        HStack {
+                            PrettyLink(label: folder.name, destination: FolderView(add: false, folder: $folder)) { self.folder = folder }
+                            Spacer()
+                        }
                     }
                 }
+                .padding(20)
             }
-            .padding(20)
+            .navigationTitle( Text("Folders") )
+            .font(.title2)
+            if MainView.NAMES {
+                Names(name: "FoldersView")
+            } // NAMES
         }
-        .navigationTitle( Text("Folders") )
-        .font(.title2)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: FolderView(add: true, folder: $folder)) {
@@ -43,7 +48,6 @@ struct FoldersView: View {
             }
         }
     }
-    
 }
 
 #if DEBUG

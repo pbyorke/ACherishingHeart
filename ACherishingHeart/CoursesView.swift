@@ -15,33 +15,38 @@ struct CoursesView: View {
     @State private var course = Course.new
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                ForEach(courses) { course in
-                    HStack {
-                        PrettyLink(label: course.name, destination: CourseView(add: false, course: $course)) { self.course = course }
-                        Spacer()
+        VStack {
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(courses) { course in
+                        HStack {
+                            PrettyLink(label: course.name, destination: CourseView(add: false, course: $course)) { self.course = course }
+                            Spacer()
+                        }
+                    }
+                }
+                .padding(20)
+            }
+            .navigationTitle( Text("Courses") )
+            .font(.title2)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: CourseView(add: true, course: $course)) {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            .padding(20)
-        }
-        .navigationTitle( Text("Courses") )
-        .font(.title2)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CourseView(add: true, course: $course)) {
-                    Image(systemName: "plus")
+            .onAppear {
+                Task.init {
+                    do {
+                        self.courses = try await storageService.listAllCourses()
+                    }
                 }
             }
         }
-        .onAppear {
-            Task.init {
-                do {
-                    self.courses = try await storageService.listAllCourses()
-                }
-            }
-        }
+        if MainView.NAMES {
+            Names(name: "CoursesView")
+        } // NAMES
     }
     
 }

@@ -16,34 +16,39 @@ struct CourseView: View {
     @Binding var course: Course
     
     var body: some View {
-        VStack(spacing: 16) {
-            InputTextFieldView(
-                text: $course.name,
-                placeholder: "Name",
-                keyboardType: .default,
-                sfSymbol: nil
-            )
-            InputTextFieldView(
-                text: $course.description,
-                placeholder: "Description",
-                keyboardType: .default,
-                sfSymbol: nil
-            )
-            Spacer()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: update) {
-                    if add {
-                        Image(systemName: "plus")
-                    } else {
-                        Image(systemName: "square.and.arrow.down")
+        VStack {
+            VStack(spacing: 16) {
+                InputTextFieldView(
+                    text: $course.name,
+                    placeholder: "Name",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                InputTextFieldView(
+                    text: $course.description,
+                    placeholder: "Description",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                Spacer()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: update) {
+                        if add {
+                            Image(systemName: "plus")
+                        } else {
+                            Image(systemName: "square.and.arrow.down")
+                        }
                     }
                 }
             }
+            .padding(.horizontal, 15)
+            .navigationTitle("Course")
+            if MainView.NAMES {
+                Names(name: "CourseView")
+            } // NAMES
         }
-        .padding(.horizontal, 15)
-        .navigationTitle("Course")
     }
     
     private func update() {

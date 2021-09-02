@@ -10,6 +10,7 @@ import SwiftUI
 struct FinanceView: View {
     
     var body: some View {
+        VStack {
         ScrollView {
             VStack(spacing: 10) {
                 HStack {
@@ -21,6 +22,10 @@ struct FinanceView: View {
         }
         .navigationTitle( Text("Finance Administrator") )
         .font(.title2)
+        }
+        if MainView.NAMES {
+            Names(name: "FinanceView")
+        } // NAMES
     }
 }
 

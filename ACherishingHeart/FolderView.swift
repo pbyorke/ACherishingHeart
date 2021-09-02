@@ -16,16 +16,21 @@ struct FolderView: View {
     @Binding var folder: Folder
     
     var body: some View {
-        VStack(spacing: 16) {
-            InputTextFieldView(
-                text: $folder.name,
-                placeholder: "Name",
-                keyboardType: .default,
-                sfSymbol: nil
-            )
-            ItemsInFolderView(folder: $folder)
-            CoursesInFolderView(folder: $folder)
-            Spacer()
+        VStack {
+            VStack(spacing: 16) {
+                InputTextFieldView(
+                    text: $folder.name,
+                    placeholder: "Name",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
+                ItemsInFolderView(folder: $folder)
+                CoursesInFolderView(folder: $folder)
+                Spacer()
+                if MainView.NAMES {
+                    Names(name: "FolderView")
+                } // NAMES
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

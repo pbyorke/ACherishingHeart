@@ -9,7 +9,12 @@ import SwiftUI
 
 struct PaymentsView: View {
     var body: some View {
-        Text("Payments")
+        VStack {
+            Text("Payments")
+        }
+        if MainView.NAMES {
+            Names(name: "PaymentsView")
+        } // NAMES
     }
 }
 

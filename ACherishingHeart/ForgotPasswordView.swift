@@ -12,19 +12,24 @@ struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack(spacing: 16) {
-            InputTextFieldView(text: .constant(""),
-                               placeholder: "Email",
-                               keyboardType: .emailAddress,
-                               sfSymbol: "envelope")
-            ButtonView(title: "Send Password Reset") {
-                forgotPassword()
-                presentationMode.wrappedValue.dismiss()
+        VStack {
+            VStack(spacing: 16) {
+                InputTextFieldView(text: .constant(""),
+                                   placeholder: "Email",
+                                   keyboardType: .emailAddress,
+                                   sfSymbol: "envelope")
+                ButtonView(title: "Send Password Reset") {
+                    forgotPassword()
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
         .padding(.horizontal, 16)
         .navigationTitle("Reset Password")
         .navigationBarHidden(false)
+        if MainView.NAMES {
+            Names(name: "ForgotPasswordView")
+        } // NAMES
     }
     
     private func forgotPassword() {

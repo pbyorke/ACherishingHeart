@@ -12,7 +12,12 @@ struct AddItemsView: View {
     @Binding var folder: Folder
     
     var body: some View {
-        Text("Add Items")
+        VStack {
+            Text("Add Items")
+        }
+        if MainView.NAMES {
+            Names(name: "AddItemsView")
+        } // NAMES
     }
 }
 

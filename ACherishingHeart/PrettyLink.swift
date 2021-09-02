@@ -35,7 +35,6 @@ struct PrettyLink<Target: View>: View {
             .simultaneousGesture(TapGesture().onEnded {
                 action()
             })
-//            Spacer()
         }
     }
 }

@@ -16,6 +16,7 @@ struct ItemView: View {
     @Binding var item: Item
     
     var body: some View {
+        VStack {
             VStack(spacing: 16) {
                 InputTextFieldView(
                     text: $item.name,
@@ -67,19 +68,23 @@ struct ItemView: View {
                 }
                 Spacer()
             }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: update) {
-                    if add {
-                        Image(systemName: "plus")
-                    } else {
-                        Image(systemName: "square.and.arrow.down")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: update) {
+                        if add {
+                            Image(systemName: "plus")
+                        } else {
+                            Image(systemName: "square.and.arrow.down")
+                        }
                     }
                 }
             }
+            .padding(.horizontal, 15)
+            .navigationTitle("Item")
+            if MainView.NAMES {
+                Names(name: "ItemView")
+            } // NAMES
         }
-        .padding(.horizontal, 15)
-        .navigationTitle("Item")
     }
     
     private func update() {

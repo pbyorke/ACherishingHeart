@@ -12,7 +12,7 @@ struct MainPictureView: View {
         VStack {
             HStack(alignment: .top) {
                 VStack {
-                    Image("launchimage")
+                    Image("launchImage")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: UIScreen.main.bounds.width * 0.75,

@@ -59,6 +59,9 @@ struct SignUpView: View {
         .padding(.horizontal, 15)
         .navigationTitle("Sign Up")
         .navigationBarHidden(false)
+        if MainView.NAMES {
+            Names(name: "SignUpView")
+        } // NAMES
     }
     
     private func signUp() {

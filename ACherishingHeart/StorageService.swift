@@ -4,6 +4,15 @@
 //
 //  Created by Peter Yorke on 8/16/21.
 //
+// Download files with Cloud Storage on iOS
+// https://firebase.google.com/docs/storage/ios/download-files
+//
+// Upload files with Cloud Storage on iOS
+// https://firebase.google.com/docs/storage/ios/upload-files
+//
+// Firebase Storage
+// https://designcode.io/swiftui-advanced-handbook-firebase-storage
+//
 
 import Foundation
 import FirebaseStorage
@@ -153,5 +162,20 @@ final class StorageService: StorageServiceProtocol {
             return courses
         } catch { throw error }
     }
-
+    
+    func getFile() {
+//        // Create a reference to the file you want to download
+//        let islandRef = storageRef.child("images/island.jpg")
+//        
+//        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+//        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//            if let error = error {
+//                // Uh-oh, an error occurred!
+//            } else {
+//                // Data for "images/island.jpg" is returned
+//                let image = UIImage(data: data!)
+//            }
+//        }
+    }
+    
 }
