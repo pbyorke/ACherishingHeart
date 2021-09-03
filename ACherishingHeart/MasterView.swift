@@ -12,30 +12,22 @@ struct MasterView: View {
     @State private var person = Person.new
     
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    HStack {
-                        PrettyLink(label: "Media", destination: MediaView()) { }
-                        Spacer()
-                    }
-                    HStack {
-                        PrettyLink(label: "People", destination: PersonsView(masterView: true)) { }
-                        Spacer()
-                    }
-                    HStack {
-                        PrettyLink(label: "Finance", destination: FinanceView()) { }
-                        Spacer()
-                    }
-                }
-                .padding(20)
+        ScrollView {
+            VStack(spacing: 10) {
+                PrettyLink(label: "Media", spacer: true, destination: MediaView()) { }
+                PrettyLink(label: "People", spacer: true, destination: PersonsView(masterView: true)) { }
+                PrettyLink(label: "Finance", spacer: true, destination: FinanceView()) { }
             }
-            .navigationTitle("Master")
-            .font(.title2)
-            if MainView.NAMES {
-                Names(name: "MasterView")
-            } // NAMES
+            .padding(20)
         }
+        .navigationTitle("Master")
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(20)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 40)
+        if MainView.NAMES {
+            Names(name: "MasterView")
+        } // NAMES
     }
 }
 

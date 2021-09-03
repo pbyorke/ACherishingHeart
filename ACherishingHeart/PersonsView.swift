@@ -18,16 +18,19 @@ struct PersonsView: View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(authenticator.persons) { person in
-                    HStack {
-                        PrettyLink(label: "\(person.firstName) \(person.lastName)", destination: PersonView(person: $person, masterView: masterView)) { self.person = person }
-                        Spacer()
-                    }
+                    PrettyLink(label: "\(person.firstName) \(person.lastName)", spacer: true, destination: PersonView(person: $person, masterView: masterView)) { self.person = person }
                 }
             }
             .padding(20)
         }
         .navigationTitle(Text("Persons"))
-        .font(.title2)
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(20)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 40)
+        if MainView.NAMES {
+            Names(name: "PersonsView")
+        } // NAMES
     }
 }
 

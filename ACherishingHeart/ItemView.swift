@@ -26,12 +26,12 @@ struct ItemView: View {
                 )
                 HStack {
                     InputTextFieldView(
-                        text: $item.bucket,
-                        placeholder: "Bucket",
+                        text: $item.url,
+                        placeholder: "URL",
                         keyboardType: .default,
                         sfSymbol: nil
                     )
-                    NavigationLink(destination: CloudFilesView(bucket: $item.bucket)) {
+                    NavigationLink(destination: CloudFilesView(url: $item.url)) {
                         Image(systemName: "arrow.right")
                     }
                     .padding(.leading, 10)

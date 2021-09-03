@@ -10,30 +10,22 @@ import SwiftUI
 struct MediaView: View {
     
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    HStack {
-                        PrettyLink(label: "Folders", destination: FoldersView()) { }
-                        Spacer()
-                    }
-                    HStack {
-                        PrettyLink(label: "Items", destination: ItemsView()) { }
-                        Spacer()
-                    }
-                    HStack {
-                        PrettyLink(label: "Courses", destination: CoursesView()) { }
-                        Spacer()
-                    }
-                }
-                .padding(20)
+        ScrollView {
+            VStack(spacing: 10) {
+                PrettyLink(label: "Folders", spacer: true, destination: FoldersView()) { }
+                PrettyLink(label: "Items", spacer: true, destination: ItemsView()) { }
+                PrettyLink(label: "Courses", spacer: true, destination: CoursesView()) { }
             }
-            .navigationTitle( Text("Media Administrator") )
-            .font(.title2)
-            if MainView.NAMES {
-                Names(name: "MediaView")
-            } // NAMES
+            .padding(20)
         }
+        .navigationTitle( Text("Media Administrator") )
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(20)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 40)
+        if MainView.NAMES {
+            Names(name: "MediaView")
+        } // NAMES
     }
 }
 

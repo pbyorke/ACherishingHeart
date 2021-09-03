@@ -26,17 +26,17 @@ enum ItemType: Int, Codable, CaseIterable {
 struct Item: Identifiable, Codable {
     var id:     String { didSet { id = id.trim() } }
     var name:   String { didSet { name = name.trim() } }
-    var bucket: String { didSet { bucket = bucket.trim() } }
+    var url:    String { didSet { url = url.trim() } }
     var type:   ItemType
 }
 
 extension Item {
     static var new: Item {
         Item(
-            id: UUID().uuidString,
-            name: "",
-            bucket: "",
-            type: .unknown
+            id:     UUID().uuidString,
+            name:   "",
+            url:    "",
+            type:   .unknown
         )
     }
 }

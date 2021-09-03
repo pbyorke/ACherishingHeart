@@ -15,6 +15,7 @@ struct PrettyLink<Target: View>: View {
     
     var label: String? = ""
     var image: String? = ""
+    var spacer: Bool? = false
     var destination: Target
     var action: Handler
     
@@ -35,6 +36,11 @@ struct PrettyLink<Target: View>: View {
             .simultaneousGesture(TapGesture().onEnded {
                 action()
             })
+            if let spacer = spacer {
+                if spacer {
+                    Spacer()
+                }
+            }
         }
     }
 }

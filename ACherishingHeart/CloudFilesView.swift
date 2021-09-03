@@ -14,7 +14,7 @@ struct CloudFilesView: View {
 
     @State private var files = [CloudFile]()
     @State private var file = CloudFile.new
-    @Binding var bucket: String
+    @Binding var url: String
     
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct CloudFilesView: View {
                         ForEach(files) { file in
                             HStack {
                                 Button(action: {
-                                    bucket = file.bucket
+                                    url = file.description
                                     presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Text("\(file.name)")
@@ -56,9 +56,9 @@ struct CloudFilesView: View {
 
 #if DEBUG
 struct CloudFilesView_Previews: PreviewProvider {
-    @State static var bucket = ""
+    @State static var url = ""
     static var previews: some View {
-        CloudFilesView(bucket: $bucket)
+        CloudFilesView(url: $url)
     }
 }
 #endif
