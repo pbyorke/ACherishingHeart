@@ -23,7 +23,6 @@
 		C10E95A826AF55CD004CBEB8 /* MainMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95A726AF55CD004CBEB8 /* MainMenuBarView.swift */; };
 		C10E95AC26AF5759004CBEB8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95AB26AF5759004CBEB8 /* AccountView.swift */; };
 		C10E95AF26AF59AB004CBEB8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E95AE26AF59AB004CBEB8 /* Person.swift */; };
-		C118EA9D26D9C950001431BB /* AddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118EA9C26D9C950001431BB /* AddItemsView.swift */; };
 		C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABA26CC89CB002A7880 /* Item.swift */; };
 		C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABC26CC89DA002A7880 /* Folder.swift */; };
 		C11D4AC026CCA8A5002A7880 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */; };
@@ -74,6 +73,8 @@
 		C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74A26CB310700465BD6 /* StorageService.swift */; };
 		C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74C26CB3AED00465BD6 /* MediaView.swift */; };
 		C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BCB74E26CB472F00465BD6 /* CloudFile.swift */; };
+		C1BD7F4D26E1C63700B9A414 /* UserFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD7F4C26E1C63700B9A414 /* UserFoldersView.swift */; };
+		C1BD7F4F26E1C98C00B9A414 /* AddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */; };
 		C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
 		C1F5517A26DFC32200A39A10 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5517926DFC32200A39A10 /* Names.swift */; };
@@ -116,7 +117,6 @@
 		C10E95A726AF55CD004CBEB8 /* MainMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuBarView.swift; sourceTree = "<group>"; };
 		C10E95AB26AF5759004CBEB8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C10E95AE26AF59AB004CBEB8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		C118EA9C26D9C950001431BB /* AddItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsView.swift; sourceTree = "<group>"; };
 		C11D4ABA26CC89CB002A7880 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C11D4ABC26CC89DA002A7880 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
@@ -162,6 +162,8 @@
 		C1BCB74A26CB310700465BD6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		C1BCB74C26CB3AED00465BD6 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		C1BCB74E26CB472F00465BD6 /* CloudFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFile.swift; sourceTree = "<group>"; };
+		C1BD7F4C26E1C63700B9A414 /* UserFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoldersView.swift; sourceTree = "<group>"; };
+		C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemsView.swift; sourceTree = "<group>"; };
 		C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C1F5517926DFC32200A39A10 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
@@ -377,7 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */,
-				C118EA9C26D9C950001431BB /* AddItemsView.swift */,
+				C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */,
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
 				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
@@ -389,6 +391,7 @@
 				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
 				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
+				C1BD7F4C26E1C63700B9A414 /* UserFoldersView.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				C11D4AC226CCB3AD002A7880 /* FoldersView.swift in Sources */,
 				C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */,
 				C1B3F8AA26B22B75007F63D2 /* ForgotPasswordView.swift in Sources */,
+				C1BD7F4F26E1C98C00B9A414 /* AddItemsView.swift in Sources */,
 				C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */,
 				C1547C4826D86116007204CE /* String+Utils.swift in Sources */,
 				C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */,
@@ -592,6 +596,7 @@
 				C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */,
 				C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */,
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
+				C1BD7F4D26E1C63700B9A414 /* UserFoldersView.swift in Sources */,
 				C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */,
 				C10E956926A8A242004CBEB8 /* MainView.swift in Sources */,
 				C1F5517A26DFC32200A39A10 /* Names.swift in Sources */,
@@ -607,7 +612,6 @@
 				C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
 				C161A02D26BB874D005B077A /* PersonView.swift in Sources */,
-				C118EA9D26D9C950001431BB /* AddItemsView.swift in Sources */,
 				C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */,
 				C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */,
 				C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */,

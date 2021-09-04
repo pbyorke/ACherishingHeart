@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MediaView: View {
     
+    @State var selectedItem = Item.new
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
                 PrettyLink(label: "Folders", spacer: true, destination: FoldersView()) { }
-                PrettyLink(label: "Items", spacer: true, destination: ItemsView()) { }
+                PrettyLink(label: "Items", spacer: true, destination: ItemsView(selectedItem: $selectedItem)) { }
                 PrettyLink(label: "Courses", spacer: true, destination: CoursesView()) { }
             }
             .padding(20)

@@ -11,15 +11,36 @@ struct ItemsView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
     
+    @Environment(\.presentationMode) var presentationMode
     @State private var items = [Item]()
     @State private var item = Item.new
+    
+    var selecting = false
+    @Binding var selectedItem: Item
     
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(items) { item in
                     HStack {
-                        PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
+                        if selecting {
+                            Button(item.name) {
+                                
+                                
+                                
+                                
+                                // figure out how to add it to list
+                                selectedItem = item
+                                
+                                
+                                
+                                
+                                
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } else {
+                            PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
+                        }
                         Spacer()
                         Text("\(item.type.title)")
                     }
@@ -34,8 +55,10 @@ struct ItemsView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: ItemView(add: true, item: $item)) {
-                    Image(systemName: "plus")
+                if !selecting {
+                    NavigationLink(destination: ItemView(add: true, item: $item)) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }
@@ -54,8 +77,9 @@ struct ItemsView: View {
 
 #if DEBUG
 struct ItemsView_Previews: PreviewProvider {
+    @State static var selectedItem = Item.new
     static var previews: some View {
-        ItemsView()
+        ItemsView(selectedItem: $selectedItem)
     }
 }
 #endif

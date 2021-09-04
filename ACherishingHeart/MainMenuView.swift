@@ -12,71 +12,41 @@ struct MainMenuView: View {
     @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(spacing: 10) {
-                    HStack {
-                        PrettyLink(label: "Music", destination: Text("Music")) { }
-                        Spacer()
-                    }
-                    if authenticator.isMaster {
-                        HStack {
-                            PrettyLink(label: "Master", destination: MasterView()) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isMedia {
-                        HStack {
-                            PrettyLink(label: "Media", destination: MediaView()) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isAdmin {
-                        HStack {
-                            PrettyLink(label: "Admin", destination: PersonsView(masterView: false)) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isFinance {
-                        HStack {
-                            PrettyLink(label: "Finance", destination: FinanceView()) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isJoyCoach {
-                        HStack {
-                            PrettyLink(label: "Joy Coach", destination: Text("Joy Coach")) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isJCTeacher {
-                        HStack {
-                            PrettyLink(label: "Joy Coach Teacher", destination: Text("Joy Coach Teacher")) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isJCStudent {
-                        HStack {
-                            PrettyLink(label: "Joy Coach Student", destination: Text("Joy Coach Student")) { }
-                            Spacer()
-                        }
-                    }
-                    if authenticator.isSubscriber {
-                        HStack {
-                            PrettyLink(label: "Subscriber", destination: Text("Subscriber")) { }
-                            Spacer()
-                        }
-                    }
+        ScrollView {
+            VStack(spacing: 10) {
+                PrettyLink(label: "Music", spacer: true, destination: Text("Music")) { }
+                if authenticator.isMaster {
+                    PrettyLink(label: "Master", spacer: true, destination: MasterView()) { }
                 }
-                .padding(20)
+                if authenticator.isMedia {
+                    PrettyLink(label: "Media", spacer: true, destination: MediaView()) { }
+                }
+                if authenticator.isAdmin {
+                    PrettyLink(label: "Admin", spacer: true, destination: PersonsView(masterView: false)) { }
+                }
+                if authenticator.isFinance {
+                    PrettyLink(label: "Finance", spacer: true, destination: FinanceView()) { }
+                }
+                if authenticator.isJoyCoach {
+                    PrettyLink(label: "Joy Coach", spacer: true, destination: Text("Joy Coach")) { }
+                }
+                if authenticator.isJCTeacher {
+                    PrettyLink(label: "Joy Coach Teacher", spacer: true, destination: Text("Joy Coach Teacher")) { }
+                }
+                if authenticator.isJCStudent {
+                    PrettyLink(label: "Joy Coach Student", spacer: true, destination: Text("Joy Coach Student")) { }
+                }
+                if authenticator.isSubscriber {
+                    PrettyLink(label: "Subscriber", spacer: true, destination: Text("Subscriber")) { }
+                }
             }
+            .padding(20)
         }
         .background(Color.gray.opacity(0.2))
         .cornerRadius(20)
         .padding(.horizontal, 20)
         .padding(.bottom, 40)
     }
-    
 }
 
 

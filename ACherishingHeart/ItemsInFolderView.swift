@@ -13,6 +13,7 @@ struct ItemsInFolderView: View {
 
     @Binding var folder: Folder
     @State private var items = [Item]()
+    @State private var selectedItem = Item.new
 
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct ItemsInFolderView: View {
                 Text("Items in this Folder").font(.title)
                 HStack {
                     Spacer()
-                    PrettyLink(image: "plus", destination: AddItemsView(folder: $folder)) { }
+                    PrettyLink(image: "plus", destination: ItemsView(selecting: true, selectedItem: $selectedItem)) { }
                 }
             }
             List(items, id: \.id) { item in
