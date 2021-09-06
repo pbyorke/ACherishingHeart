@@ -15,7 +15,7 @@ struct MediaView: View {
         ScrollView {
             VStack(spacing: 10) {
                 PrettyLink(label: "Folders", spacer: true, destination: FoldersView()) { }
-                PrettyLink(label: "Items", spacer: true, destination: ItemsView(selectedItem: $selectedItem)) { }
+                PrettyLink(label: "Items", spacer: true, destination: ItemsView()) { }
                 PrettyLink(label: "Courses", spacer: true, destination: CoursesView()) { }
             }
             .padding(20)

@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct ItemsView: View {
-    
-    var storageService: StorageServiceProtocol = StorageService.shared
-    
+
     @Environment(\.presentationMode) var presentationMode
-    @State private var items = [Item]()
+    @EnvironmentObject var itemsInFolder: ItemsInFolder
+    
+    @State private var allItems = [Item]()
     @State private var item = Item.new
-    
     var selecting = false
-    @Binding var selectedItem: Item
-    
+    var storageService: StorageServiceProtocol = StorageService.shared
+
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                ForEach(items) { item in
+                ForEach(allItems) { item in
                     HStack {
                         if selecting {
                             Button(item.name) {
-                                
-                                
-                                
-                                
-                                // figure out how to add it to list
-                                selectedItem = item
-                                
-                                
-                                
-                                
-                                
+                                itemsInFolder.append(item)
                                 presentationMode.wrappedValue.dismiss()
                             }
                         } else {
-                            PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
+                            HStack {
+                                PrettyLink(label: item.name, destination: ItemView(item: $item)) { self.item = item }
+                                Spacer()
+                                Text("\(item.type.title)")
+                            }
                         }
                         Spacer()
-                        Text("\(item.type.title)")
                     }
                 }
+                Spacer()
+                Text("\(item.type.title)")
             }
-            .padding(20)
+        .padding(20)
         }
         .navigationTitle( Text("Items") )
         .background(Color.gray.opacity(0.2))
@@ -55,17 +49,15 @@ struct ItemsView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if !selecting {
-                    NavigationLink(destination: ItemView(add: true, item: $item)) {
-                        Image(systemName: "plus")
-                    }
+                NavigationLink(destination: Text("Link")) {
+                    Image(systemName: "plus")
                 }
             }
         }
         .onAppear {
             Task.init {
                 do {
-                    self.items = try await storageService.listAllItems()
+                    self.allItems = try await storageService.listAllItems()
                 }
             }
         }
@@ -77,9 +69,8 @@ struct ItemsView: View {
 
 #if DEBUG
 struct ItemsView_Previews: PreviewProvider {
-    @State static var selectedItem = Item.new
     static var previews: some View {
-        ItemsView(selectedItem: $selectedItem)
+        ItemsView()
     }
 }
 #endif

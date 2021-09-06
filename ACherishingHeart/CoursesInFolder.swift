@@ -11,16 +11,19 @@ struct CoursesInFolderView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
 
-    @Binding var folder: Folder
-    @State private var courses = [Course]()
+    @Binding var courses: [Course]
+    @State private var selectedCourse = Course.new
     
     var body: some View {
         VStack {
+            if MainView.NAMES {
+                Text("CoursesInFolderView")
+            } // NAMES
             ZStack {
                 Text("Courses in this Folder").font(.title)
                 HStack {
                     Spacer()
-                    PrettyLink(image: "plus", destination: AddCoursesView(folder: $folder)) { }
+//                    PrettyLink(image: "plus", destination: CoursesView(selecting: true, selectedCourse: $selectedCourse)) { }
                 }
             }
             List(courses, id: \.id) { course in
@@ -36,14 +39,6 @@ struct CoursesInFolderView: View {
         .background(Color.gray.opacity(0.2))
         .cornerRadius(20)
         .font(.body)
-        .task {
-            do {
-                let array = try await storageService.coursesInFolder(folderId: folder.id)
-                DispatchQueue.main.async {
-                    self.courses = array
-                }
-            } catch { }
-        }
     }
     
     private func delete(course: Course) {
@@ -62,9 +57,9 @@ struct CoursesInFolderView: View {
 
 #if DEBUG
 struct CoursesInFolderView_Previews: PreviewProvider {
-    @State static var folder = Folder.new
+    @State static var courses = [Course]()
     static var previews: some View {
-        CoursesInFolderView(folder: $folder)
+        CoursesInFolderView(courses: $courses)
     }
 }
 #endif

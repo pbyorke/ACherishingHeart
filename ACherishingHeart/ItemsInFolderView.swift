@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct ItemsInFolderView: View {
-    
-    var storageService: StorageServiceProtocol = StorageService.shared
 
-    @Binding var folder: Folder
-    @State private var items = [Item]()
-    @State private var selectedItem = Item.new
+    @EnvironmentObject var itemsInFolder: ItemsInFolder
 
     var body: some View {
         VStack {
+            if MainView.NAMES {
+                Text("ItemsInFolderView").foregroundColor(.cyan)
+            } // NAMES
             ZStack {
-                Text("Items in this Folder").font(.title)
+                Text("Items in this Folder")
+                    .font(.title)
                 HStack {
                     Spacer()
-                    PrettyLink(image: "plus", destination: ItemsView(selecting: true, selectedItem: $selectedItem)) { }
+                    PrettyLink(image: "plus", destination: ItemsView(selecting: true)) { }
                 }
             }
-            List(items, id: \.id) { item in
+            List(itemsInFolder.items, id: \.id) { item in
                 Text("\(item.name)")
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Swipe(symbol: "minus.square.fill", color: .red) { delete(item: item) }
@@ -37,14 +37,6 @@ struct ItemsInFolderView: View {
         .background(Color.gray.opacity(0.2))
         .cornerRadius(20)
         .font(.body)
-        .task {
-            do {
-                let array = try await storageService.itemsInFolder(folderId: folder.id)
-                DispatchQueue.main.async {
-                    self.items = array
-                }
-            } catch { }
-        }
     }
     
     private func delete(item: Item) {
@@ -63,9 +55,8 @@ struct ItemsInFolderView: View {
 
 #if DEBUG
 struct ItemsInFolderView_Previews: PreviewProvider {
-    @State static var folder = Folder.new
     static var previews: some View {
-        ItemsInFolderView(folder: $folder)
+        ItemsInFolderView()
     }
 }
 #endif

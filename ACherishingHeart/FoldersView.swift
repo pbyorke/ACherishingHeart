@@ -10,6 +10,7 @@ import SwiftUI
 struct FoldersView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
+    @EnvironmentObject var itemsInFolder: ItemsInFolder
 
     @State private var albums = [Folder]()
     @State private var folder = Folder.new
@@ -18,7 +19,10 @@ struct FoldersView: View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(albums) { folder in
-                    PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, folder: $folder)) { self.folder = folder }
+                    PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, folder: $folder)) {
+                        self.folder = folder
+                        itemsInFolder.setup(folder)
+                    }
                 }
             }
             .padding(20)

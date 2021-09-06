@@ -24,6 +24,7 @@ import Firebase
 struct ACherishingHeartApp: App {
 
     var authenticator = Authenticator()
+    var itemsInFolder = ItemsInFolder()
 
     init() {
         configure()
@@ -33,6 +34,7 @@ struct ACherishingHeartApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(authenticator)
+                .environmentObject(itemsInFolder)
         }
     }
     

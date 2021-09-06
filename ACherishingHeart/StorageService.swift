@@ -33,6 +33,7 @@ protocol StorageServiceProtocol {
     func updateCourse(_ course: Course) throws
     func createFolder(_ folder: Folder) async throws
     func updateFolder(_ folder: Folder) throws
+    func rewriteItemsForFolder(_ folder: Folder, _ items: [Item]) async throws
     func itemsInFolder(folderId: String) async throws -> [Item]
     func coursesInFolder(folderId: String) async throws -> [Course]
 }
@@ -135,6 +136,10 @@ final class StorageService: StorageServiceProtocol {
         } catch {
             throw error
         }
+    }
+    
+    func rewriteItemsForFolder(_ folder: Folder, _ items: [Item]) async throws {
+        print("* * *  folder: \(folder) items \(items)")
     }
     
     func itemsInFolder(folderId: String) async throws -> [Item] {

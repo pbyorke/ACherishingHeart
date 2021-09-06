@@ -10,11 +10,12 @@ import SwiftUI
 struct FolderView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var itemsInFolder: ItemsInFolder
     var storageService: StorageServiceProtocol = StorageService.shared
 
     var add = false
     @Binding var folder: Folder
-    
+
     var body: some View {
         VStack {
             VStack(spacing: 16) {
@@ -24,8 +25,7 @@ struct FolderView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
-                ItemsInFolderView(folder: $folder)
-                CoursesInFolderView(folder: $folder)
+                ItemsInFolderView()
                 Spacer()
                 if MainView.NAMES {
                     Names(name: "FolderView")
@@ -52,6 +52,7 @@ struct FolderView: View {
             do {
                 if add {
                     try await storageService.createFolder(folder)
+//                    try await storageService.rewriteItemsForFolder(folder, items.items)
                 } else {
                     try storageService.updateFolder(folder)
                 }
