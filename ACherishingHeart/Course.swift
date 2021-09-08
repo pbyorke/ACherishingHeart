@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Course: Identifiable, Codable {
+struct Course: Identifiable, Codable, Equatable {
     var id:          String
     var name:        String { didSet { name        = name.trim() } }
     var description: String { didSet { description = description.trim() } }

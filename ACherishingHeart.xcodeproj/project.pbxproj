@@ -78,6 +78,7 @@
 		C1C0D89626E5BADA00DBE463 /* ItemsInFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */; };
 		C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
+		C1D66AAC26E6E32E00B70AB1 /* CoursesInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */; };
 		C1F5517A26DFC32200A39A10 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5517926DFC32200A39A10 /* Names.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +169,7 @@
 		C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolder.swift; sourceTree = "<group>"; };
 		C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInFolderView.swift; sourceTree = "<group>"; };
 		C1F5517926DFC32200A39A10 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				C10E95AD26AF5988004CBEB8 /* Entities */,
-				C10E959B26A8A5EC004CBEB8 /* Infrastrucutre */,
+				C10E959B26A8A5EC004CBEB8 /* Infrastructure */,
 				C1D3984126B38335006BEE2D /* Services */,
 				C10E959C26A8A8F4004CBEB8 /* Views */,
 			);
@@ -257,7 +259,7 @@
 			path = ACherishingHeartUITests;
 			sourceTree = "<group>";
 		};
-		C10E959B26A8A5EC004CBEB8 /* Infrastrucutre */ = {
+		C10E959B26A8A5EC004CBEB8 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				C10E956626A8A242004CBEB8 /* ACherishingHeartApp.swift */,
@@ -267,7 +269,7 @@
 				C10E956C26A8A242004CBEB8 /* Preview Content */,
 				C14F10BC26B9DA1800FAEB3F /* PropertyWrappers */,
 			);
-			name = Infrastrucutre;
+			name = Infrastructure;
 			sourceTree = "<group>";
 		};
 		C10E959C26A8A8F4004CBEB8 /* Views */ = {
@@ -301,6 +303,7 @@
 			children = (
 				C1BCB74E26CB472F00465BD6 /* CloudFile.swift */,
 				C16A02CA26DACDC7003D4B05 /* Course.swift */,
+				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
 				C11D4ABC26CC89DA002A7880 /* Folder.swift */,
 				C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */,
 				C1B7F26B26CE9A0B0038EFC4 /* FolderToItem.swift */,
@@ -385,7 +388,6 @@
 				C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */,
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
-				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
 				C14A46B226DAFC5100FAAE9E /* CoursesView.swift */,
 				C14A46B426DAFD8C00FAAE9E /* CourseView.swift */,
 				C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */,
@@ -395,6 +397,7 @@
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
 				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
 				C1BD7F4C26E1C63700B9A414 /* UserFoldersView.swift */,
+				C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */,
 				C1547C4826D86116007204CE /* String+Utils.swift in Sources */,
 				C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */,
+				C1D66AAC26E6E32E00B70AB1 /* CoursesInFolderView.swift in Sources */,
 				C16A02CB26DACDC7003D4B05 /* Course.swift in Sources */,
 				C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */,
 				C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */,

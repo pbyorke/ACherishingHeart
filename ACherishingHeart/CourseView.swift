@@ -12,7 +12,8 @@ struct CourseView: View {
     @Environment(\.presentationMode) var presentationMode
     var storageService: StorageServiceProtocol = StorageService.shared
 
-    var add = false
+    var add: Bool
+//    = false
     @Binding var course: Course
     
     var body: some View {

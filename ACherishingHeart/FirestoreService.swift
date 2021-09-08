@@ -84,7 +84,9 @@ protocol FirestoreServiceProtocol {
     func getAll<T: Decodable>(collection: FirestoreType, type: T.Type) async throws -> [T]
     func update<T: Encodable & Identifiable>(_ object: T, collection: FirestoreType) throws
     func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String) async throws -> [T]
+    func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String, order: String) async throws -> [T]
     func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: Int) async throws -> [T]
+    func remove<T: Encodable & Identifiable>(_ object: T, collection: FirestoreType) throws
 }
 
 final class FirestoreService: FirestoreServiceProtocol {
@@ -138,7 +140,9 @@ final class FirestoreService: FirestoreServiceProtocol {
     
     func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: String) async throws -> [T] {
         do {
-            let snapshot = try await reference(to: collection).whereField(key, isEqualTo: value).getDocuments()
+            let snapshot = try await reference(to: collection)
+                .whereField(key, isEqualTo: value)
+                .getDocuments()
             var objects = [T]()
             try snapshot.documents.forEach { document in
                 let object = try document.decode(as: type.self)
@@ -149,7 +153,30 @@ final class FirestoreService: FirestoreServiceProtocol {
             throw error
         }
     }
-    
+
+    func getAllByKey<T:Decodable>(
+        collection: FirestoreType,
+        type: T.Type,
+        key: String,
+        value: String,
+        order: String
+    ) async throws -> [T] {
+        do {
+            let snapshot = try await reference(to: collection)
+                .order(by: order)
+                .whereField(key, isEqualTo: value)
+                .getDocuments()
+            var objects = [T]()
+            try snapshot.documents.forEach { document in
+                let object = try document.decode(as: type.self)
+                objects.append(object)
+            }
+            return objects
+        } catch {
+            throw error
+        }
+    }
+
     func getAllByKey<T:Decodable>(collection: FirestoreType, type: T.Type, key: String, value: Int) async throws -> [T] {
         do {
             let snapshot = try await reference(to: collection).whereField(key, isEqualTo: value).getDocuments()
@@ -190,6 +217,11 @@ final class FirestoreService: FirestoreServiceProtocol {
         } catch {
             throw FirebaseError.namedError(error.localizedDescription)
         }
+    }
+
+    func remove<T: Encodable & Identifiable>(_ object: T, collection: FirestoreType) throws {
+        let id = "\(object.id)"
+        reference(to: collection).document(id).delete()
     }
     
 }

@@ -11,6 +11,7 @@ struct FoldersView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
     @EnvironmentObject var itemsInFolder: ItemsInFolder
+    @EnvironmentObject var coursesInFolder: CoursesInFolder
 
     @State private var albums = [Folder]()
     @State private var folder = Folder.new
@@ -22,6 +23,7 @@ struct FoldersView: View {
                     PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, folder: $folder)) {
                         self.folder = folder
                         itemsInFolder.setup(folder)
+                        coursesInFolder.setup(folder)
                     }
                 }
             }

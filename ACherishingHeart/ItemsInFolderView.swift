@@ -26,10 +26,10 @@ struct ItemsInFolderView: View {
             }
             List(itemsInFolder.items, id: \.id) { item in
                 Text("\(item.name)")
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Swipe(symbol: "minus.square.fill", color: .red) { delete(item: item) }
-                        Swipe(symbol: "arrow.down.square.fill", color: .green) { moveDown(item: item) }
-                        Swipe(symbol: "arrow.up.square.fill", color: .green) { moveUp(item: item) }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Swipe(symbol: "minus.square.fill", color: .red) { itemsInFolder.delete(item: item) }
+                        Swipe(symbol: "arrow.down.square.fill", color: .green) { itemsInFolder.down(item: item) }
+                        Swipe(symbol: "arrow.up.square.fill", color: .green) { itemsInFolder.up(item: item) }
                     }
             }
         }
@@ -37,18 +37,6 @@ struct ItemsInFolderView: View {
         .background(Color.gray.opacity(0.2))
         .cornerRadius(20)
         .font(.body)
-    }
-    
-    private func delete(item: Item) {
-        print("* * *  delete")
-    }
-    
-    private func  moveUp(item: Item) {
-        print("* * *  up")
-    }
-    
-    private func  moveDown(item: Item) {
-        print("* * *  down")
     }
     
 }

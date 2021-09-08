@@ -10,15 +10,30 @@ import SwiftUI
 struct CoursesView: View {
     
     var storageService: StorageServiceProtocol = StorageService.shared
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coursesInFolder: CoursesInFolder
     
-    @State private var courses = [Course]()
+    @State private var allCourses = [Course]()
     @State private var course = Course.new
+    var selecting = false
     
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                ForEach(courses) { course in
-                    PrettyLink(label: course.name, spacer: true, destination: CourseView(add: false, course: $course)) { self.course = course }
+                ForEach(allCourses) { course in
+                    HStack {
+                        if selecting {
+                            Button(course.name) {
+                                coursesInFolder.append(course)
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } else {
+                            HStack {
+                                PrettyLink(label: course.name, destination: CourseView(add: false, course: $course)) { self.course = course }
+                            }
+                        }
+                        Spacer()
+                    }
                 }
             }
             .padding(20)
@@ -30,15 +45,13 @@ struct CoursesView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CourseView(add: true, course: $course)) {
-                    Image(systemName: "plus")
-                }
+                PrettyLink(image: "plus", destination: CourseView(add: true, course: $course)) { self.course = Course.new }
             }
         }
         .onAppear {
             Task.init {
                 do {
-                    self.courses = try await storageService.listAllCourses()
+                    self.allCourses = try await storageService.listAllCourses()
                 }
             }
         }

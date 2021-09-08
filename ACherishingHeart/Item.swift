@@ -23,7 +23,7 @@ enum ItemType: Int, Codable, CaseIterable {
     }
 }
 
-struct Item: Identifiable, Codable {
+struct Item: Identifiable, Codable, Equatable {
     var id:     String { didSet { id = id.trim() } }
     var name:   String { didSet { name = name.trim() } }
     var url:    String { didSet { url = url.trim() } }

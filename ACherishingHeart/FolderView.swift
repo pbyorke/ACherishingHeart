@@ -11,6 +11,7 @@ struct FolderView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var itemsInFolder: ItemsInFolder
+    @EnvironmentObject var coursesInFolder: CoursesInFolder
     var storageService: StorageServiceProtocol = StorageService.shared
 
     var add = false
@@ -26,6 +27,7 @@ struct FolderView: View {
                     sfSymbol: nil
                 )
                 ItemsInFolderView()
+                CoursesInFolderView()
                 Spacer()
                 if MainView.NAMES {
                     Names(name: "FolderView")
@@ -50,9 +52,10 @@ struct FolderView: View {
     private func update() {
         Task.init {
             do {
+                try await itemsInFolder.rewrite()
+                try await coursesInFolder.rewrite()
                 if add {
                     try await storageService.createFolder(folder)
-//                    try await storageService.rewriteItemsForFolder(folder, items.items)
                 } else {
                     try storageService.updateFolder(folder)
                 }

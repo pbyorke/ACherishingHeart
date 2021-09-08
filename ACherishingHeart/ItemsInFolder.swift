@@ -42,6 +42,53 @@ class ItemsInFolder: ObservableObject {
         get { return items[index] }
         set(newValue) { items[index] = newValue }
     }
+    
+    func delete(item: Item) {
+        if let index = items.firstIndex(of: item) {
+            items.remove(at: index)
+        }
+    }
+    
+    func up(item: Item) {
+        if let index = items.firstIndex(of: item) {
+            if index > 0 {
+                items.remove(at: index)
+                items.insert(item, at: index - 1)
+            }
+        }
+    }
+    
+    func down(item: Item) {
+        if let index = items.firstIndex(of: item) {
+            if index < items.count - 1 {
+                items.remove(at: index)
+                items.insert(item, at: index + 1)
+            }
+        }
+    }
+    
+    func rewrite() async throws {
+        do {
+            if let folder = folder {
+                let foldersToItems = try await storageService.listAllFoldersToItems(folderId: "\(folder.id)")
+                for folderToItem in foldersToItems {
+                    try storageService.removeFolderToItem(folderToItem)
+                }
+                var index = 0
+                for item in items {
+                    try await storageService.createFolderToItem(FolderToItem(
+                        id: "",
+                        folderId: folder.id,
+                        folderName: folder.name,
+                        itemId: item.id,
+                        itemName: item.name,
+                        sequence: index
+                    ))
+                    index += 1
+                }
+            }
+        } catch { throw error }
+    }
 
     func dump() {
         print("* * *  Items.dump()")

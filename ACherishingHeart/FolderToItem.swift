@@ -8,10 +8,12 @@
 import Foundation
 
 struct FolderToItem: Identifiable, Codable {
-    var id:       String
-    var folderId: String
-    var itemId:   String
-    var sequence: Int
+    var id:         String
+    var folderId:   String
+    var folderName: String
+    var itemId:     String
+    var itemName:   String
+    var sequence:   Int
 }
 
 extension FolderToItem {
@@ -19,7 +21,9 @@ extension FolderToItem {
         FolderToItem(
         id:         UUID().uuidString,
         folderId:   UUID().uuidString,
+        folderName: "",
         itemId:     UUID().uuidString,
+        itemName:   "",
         sequence:   0
         )
     }

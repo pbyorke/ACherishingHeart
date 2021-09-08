@@ -12,7 +12,8 @@ struct ItemView: View {
     @Environment(\.presentationMode) var presentationMode
     var storageService: StorageServiceProtocol = StorageService.shared
 
-    var add = false
+    var add: Bool
+//    = false
     @Binding var item: Item
     
     var body: some View {

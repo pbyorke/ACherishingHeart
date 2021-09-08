@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ItemsView: View {
 
+    var storageService: StorageServiceProtocol = StorageService.shared
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var itemsInFolder: ItemsInFolder
     
     @State private var allItems = [Item]()
     @State private var item = Item.new
     var selecting = false
-    var storageService: StorageServiceProtocol = StorageService.shared
 
     var body: some View {
         ScrollView {
@@ -29,7 +29,7 @@ struct ItemsView: View {
                             }
                         } else {
                             HStack {
-                                PrettyLink(label: item.name, destination: ItemView(item: $item)) { self.item = item }
+                                PrettyLink(label: item.name, destination: ItemView(add: false, item: $item)) { self.item = item }
                                 Spacer()
                                 Text("\(item.type.title)")
                             }
@@ -37,8 +37,6 @@ struct ItemsView: View {
                         Spacer()
                     }
                 }
-                Spacer()
-                Text("\(item.type.title)")
             }
         .padding(20)
         }
@@ -49,9 +47,7 @@ struct ItemsView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: Text("Link")) {
-                    Image(systemName: "plus")
-                }
+                PrettyLink(image: "plus", destination: ItemView(add: true, item: $item)) { self.item = Item.new }
             }
         }
         .onAppear {

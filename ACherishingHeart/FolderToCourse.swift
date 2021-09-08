@@ -10,7 +10,10 @@ import Foundation
 struct FolderToCourse: Identifiable, Codable {
     var id:         String
     var folderId:   String
+    var folderName: String
     var courseId:   String
+    var courseName: String
+    var sequence:   Int
 }
 
 extension FolderToCourse {
@@ -18,7 +21,10 @@ extension FolderToCourse {
         FolderToCourse(
             id:         UUID().uuidString,
             folderId:   UUID().uuidString,
-            courseId:   UUID().uuidString
+            folderName: "",
+            courseId:   UUID().uuidString,
+            courseName: "",
+            sequence:   0
         )
     }
 }
