@@ -1,5 +1,5 @@
 //
-//  FolderToCourse.swift
+//  LinkCourseToFolderl.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/28/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FolderToCourse: Identifiable, Codable {
+struct LinkCourseToFolder: Identifiable, Codable {
     var id:         String
     var folderId:   String
     var folderName: String
@@ -16,9 +16,9 @@ struct FolderToCourse: Identifiable, Codable {
     var sequence:   Int
 }
 
-extension FolderToCourse {
-    static var new: FolderToCourse {
-        FolderToCourse(
+extension LinkCourseToFolder {
+    static var new: LinkCourseToFolder {
+        LinkCourseToFolder(
             id:         UUID().uuidString,
             folderId:   UUID().uuidString,
             folderName: "",

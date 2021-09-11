@@ -70,13 +70,13 @@ class CoursesInFolder: ObservableObject {
     func rewrite() async throws {
         do {
             if let folder = folder {
-                let foldersToCourses = try await storageService.listAllFoldersToCourses(folderId: "\(folder.id)")
-                for folderToCourse in foldersToCourses {
-                    try storageService.removeFolderToCourse(folderToCourse)
+                let coursesInFolder = try await storageService.listAllCoursesInFolder(folderId: "\(folder.id)")
+                for courseInFolder in coursesInFolder {
+                    try storageService.removeFolderToCourse(courseInFolder)
                 }
                 var index = 0
                 for course in courses {
-                    try await storageService.createFolderToCourse(FolderToCourse(
+                    try await storageService.createCourseToFolderLink(LinkCourseToFolder(
                         id: "",
                         folderId: folder.id,
                         folderName: folder.name,

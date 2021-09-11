@@ -69,7 +69,7 @@ import FirebaseFirestore
 enum FirestoreType: String {
     case courses
     case folders
-    case foldersToCourses
+    case folderToCourseLinks
     case foldersToItems
     case items
     case payments

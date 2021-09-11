@@ -38,7 +38,7 @@
 		C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */; };
 		C14A46A426DAE89500FAAE9E /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A326DAE89500FAAE9E /* Payment.swift */; };
 		C14A46A626DAEF2600FAAE9E /* PersonToCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A526DAEF2600FAAE9E /* PersonToCourse.swift */; };
-		C14A46A826DAF01200FAAE9E /* FolderToCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */; };
+		C14A46A826DAF01200FAAE9E /* LinkCourseToFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */; };
 		C14A46AB26DAF23600FAAE9E /* FinanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AA26DAF23600FAAE9E /* FinanceView.swift */; };
 		C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */; };
 		C14A46AF26DAF93D00FAAE9E /* CoursesInFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */; };
@@ -129,7 +129,7 @@
 		C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolderView.swift; sourceTree = "<group>"; };
 		C14A46A326DAE89500FAAE9E /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		C14A46A526DAEF2600FAAE9E /* PersonToCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonToCourse.swift; sourceTree = "<group>"; };
-		C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderToCourse.swift; sourceTree = "<group>"; };
+		C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCourseToFolder.swift; sourceTree = "<group>"; };
 		C14A46AA26DAF23600FAAE9E /* FinanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceView.swift; sourceTree = "<group>"; };
 		C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
 		C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInFolder.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				C16A02CA26DACDC7003D4B05 /* Course.swift */,
 				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
 				C11D4ABC26CC89DA002A7880 /* Folder.swift */,
-				C14A46A726DAF01200FAAE9E /* FolderToCourse.swift */,
+				C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */,
 				C1B7F26B26CE9A0B0038EFC4 /* FolderToItem.swift */,
 				C11D4ABA26CC89CB002A7880 /* Item.swift */,
 				C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */,
@@ -630,7 +630,7 @@
 				C1B7F26C26CE9A0B0038EFC4 /* FolderToItem.swift in Sources */,
 				C14A46A426DAE89500FAAE9E /* Payment.swift in Sources */,
 				C1B3F89F26B226A2007F63D2 /* SignInView.swift in Sources */,
-				C14A46A826DAF01200FAAE9E /* FolderToCourse.swift in Sources */,
+				C14A46A826DAF01200FAAE9E /* LinkCourseToFolder.swift in Sources */,
 				C1BCB74F26CB472F00465BD6 /* CloudFile.swift in Sources */,
 				C14A46B326DAFC5100FAAE9E /* CoursesView.swift in Sources */,
 				C1A5223626B8C99600370C19 /* DebugView.swift in Sources */,
