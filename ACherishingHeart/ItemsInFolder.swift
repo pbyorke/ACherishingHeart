@@ -70,13 +70,13 @@ class ItemsInFolder: ObservableObject {
     func rewrite() async throws {
         do {
             if let folder = folder {
-                let foldersToItems = try await storageService.listAllFoldersToItems(folderId: "\(folder.id)")
+                let foldersToItems = try await storageService.itemsInFolder(folderId: "\(folder.id)")
                 for folderToItem in foldersToItems {
                     try storageService.removeFolderToItem(folderToItem)
                 }
                 var index = 0
                 for item in items {
-                    try await storageService.createFolderToItem(FolderToItem(
+                    try await storageService.createItemToFolderLink(LinkItemToFolder(
                         id: "",
                         folderId: folder.id,
                         folderName: folder.name,

@@ -70,7 +70,7 @@ enum FirestoreType: String {
     case courses
     case folders
     case folderToCourseLinks
-    case foldersToItems
+    case folderToItemLinks
     case items
     case payments
     case persons

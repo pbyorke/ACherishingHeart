@@ -27,24 +27,26 @@ protocol StorageServiceProtocol {
     func listAllItems() async throws -> [Item]
     func listAllCourses() async throws -> [Course]
     func listAllFolders() async throws -> [Folder]
-    func createFolderToItem(_ folderToItem: FolderToItem) async throws
-    func listAllFoldersToItems(folderId: String) async throws -> [FolderToItem]
-    func removeFolderToItem(_ folderToItem: FolderToItem) throws
-    func removeFolderToCourse(_ folderToCourse: LinkCourseToFolder) throws
     func createItem(_ item: Item) async throws
     func updateItem(_ item: Item) throws
     func createCourse(_ course: Course) async throws
     func updateCourse(_ course: Course) throws
     func createFolder(_ folder: Folder) async throws
     func updateFolder(_ folder: Folder) throws
-    func rewriteItemsForFolder(_ folder: Folder, _ items: [Item]) async throws
-    func rewriteCoursesForFolder(_ folder: Folder, _ courses: [Course]) async throws
-    func itemsInFolder(folderId: String) async throws -> [Item]
     
+    // item to folder link
+    func createItemToFolderLink(_ link: LinkItemToFolder) async throws
+    func itemsInFolder(folderId: String) async throws -> [Item]
+    func listAllItemsInFolder(folderId: String) async throws -> [LinkItemToFolder]
+    func removeItemToFolderLink(_ link: LinkItemToFolder) throws
+    func rewriteItemsInFolder(_ folder: Folder, _ items: [Item]) async throws
+
     // course to folder link
     func createCourseToFolderLink(_ link: LinkCourseToFolder) async throws
     func coursesInFolder(folderId: String) async throws -> [Course]
     func listAllCoursesInFolder(folderId: String) async throws -> [LinkCourseToFolder]
+    func removeCourseToFolderLink(_ link: LinkCourseToFolder) throws
+    func rewriteCoursesInFolder(_ folder: Folder, _ courses: [Course]) async throws
 }
 
 final class StorageService: StorageServiceProtocol {
@@ -91,25 +93,11 @@ final class StorageService: StorageServiceProtocol {
         } catch { throw error }
     }
 
-    func createFolderToItem(_ folderToItem: FolderToItem) async throws {
-        do {
-            try await firestoreService.create(folderToItem, collection: .foldersToItems)
-        } catch { throw error }
-    }
-    
     func listAllFolders() async throws -> [Folder] {
         do {
             let folders = try await firestoreService.getAll(collection: .folders, type: Folder.self)
             return folders
         } catch { throw error }
-    }
-    
-    func listAllFoldersToItems(folderId: String) async throws -> [FolderToItem] {
-        do {
-            let foldersToItems = try await firestoreService.getAllByKey(collection: .foldersToItems, type: FolderToItem.self, key: "folderId", value: folderId, order: "sequence")
-            return foldersToItems
-        } catch { throw error
-        }
     }
     
     func createItem(_ item: Item) async throws {
@@ -160,19 +148,19 @@ final class StorageService: StorageServiceProtocol {
         }
     }
     
-    func rewriteItemsForFolder(_ folder: Folder, _ items: [Item]) async throws {
-        print("* * *  folder: \(folder) items \(items)")
+    // MARK: - item to folder link
+    
+    func createItemToFolderLink(_ link: LinkItemToFolder) async throws {
+        do {
+            try await firestoreService.create(link, collection: .folderToItemLinks)
+        } catch { throw error }
     }
     
-    func rewriteCoursesForFolder(_ folder: Folder, _ courses: [Course]) async throws {
-        print("* * *  folder: \(folder) courses \(courses)")
-    }
-
     func itemsInFolder(folderId: String) async throws -> [Item] {
         do {
             let links = try await firestoreService.getAllByKey(
-                collection: .foldersToItems,
-                type: FolderToItem.self,
+                collection: .folderToItemLinks,
+                type: LinkItemToFolder.self,
                 key: "folderId",
                 value: folderId
             )
@@ -186,20 +174,26 @@ final class StorageService: StorageServiceProtocol {
         } catch { throw error }
     }
 
-    func removeFolderToItem(_ folderToItem: FolderToItem) throws {
+    func listAllItemsInFolder(folderId: String) async throws -> [LinkItemToFolder] {
         do {
-            try firestoreService.remove(folderToItem, collection: .foldersToItems)
+            let foldersToItems = try await firestoreService.getAllByKey(collection: .folderToItemLinks, type: LinkItemToFolder.self, key: "folderId", value: folderId, order: "sequence")
+            return foldersToItems
+        } catch { throw error
+        }
+    }
+    
+    func removeItemToFolderLink(_ folderToItem: LinkItemToFolder) throws {
+        do {
+            try firestoreService.remove(folderToItem, collection: .folderToItemLinks)
         } catch { throw error }
     }
     
-    func removeFolderToCourse(_ folderToCourse: LinkCourseToFolder) throws {
-        do {
-            try firestoreService.remove(folderToCourse, collection: .folderToCourseLinks)
-        } catch { throw error }
+    func rewriteItemsInFolder(_ folder: Folder, _ items: [Item]) async throws {
+        print("* * *  folder: \(folder) items \(items)")
     }
     
+    // MARK: - course to folder link
     
-    // course to folder link
     func createCourseToFolderLink(_ link: LinkCourseToFolder) async throws {
         do {
             try await firestoreService.create(link, collection: .folderToCourseLinks)
@@ -226,6 +220,18 @@ final class StorageService: StorageServiceProtocol {
         } catch { throw error
         }
     }
+    
+    func removeCourseToFolderLink(_ link: LinkCourseToFolder) throws {
+        do {
+            try firestoreService.remove(link, collection: .folderToCourseLinks)
+        } catch { throw error }
+    }
+    
+    func rewriteCoursesInFolder(_ folder: Folder, _ courses: [Course]) async throws {
+        print("* * *  folder: \(folder) courses \(courses)")
+    }
+
+    // MARK - Miscellaneous
     
     func getFile() {
 //        // Create a reference to the file you want to download

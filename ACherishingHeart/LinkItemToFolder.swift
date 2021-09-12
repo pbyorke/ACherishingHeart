@@ -1,5 +1,5 @@
 //
-//  FolderToItem.swift
+//  LinkItemToFolder.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FolderToItem: Identifiable, Codable {
+struct LinkItemToFolder: Identifiable, Codable {
     var id:         String
     var folderId:   String
     var folderName: String
@@ -16,9 +16,9 @@ struct FolderToItem: Identifiable, Codable {
     var sequence:   Int
 }
 
-extension FolderToItem {
-    static var new: FolderToItem {
-        FolderToItem(
+extension LinkItemToFolder {
+    static var new: LinkItemToFolder {
+        LinkItemToFolder(
         id:         UUID().uuidString,
         folderId:   UUID().uuidString,
         folderName: "",

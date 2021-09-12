@@ -72,7 +72,7 @@ class CoursesInFolder: ObservableObject {
             if let folder = folder {
                 let coursesInFolder = try await storageService.listAllCoursesInFolder(folderId: "\(folder.id)")
                 for courseInFolder in coursesInFolder {
-                    try storageService.removeFolderToCourse(courseInFolder)
+                    try storageService.removeCourseToFolderLink(courseInFolder)
                 }
                 var index = 0
                 for course in courses {
