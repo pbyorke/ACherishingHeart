@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C104B40426ED8EEB00DF2AB1 /* LinkCourseToPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104B40326ED8EEB00DF2AB1 /* LinkCourseToPerson.swift */; };
+		C104B40626EDB46600DF2AB1 /* CoursesInPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104B40526EDB46600DF2AB1 /* CoursesInPersonView.swift */; };
+		C104B40826EDB59A00DF2AB1 /* CoursesInPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104B40726EDB59A00DF2AB1 /* CoursesInPerson.swift */; };
 		C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */; };
 		C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */; };
 		C10E956726A8A242004CBEB8 /* ACherishingHeartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E956626A8A242004CBEB8 /* ACherishingHeartApp.swift */; };
@@ -37,7 +40,6 @@
 		C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */; };
 		C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */; };
 		C14A46A426DAE89500FAAE9E /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A326DAE89500FAAE9E /* Payment.swift */; };
-		C14A46A626DAEF2600FAAE9E /* PersonToCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A526DAEF2600FAAE9E /* PersonToCourse.swift */; };
 		C14A46A826DAF01200FAAE9E /* LinkCourseToFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */; };
 		C14A46AB26DAF23600FAAE9E /* FinanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AA26DAF23600FAAE9E /* FinanceView.swift */; };
 		C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */; };
@@ -100,6 +102,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C104B40326ED8EEB00DF2AB1 /* LinkCourseToPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCourseToPerson.swift; sourceTree = "<group>"; };
+		C104B40526EDB46600DF2AB1 /* CoursesInPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInPersonView.swift; sourceTree = "<group>"; };
+		C104B40726EDB59A00DF2AB1 /* CoursesInPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInPerson.swift; sourceTree = "<group>"; };
 		C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputTextFieldView.swift; sourceTree = "<group>"; };
 		C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputPasswordFieldView.swift; sourceTree = "<group>"; };
 		C10E956326A8A242004CBEB8 /* ACherishingHeart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACherishingHeart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +133,6 @@
 		C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCloudFilesView.swift; sourceTree = "<group>"; };
 		C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolderView.swift; sourceTree = "<group>"; };
 		C14A46A326DAE89500FAAE9E /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		C14A46A526DAEF2600FAAE9E /* PersonToCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonToCourse.swift; sourceTree = "<group>"; };
 		C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCourseToFolder.swift; sourceTree = "<group>"; };
 		C14A46AA26DAF23600FAAE9E /* FinanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceView.swift; sourceTree = "<group>"; };
 		C14A46AC26DAF30600FAAE9E /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
@@ -203,6 +207,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C104B40026ED8C4900DF2AB1 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
+				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
+			);
+			name = Folder;
+			sourceTree = "<group>";
+		};
+		C104B40126ED8C5E00DF2AB1 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */,
+				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
+				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
+				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		C104B40226ED8C6600DF2AB1 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */,
+				C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */,
+				C104B40526EDB46600DF2AB1 /* CoursesInPersonView.swift */,
+				C14A46B226DAFC5100FAAE9E /* CoursesView.swift */,
+				C14A46B426DAFD8C00FAAE9E /* CourseView.swift */,
+			);
+			name = Course;
+			sourceTree = "<group>";
+		};
 		C10E955A26A8A242004CBEB8 = {
 			isa = PBXGroup;
 			children = (
@@ -304,14 +340,15 @@
 				C1BCB74E26CB472F00465BD6 /* CloudFile.swift */,
 				C16A02CA26DACDC7003D4B05 /* Course.swift */,
 				C14A46AE26DAF93D00FAAE9E /* CoursesInFolder.swift */,
+				C104B40726EDB59A00DF2AB1 /* CoursesInPerson.swift */,
 				C11D4ABC26CC89DA002A7880 /* Folder.swift */,
 				C11D4ABA26CC89CB002A7880 /* Item.swift */,
 				C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */,
 				C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */,
+				C104B40326ED8EEB00DF2AB1 /* LinkCourseToPerson.swift */,
 				C1B7F26B26CE9A0B0038EFC4 /* LinkItemToFolder.swift */,
 				C14A46A326DAE89500FAAE9E /* Payment.swift */,
 				C10E95AE26AF59AB004CBEB8 /* Person.swift */,
-				C14A46A526DAEF2600FAAE9E /* PersonToCourse.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -384,19 +421,12 @@
 		C1FB342826D0BA3700A76D33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */,
-				C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */,
 				C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */,
 				C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */,
-				C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */,
-				C14A46B226DAFC5100FAAE9E /* CoursesView.swift */,
-				C14A46B426DAFD8C00FAAE9E /* CourseView.swift */,
+				C104B40226ED8C6600DF2AB1 /* Course */,
 				C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */,
-				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
-				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
-				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
-				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
-				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
+				C104B40026ED8C4900DF2AB1 /* Folder */,
+				C104B40126ED8C5E00DF2AB1 /* Item */,
 				C1BD7F4C26E1C63700B9A414 /* UserFoldersView.swift */,
 			);
 			name = Media;
@@ -606,23 +636,25 @@
 				C1A5223826B8DF5C00370C19 /* MasterView.swift in Sources */,
 				C1BD7F4D26E1C63700B9A414 /* UserFoldersView.swift in Sources */,
 				C14A46AD26DAF30600FAAE9E /* PaymentsView.swift in Sources */,
+				C104B40626EDB46600DF2AB1 /* CoursesInPersonView.swift in Sources */,
 				C10E956926A8A242004CBEB8 /* MainView.swift in Sources */,
 				C1F5517A26DFC32200A39A10 /* Names.swift in Sources */,
 				C150222C26B2502F0060232C /* NavigationButtonView.swift in Sources */,
 				C10E959F26A8A946004CBEB8 /* MainPictureView.swift in Sources */,
-				C14A46A626DAEF2600FAAE9E /* PersonToCourse.swift in Sources */,
 				C10E95AC26AF5759004CBEB8 /* AccountView.swift in Sources */,
 				C1B3F8AC26B22C2F007F63D2 /* SignUpView.swift in Sources */,
 				C14F10BE26B9DA3000FAEB3F /* Trimmed.swift in Sources */,
 				C10E956726A8A242004CBEB8 /* ACherishingHeartApp.swift in Sources */,
 				C192F8FE26D83B3A00EBF0FE /* CloudFileView.swift in Sources */,
 				C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */,
+				C104B40426ED8EEB00DF2AB1 /* LinkCourseToPerson.swift in Sources */,
 				C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
 				C161A02D26BB874D005B077A /* PersonView.swift in Sources */,
 				C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */,
 				C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */,
 				C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */,
+				C104B40826EDB59A00DF2AB1 /* CoursesInPerson.swift in Sources */,
 				C1BCB74B26CB310700465BD6 /* StorageService.swift in Sources */,
 				C11D4AC026CCA8A5002A7880 /* ItemsView.swift in Sources */,
 				C11D4ABB26CC89CB002A7880 /* Item.swift in Sources */,

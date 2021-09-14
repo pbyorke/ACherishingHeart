@@ -10,6 +10,7 @@ import SwiftUI
 struct PersonsView: View {
     
     @EnvironmentObject var authenticator: Authenticator
+    @EnvironmentObject var coursesInPerson: CoursesInPerson
 
     var masterView: Bool
     @State private var person = Person.new
@@ -18,7 +19,10 @@ struct PersonsView: View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(authenticator.persons) { person in
-                    PrettyLink(label: "\(person.firstName) \(person.lastName)", spacer: true, destination: PersonView(person: $person, masterView: masterView)) { self.person = person }
+                    PrettyLink(label: "\(person.firstName) \(person.lastName)", spacer: true, destination: PersonView(person: $person, masterView: masterView)) {
+                        self.person = person
+                        coursesInPerson.setup(person)                        
+                    }
                 }
             }
             .padding(20)

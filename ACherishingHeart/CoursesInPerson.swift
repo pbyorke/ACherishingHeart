@@ -1,32 +1,32 @@
 //
-//  CoursesInFolder.swift
+//  CoursesInPerson.swift
 //  ACherishingHeart
 //
-//  Created by Peter Yorke on 8/28/21.
+//  Created by Peter Yorke on 9/12/21.
 //
 
 import Foundation
 
-class CoursesInFolder: ObservableObject {
+class CoursesInPerson: ObservableObject {
     
     @Published var courses = [Course]()
-    private var folder: Folder?
+    private var person: Person?
     var storageService: StorageServiceProtocol = StorageService.shared
 
     init() {
         courses = [Course]()
     }
     
-    func setup(_ folder: Folder) {
-        self.folder = folder
+    func setup(_ person: Person) {
+        self.person = person
         initialize()
     }
     
     private func initialize() {
-        guard let folder = folder else { return }
+        guard let person = person else { return }
         Task.init {
             do {
-                let courses = try await storageService.coursesInFolder(folderId: folder.id)
+                let courses = try await storageService.coursesInPerson(personId: person.id)
                 DispatchQueue.main.async {
                     self.courses = courses
                 }
@@ -69,18 +69,18 @@ class CoursesInFolder: ObservableObject {
 
     func rewrite() async throws {
         do {
-            if let folder = folder {
-                let links = try await storageService.listAllCoursesInFolder(folderId: folder.id)
+            if let person = person {
+                let links = try await storageService.listAllCoursesInPerson(personId: person.id)
                 for link in links {
-                    try storageService.removeCourseToFolderLink(link)
+                    try storageService.removeCourseToPersonLink(link)
                 }
                 var index = 0
                 for course in courses {
-                    try await storageService.createCourseToFolderLink(
-                        LinkCourseToFolder(
+                    try await storageService.createCourseToPersonLink(
+                        LinkCourseToPerson(
                             id: "",
-                            folderId: folder.id,
-                            folderName: folder.name,
+                            personId: person.id,
+                            personName: "\(person.firstName) \(person.lastName)",
                             courseId: course.id,
                             courseName: course.name,
                             sequence: index

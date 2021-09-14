@@ -74,7 +74,7 @@ enum FirestoreType: String {
     case items
     case payments
     case persons
-    case personsToCourses
+    case personToCourseLinks
 }
 
 protocol FirestoreServiceProtocol {

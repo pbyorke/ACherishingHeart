@@ -17,7 +17,7 @@ struct ItemsInFolderView: View {
                 Text("ItemsInFolderView").foregroundColor(.cyan)
             } // NAMES
             ZStack {
-                Text("Items in this Folder")
+                Text("Items")
                     .font(.title)
                 HStack {
                     Spacer()

@@ -26,6 +26,7 @@ struct ACherishingHeartApp: App {
     var authenticator = Authenticator()
     var itemsInFolder = ItemsInFolder()
     var coursesInFolder = CoursesInFolder()
+    var coursesInPerson = CoursesInPerson()
 
     init() {
         configure()
@@ -37,6 +38,7 @@ struct ACherishingHeartApp: App {
                 .environmentObject(authenticator)
                 .environmentObject(itemsInFolder)
                 .environmentObject(coursesInFolder)
+                .environmentObject(coursesInPerson)
         }
     }
     

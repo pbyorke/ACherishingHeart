@@ -11,14 +11,17 @@ struct PersonView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
+    @EnvironmentObject var coursesInFolder: CoursesInFolder
+    var storageService: StorageServiceProtocol = StorageService.shared
 
+    var add = false
     @Binding var person: Person
     var masterView: Bool
     
     var body: some View {
         VStack {
             ScrollView {
-                Group {
+                VStack {
                     Text(person.email)
                         .font(.title)
                     TitledInputTextFieldView(
@@ -42,9 +45,11 @@ struct PersonView: View {
                         keyboardType: .default,
                         sfSymbol: nil
                     )
+                    CoursesInPersonView()
                 }
                 .padding(.trailing, 10)
-                Group {
+//                CoursesInPersonView()
+                VStack {
                     if masterView {
                         Toggle("Inactive", isOn: $person.inactive)
                         Toggle("Delinquent", isOn: $person.delinquent)
@@ -61,10 +66,13 @@ struct PersonView: View {
                     Toggle("Subscriber", isOn: $person.subscriber)
                 }
                 .padding(.trailing, 10)
+                if MainView.NAMES {
+                    Names(name: "PersonView")
+                } // NAMES
             }
         }
-        .padding(20)
-        .navigationTitle("Edit Person")
+        .padding(15)
+        .navigationTitle("Person")
         .toolbar {
             Button("Save") { save() }
         }
