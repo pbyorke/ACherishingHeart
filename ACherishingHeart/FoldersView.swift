@@ -20,7 +20,7 @@ struct FoldersView: View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(albums) { folder in
-                    PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, folder: $folder)) {
+                    PrettyLink(label: folder.name, spacer: true, destination: FolderTabView(add: false, folder: $folder)) {
                         self.folder = folder
                         itemsInFolder.setup(folder)
                         coursesInFolder.setup(folder)
@@ -36,7 +36,7 @@ struct FoldersView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: FolderView(add: true, folder: $folder)) {
+                NavigationLink(destination: FolderTabView(add: true, folder: $folder)) {
                     Image(systemName: "plus")
                 }
             }

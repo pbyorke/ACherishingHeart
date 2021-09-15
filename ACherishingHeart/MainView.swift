@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    static let NAMES = true
+    static let NAMES = false
 
     var body: some View {
         NavigationView {

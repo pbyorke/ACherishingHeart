@@ -1,5 +1,5 @@
 //
-//  CoursesInFolderView.swift
+//  FolderCoursesView.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 9/6/21.
@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-struct CoursesInFolderView: View {
+struct FolderCoursesView: View {
 
     @EnvironmentObject var coursesInFolder: CoursesInFolder
 
     var body: some View {
         VStack {
-            if MainView.NAMES {
-                Text("CoursesInFolderView").foregroundColor(.cyan)
-            } // NAMES
             ZStack {
                 Text("Courses")
                     .font(.title)
@@ -32,6 +29,9 @@ struct CoursesInFolderView: View {
                         Swipe(symbol: "arrow.up.square.fill", color: .green) { coursesInFolder.up(course: course) }
                     }
             }
+            if MainView.NAMES {
+                Text("FolderCoursesView").foregroundColor(.cyan)
+            } // NAMES
         }
         .padding(20)
         .background(Color.gray.opacity(0.2))
@@ -42,9 +42,9 @@ struct CoursesInFolderView: View {
 }
 
 #if DEBUG
-struct CoursesInFolderView_Previews: PreviewProvider {
+struct FolderCoursesView_Previews: PreviewProvider {
     static var previews: some View {
-        CoursesInFolderView()
+        FolderCoursesView()
     }
 }
 #endif

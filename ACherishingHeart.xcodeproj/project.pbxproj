@@ -38,7 +38,7 @@
 		C139CA8326DDA1A0007A05EB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C139CA8226DDA1A0007A05EB /* FirebaseStorage */; };
 		C139CA8526DDA1A0007A05EB /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C139CA8426DDA1A0007A05EB /* FirebaseStorageSwift-Beta */; };
 		C13E0D5926D93C7600754AA5 /* EmbeddedCloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */; };
-		C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */; };
+		C13E0D5B26D9409D00754AA5 /* FolderItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13E0D5A26D9409D00754AA5 /* FolderItemsView.swift */; };
 		C14A46A426DAE89500FAAE9E /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A326DAE89500FAAE9E /* Payment.swift */; };
 		C14A46A826DAF01200FAAE9E /* LinkCourseToFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */; };
 		C14A46AB26DAF23600FAAE9E /* FinanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14A46AA26DAF23600FAAE9E /* FinanceView.swift */; };
@@ -54,7 +54,7 @@
 		C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164B5D126CFE201004CD3FF /* TitledText.swift */; };
 		C16A02CB26DACDC7003D4B05 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16A02CA26DACDC7003D4B05 /* Course.swift */; };
 		C185EEB726CEA3D100E3AD7B /* PersonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEB626CEA3D100E3AD7B /* PersonsView.swift */; };
-		C185EEB926CEA41100E3AD7B /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEB826CEA41100E3AD7B /* FolderView.swift */; };
+		C185EEB926CEA41100E3AD7B /* FolderTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEB826CEA41100E3AD7B /* FolderTabView.swift */; };
 		C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBA26CEA44E00E3AD7B /* ItemView.swift */; };
 		C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBC26CEA46500E3AD7B /* AccountsView.swift */; };
 		C192F8FC26D838E000EBF0FE /* CloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */; };
@@ -80,8 +80,9 @@
 		C1C0D89626E5BADA00DBE463 /* ItemsInFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */; };
 		C1C5AF4426DB3AC7005E3BA0 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */; };
 		C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3984226B3834C006BEE2D /* AuthService.swift */; };
-		C1D66AAC26E6E32E00B70AB1 /* CoursesInFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */; };
+		C1D66AAC26E6E32E00B70AB1 /* FolderCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D66AAB26E6E32E00B70AB1 /* FolderCoursesView.swift */; };
 		C1F5517A26DFC32200A39A10 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5517926DFC32200A39A10 /* Names.swift */; };
+		C1F6F54E26F1981900507D8E /* FolderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F6F54D26F1981900507D8E /* FolderInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,7 +132,7 @@
 		C123B03C26B636D600733BA3 /* WhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyView.swift; sourceTree = "<group>"; };
 		C12EE89126D140F4004D5E2B /* PrettyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyLink.swift; sourceTree = "<group>"; };
 		C13E0D5826D93C7600754AA5 /* EmbeddedCloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedCloudFilesView.swift; sourceTree = "<group>"; };
-		C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolderView.swift; sourceTree = "<group>"; };
+		C13E0D5A26D9409D00754AA5 /* FolderItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderItemsView.swift; sourceTree = "<group>"; };
 		C14A46A326DAE89500FAAE9E /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		C14A46A726DAF01200FAAE9E /* LinkCourseToFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCourseToFolder.swift; sourceTree = "<group>"; };
 		C14A46AA26DAF23600FAAE9E /* FinanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceView.swift; sourceTree = "<group>"; };
@@ -147,7 +148,7 @@
 		C164B5D126CFE201004CD3FF /* TitledText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledText.swift; sourceTree = "<group>"; };
 		C16A02CA26DACDC7003D4B05 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		C185EEB626CEA3D100E3AD7B /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
-		C185EEB826CEA41100E3AD7B /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		C185EEB826CEA41100E3AD7B /* FolderTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTabView.swift; sourceTree = "<group>"; };
 		C185EEBA26CEA44E00E3AD7B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C185EEBC26CEA46500E3AD7B /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFilesView.swift; sourceTree = "<group>"; };
@@ -173,8 +174,9 @@
 		C1C0D89526E5BADA00DBE463 /* ItemsInFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInFolder.swift; sourceTree = "<group>"; };
 		C1C5AF4326DB3AC7005E3BA0 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		C1D3984226B3834C006BEE2D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInFolderView.swift; sourceTree = "<group>"; };
+		C1D66AAB26E6E32E00B70AB1 /* FolderCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCoursesView.swift; sourceTree = "<group>"; };
 		C1F5517926DFC32200A39A10 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
+		C1F6F54D26F1981900507D8E /* FolderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,8 +212,11 @@
 		C104B40026ED8C4900DF2AB1 /* Folder */ = {
 			isa = PBXGroup;
 			children = (
+				C1D66AAB26E6E32E00B70AB1 /* FolderCoursesView.swift */,
+				C1F6F54D26F1981900507D8E /* FolderInfoView.swift */,
+				C13E0D5A26D9409D00754AA5 /* FolderItemsView.swift */,
 				C11D4AC126CCB3AD002A7880 /* FoldersView.swift */,
-				C185EEB826CEA41100E3AD7B /* FolderView.swift */,
+				C185EEB826CEA41100E3AD7B /* FolderTabView.swift */,
 			);
 			name = Folder;
 			sourceTree = "<group>";
@@ -220,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				C1BD7F4E26E1C98C00B9A414 /* AddItemsView.swift */,
-				C13E0D5A26D9409D00754AA5 /* ItemsInFolderView.swift */,
 				C11D4ABF26CCA8A5002A7880 /* ItemsView.swift */,
 				C185EEBA26CEA44E00E3AD7B /* ItemView.swift */,
 			);
@@ -231,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				C14A46B026DAFA2400FAAE9E /* AddCoursesView.swift */,
-				C1D66AAB26E6E32E00B70AB1 /* CoursesInFolderView.swift */,
 				C104B40526EDB46600DF2AB1 /* CoursesInPersonView.swift */,
 				C14A46B226DAFC5100FAAE9E /* CoursesView.swift */,
 				C14A46B426DAFD8C00FAAE9E /* CourseView.swift */,
@@ -607,17 +610,17 @@
 				C10E95AF26AF59AB004CBEB8 /* Person.swift in Sources */,
 				C1B3F8A626B2281F007F63D2 /* InputPasswordFieldView.swift in Sources */,
 				C11D4AC226CCB3AD002A7880 /* FoldersView.swift in Sources */,
-				C13E0D5B26D9409D00754AA5 /* ItemsInFolderView.swift in Sources */,
+				C13E0D5B26D9409D00754AA5 /* FolderItemsView.swift in Sources */,
 				C1B3F8AA26B22B75007F63D2 /* ForgotPasswordView.swift in Sources */,
 				C1BD7F4F26E1C98C00B9A414 /* AddItemsView.swift in Sources */,
 				C11D4ABD26CC89DA002A7880 /* Folder.swift in Sources */,
 				C1547C4826D86116007204CE /* String+Utils.swift in Sources */,
 				C1B3F8A826B22910007F63D2 /* ButtonView.swift in Sources */,
-				C1D66AAC26E6E32E00B70AB1 /* CoursesInFolderView.swift in Sources */,
+				C1D66AAC26E6E32E00B70AB1 /* FolderCoursesView.swift in Sources */,
 				C16A02CB26DACDC7003D4B05 /* Course.swift in Sources */,
 				C164B5D226CFE201004CD3FF /* TitledText.swift in Sources */,
 				C12EE89226D140F4004D5E2B /* PrettyLink.swift in Sources */,
-				C185EEB926CEA41100E3AD7B /* FolderView.swift in Sources */,
+				C185EEB926CEA41100E3AD7B /* FolderTabView.swift in Sources */,
 				C192F8FC26D838E000EBF0FE /* CloudFilesView.swift in Sources */,
 				C1D3984326B3834C006BEE2D /* AuthService.swift in Sources */,
 				C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */,
@@ -649,6 +652,7 @@
 				C108987D26C35C0D00C941CE /* TitledInputTextFieldView.swift in Sources */,
 				C104B40426ED8EEB00DF2AB1 /* LinkCourseToPerson.swift in Sources */,
 				C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */,
+				C1F6F54E26F1981900507D8E /* FolderInfoView.swift in Sources */,
 				C1A665B326B6460E0086001C /* Encodable+Utils.swift in Sources */,
 				C161A02D26BB874D005B077A /* PersonView.swift in Sources */,
 				C1BCB74D26CB3AED00465BD6 /* MediaView.swift in Sources */,

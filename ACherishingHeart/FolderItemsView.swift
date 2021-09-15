@@ -1,5 +1,5 @@
 //
-//  ItemsInFolderView.swift
+//  FolderItemsView.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/27/21.
@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-struct ItemsInFolderView: View {
+struct FolderItemsView: View {
 
     @EnvironmentObject var itemsInFolder: ItemsInFolder
 
     var body: some View {
         VStack {
-            if MainView.NAMES {
-                Text("ItemsInFolderView").foregroundColor(.cyan)
-            } // NAMES
             ZStack {
                 Text("Items")
                     .font(.title)
@@ -32,6 +29,9 @@ struct ItemsInFolderView: View {
                         Swipe(symbol: "arrow.up.square.fill", color: .green) { itemsInFolder.up(item: item) }
                     }
             }
+            if MainView.NAMES {
+                Text("FolderItemsView").foregroundColor(.cyan)
+            } // NAMES
         }
         .padding(20)
         .background(Color.gray.opacity(0.2))
@@ -42,9 +42,9 @@ struct ItemsInFolderView: View {
 }
 
 #if DEBUG
-struct ItemsInFolderView_Previews: PreviewProvider {
+struct FolderItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsInFolderView()
+        FolderItemsView()
     }
 }
 #endif

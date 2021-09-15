@@ -1,5 +1,5 @@
 //
-//  FolderView.swift
+//  FolderTabView.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
@@ -7,32 +7,21 @@
 
 import SwiftUI
 
-struct FolderView: View {
+struct FolderTabView: View {
     
-    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var itemsInFolder: ItemsInFolder
     @EnvironmentObject var coursesInFolder: CoursesInFolder
     var storageService: StorageServiceProtocol = StorageService.shared
-
+    
     var add = false
     @Binding var folder: Folder
-
+    
     var body: some View {
-        VStack {
-            VStack(spacing: 16) {
-                InputTextFieldView(
-                    text: $folder.name,
-                    placeholder: "Name",
-                    keyboardType: .default,
-                    sfSymbol: nil
-                )
-                ItemsInFolderView()
-                CoursesInFolderView()
-                Spacer()
-                if MainView.NAMES {
-                    Names(name: "FolderView")
-                } // NAMES
-            }
+        TabView {
+            FolderInfoView(folder: $folder).tabItem { Label("Info", systemImage: "gearshape.fill")  }
+            FolderItemsView().tabItem { Label("Items", systemImage: "music.note") }
+            FolderCoursesView().tabItem { Label("Courses", systemImage: "books.vertical.fill") }
+            .navigationTitle("Folder")
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -45,8 +34,9 @@ struct FolderView: View {
                 }
             }
         }
-        .padding(.horizontal, 15)
-        .navigationTitle("Folder")
+        if MainView.NAMES {
+            Names(name: "FolderTabView")
+        } // NAMES
     }
     
     private func update() {
@@ -61,16 +51,15 @@ struct FolderView: View {
                 }
             } catch { }
         }
-        presentationMode.wrappedValue.dismiss()
     }
     
 }
 
 #if DEBUG
-struct FolderView_Previews: PreviewProvider {
+struct FolderTabView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
-        FolderView(add: false, folder: $folder)
+        FolderTabView(add: false, folder: $folder)
             .preview(with: "Add or update a Folder")
     }
 }
