@@ -20,6 +20,8 @@ struct FolderInfoView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                Toggle("Playlist", isOn: $folder.playlist)
+                Toggle("Common", isOn: $folder.common)
                 Spacer()
                 if MainView.NAMES {
                     Names(name: "FolderInfoView")

@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct Folder: Identifiable, Codable {
-    var id:       String
-    var name:     String { didSet { name = name.trim() } }
-    var playlist: Bool
+struct Folder:      Identifiable, Codable {
+    var id:         String
+    var name:       String { didSet { name = name.trim() } }
+    var playlist:   Bool
+    var common:     Bool
 }
 
 extension Folder {
@@ -18,7 +19,8 @@ extension Folder {
         Folder(
             id:         UUID().uuidString,
             name:       "",
-            playlist:   false
+            playlist:   false,
+            common:     false
         )
     }
 }

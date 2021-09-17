@@ -1,5 +1,5 @@
 //
-//  FolderTabView.swift
+//  FolderView.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 8/19/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FolderTabView: View {
+struct FolderView: View {
     
     @EnvironmentObject var itemsInFolder: ItemsInFolder
     @EnvironmentObject var coursesInFolder: CoursesInFolder
@@ -56,10 +56,10 @@ struct FolderTabView: View {
 }
 
 #if DEBUG
-struct FolderTabView_Previews: PreviewProvider {
+struct FolderView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
-        FolderTabView(add: false, folder: $folder)
+        FolderView(add: false, folder: $folder)
             .preview(with: "Add or update a Folder")
     }
 }
