@@ -1,5 +1,5 @@
 //
-//  PersonView.swift
+//  PersonInfoView.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/4/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonView: View {
+struct PersonInfoView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
@@ -45,10 +45,8 @@ struct PersonView: View {
                         keyboardType: .default,
                         sfSymbol: nil
                     )
-                    CoursesInPersonView()
                 }
                 .padding(.trailing, 10)
-//                CoursesInPersonView()
                 VStack {
                     if masterView {
                         Toggle("Inactive", isOn: $person.inactive)
@@ -88,10 +86,10 @@ struct PersonView: View {
 }
 
 #if DEBUG
-struct PersonView_Previews: PreviewProvider {
+struct PersonInfoView_Previews: PreviewProvider {
     @State static var person = Person.new
     static var previews: some View {
-        PersonView(person: $person, masterView: true)
+        PersonInfoView(person: $person, masterView: true)
             .preview(with: "Add or update a Person")
     }
 }

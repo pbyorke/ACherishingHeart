@@ -14,12 +14,13 @@ struct MainMenuView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                PrettyLink(label: "Music", spacer: true, destination: Text("Music")) { }
+//                PrettyLink(label: "Music", spacer: true, destination: FoldersView(type: .play)) { }
+                PrettyLink(label: "Music", spacer: true, destination: MusicListView()) { }
                 if authenticator.isMaster {
                     PrettyLink(label: "Master", spacer: true, destination: MasterView()) { }
                 }
                 if authenticator.isMedia {
-                    PrettyLink(label: "Media", spacer: true, destination: MediaView()) { }
+                    PrettyLink(label: "Media", spacer: true, destination: MediaView(type: .edit)) { }
                 }
                 if authenticator.isAdmin {
                     PrettyLink(label: "Admin", spacer: true, destination: PersonsView(masterView: false)) { }
@@ -49,11 +50,12 @@ struct MainMenuView: View {
     }
 }
 
-
 #if DEBUG
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
+            .environmentObject(authenticator)
+            .preview(with: "Main Menu")
     }
 }
 #endif

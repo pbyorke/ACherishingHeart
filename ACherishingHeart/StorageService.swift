@@ -76,6 +76,7 @@ final class StorageService: StorageServiceProtocol {
                     name: item.name,
                     description: item.description
                 )
+                entry.dump()
                 entries.append(entry)
             }
             return entries

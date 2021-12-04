@@ -25,6 +25,12 @@ struct ItemView: View {
                     keyboardType: .default,
                     sfSymbol: nil
                 )
+                InputTextFieldView(
+                    text: $item.fullPath,
+                    placeholder: "Full Path",
+                    keyboardType: .default,
+                    sfSymbol: nil
+                )
                 HStack {
                     InputTextFieldView(
                         text: $item.url,
@@ -32,7 +38,7 @@ struct ItemView: View {
                         keyboardType: .default,
                         sfSymbol: nil
                     )
-                    NavigationLink(destination: CloudFilesView(url: $item.url)) {
+                    NavigationLink(destination: CloudFilesView(url: $item.url, fullPath: $item.fullPath)) {
                         Image(systemName: "arrow.right")
                     }
                     .padding(.leading, 10)

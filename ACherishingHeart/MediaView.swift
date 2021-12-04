@@ -11,10 +11,12 @@ struct MediaView: View {
     
     @State var selectedItem = Item.new
     
+    var type: FolderType
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                PrettyLink(label: "Folders", spacer: true, destination: FoldersView()) { }
+                PrettyLink(label: "Folders", spacer: true, destination: FoldersView(type: type)) { }
                 PrettyLink(label: "Items", spacer: true, destination: ItemsView()) { }
                 PrettyLink(label: "Courses", spacer: true, destination: CoursesView()) { }
             }
@@ -34,7 +36,7 @@ struct MediaView: View {
 #if DEBUG
 struct MediaView_Previews: PreviewProvider {
     static var previews: some View {
-        MediaView()
+        MediaView(type: .play)
     }
 }
 #endif

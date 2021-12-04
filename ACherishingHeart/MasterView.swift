@@ -14,7 +14,7 @@ struct MasterView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                PrettyLink(label: "Media", spacer: true, destination: MediaView()) { }
+                PrettyLink(label: "Media", spacer: true, destination: MediaView(type: .edit)) { }
                 PrettyLink(label: "People", spacer: true, destination: PersonsView(masterView: true)) { }
                 PrettyLink(label: "Finance", spacer: true, destination: FinanceView()) { }
             }

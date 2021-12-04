@@ -61,11 +61,11 @@ struct MainMenuBarView: View {
 }
 
 #if DEBUG
-let authenticator = Authenticator()
 struct MainMenuBarView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuBarView()
             .environmentObject(authenticator)
+            .preview(with: "Main Menu Bar")
     }
 }
 #endif

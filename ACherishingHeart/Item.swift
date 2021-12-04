@@ -1,11 +1,13 @@
 //
-//  Song.swift
+//  Item.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/17/21.
 //
 
-import Foundation
+import SwiftUI
+
+// MARK: - ItemType
 
 enum ItemType: Int, Codable, CaseIterable {
     case unknown
@@ -23,20 +25,35 @@ enum ItemType: Int, Codable, CaseIterable {
     }
 }
 
+// MARK: - Item
+
 struct Item: Identifiable, Codable, Equatable {
-    var id:     String { didSet { id = id.trim() } }
-    var name:   String { didSet { name = name.trim() } }
-    var url:    String { didSet { url = url.trim() } }
-    var type:   ItemType
+    var id:         String { didSet { id = id.trim() } }
+    var name:       String { didSet { name = name.trim() } }
+    var fullPath:   String { didSet { fullPath = fullPath.trim() } }
+    var url:        String { didSet { url = url.trim() } }
+    var type:       ItemType
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case fullPath
+        case url
+        case type
+    }
+    
 }
+
+// MARK: - Item extension
 
 extension Item {
     static var new: Item {
         Item(
-            id:     UUID().uuidString,
-            name:   "",
-            url:    "",
-            type:   .unknown
+            id:         UUID().uuidString,
+            name:       "",
+            fullPath:   "",
+            url:        "",
+            type:       .unknown
         )
     }
 }

@@ -40,6 +40,7 @@ struct ItemsView: View {
             }
         .padding(20)
         }
+        .frame(maxWidth: .infinity)
         .navigationTitle( Text("Items") )
         .background(Color.gray.opacity(0.2))
         .cornerRadius(20)

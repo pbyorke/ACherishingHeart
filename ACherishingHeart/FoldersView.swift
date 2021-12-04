@@ -16,11 +16,13 @@ struct FoldersView: View {
     @State private var albums = [Folder]()
     @State private var folder = Folder.new
     
+    var type: FolderType
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(albums) { folder in
-                    PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, folder: $folder)) {
+                    PrettyLink(label: folder.name, spacer: true, destination: FolderView(add: false, type: type, folder: $folder)) {
                         self.folder = folder
                         itemsInFolder.setup(folder)
                         coursesInFolder.setup(folder)
@@ -36,8 +38,10 @@ struct FoldersView: View {
         .padding(.bottom, 40)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: FolderView(add: true, folder: $folder)) {
-                    Image(systemName: "plus")
+                if type == .edit {
+                    NavigationLink(destination: FolderView(add: true, type: type, folder: $folder)) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }
@@ -57,7 +61,7 @@ struct FoldersView: View {
 #if DEBUG
 struct FoldersView_Previews: PreviewProvider {
     static var previews: some View {
-        FoldersView()
+        FoldersView(type: .play)
     }
 }
 #endif

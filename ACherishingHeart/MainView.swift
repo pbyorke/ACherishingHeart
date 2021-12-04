@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    static let NAMES = false
+    static let NAMES = true
 
     var body: some View {
         NavigationView {
@@ -33,9 +33,12 @@ struct MainView: View {
 }
 
 #if DEBUG
-struct ContentView_Previews: PreviewProvider {
+let authenticator = Authenticator()
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(authenticator)
+            .preview(with: "Main View")
     }
 }
 #endif

@@ -19,7 +19,7 @@ struct PersonsView: View {
         ScrollView {
             VStack(spacing: 10) {
                 ForEach(authenticator.persons) { person in
-                    PrettyLink(label: "\(person.firstName) \(person.lastName)", spacer: true, destination: PersonView(person: $person, masterView: masterView)) {
+                    PrettyLink(label: "\(person.firstName) \(person.lastName)", spacer: true, destination: PersonTabView(person: $person, masterView: masterView)) {
                         self.person = person
                         coursesInPerson.setup(person)                        
                     }

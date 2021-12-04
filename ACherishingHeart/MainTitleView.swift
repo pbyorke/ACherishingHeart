@@ -26,6 +26,7 @@ struct MainTitleView: View {
 struct MainTitleView_Previews: PreviewProvider {
     static var previews: some View {
         MainTitleView()
+            .preview(with: "Main Title")
     }
 }
 #endif
