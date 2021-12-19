@@ -1,5 +1,5 @@
 //
-//  MusicListModel.swift
+//  MusicListOfAlbumsModel.swift
 //  ACherishingHeart
 //
 //  Created by Pete Yorke on 11/21/21.
@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-class MusicListModel: ObservableObject {
+class MusicListOfAlbumsModel: ObservableObject {
     
     var storageService: StorageServiceProtocol = StorageService.shared
+    
     @Published var albums = [Folder]()
     
     init() {

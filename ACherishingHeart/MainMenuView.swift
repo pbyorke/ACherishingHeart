@@ -14,8 +14,7 @@ struct MainMenuView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-//                PrettyLink(label: "Music", spacer: true, destination: FoldersView(type: .play)) { }
-                PrettyLink(label: "Music", spacer: true, destination: MusicListView()) { }
+                PrettyLink(label: "Music", spacer: true, destination: MusicListOfAlbumsView()) { }
                 if authenticator.isMaster {
                     PrettyLink(label: "Master", spacer: true, destination: MasterView()) { }
                 }
@@ -50,7 +49,8 @@ struct MainMenuView: View {
     }
 }
 
-#if DEBUG
+// MARK: - Preview
+
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
@@ -58,4 +58,3 @@ struct MainMenuView_Previews: PreviewProvider {
             .preview(with: "Main Menu")
     }
 }
-#endif
