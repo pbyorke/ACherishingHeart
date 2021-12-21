@@ -13,8 +13,9 @@ import SwiftUI
 class MusicListOfSongsModel: NSObject, ObservableObject {
     
     var storageService: StorageServiceProtocol = StorageService.shared
-    var musicPlayer: PlayerProtocol = MusicPlayerService.shared
-
+    var musicPlayerService: PlayerProtocol = MusicPlayerService.shared
+    
+    @Published var state: PlayerState = .waiting
     @Published var songs = [Item]()
     @Published var selectedSong: Item?
 
@@ -23,7 +24,21 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
     func select(_ song: Item) {
         priorSelectedSong = selectedSong
         selectedSong = song
-        musicPlayer.play(selectedSong)
+        state = .playing
+        musicPlayerService.play(selectedSong)
+    }
+    
+    func playPause() {
+        switch state {
+        case .playing:
+            state = .paused
+            musicPlayerService.pause()
+        case .paused:
+            state = .playing
+            musicPlayerService.play()
+        default:
+            break
+        }
     }
     
     func getSongs(folder: Folder) async throws {

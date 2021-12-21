@@ -10,17 +10,20 @@ import SwiftUI
 struct MusicListOfSongsView: View {
     
     @StateObject private var musicListOfSongsModel = MusicListOfSongsModel()
+    
     @State private var position: Double = 0
 
     var folder: Folder
-
+    
     var body: some View {
         VStack {
             HStack {
-                Button { playPause() } label: { Image(systemName: "playpause") }
-                    .padding(5)
-                    .border(Color.black, width: 1)
-                    .disabled(musicListOfSongsModel.musicPlayer.state == .waiting)
+                Button { playPause() } label: {
+                    Image(systemName: musicListOfSongsModel.state == .paused ? "play.fill" : "pause.fill")
+                }
+                .padding(5)
+                .border(Color.black, width: 1)
+                .disabled(musicListOfSongsModel.state == .waiting)
                 Button { backward() } label: { Image(systemName: "backward.end") }
                     .padding(5)
                     .border(Color.black, width: 1)
@@ -82,6 +85,7 @@ struct MusicListOfSongsView: View {
     }
     
     private func playPause() {
+        musicListOfSongsModel.playPause()
     }
     
     private func backward() { }

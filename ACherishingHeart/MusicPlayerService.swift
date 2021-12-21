@@ -10,13 +10,11 @@ import AVFoundation
 import Firebase
 
 class MusicPlayerService: NSObject, PlayerProtocol {
-    
+
     static let shared = MusicPlayerService()
-    var state = PlayerState.waiting
     private var player: AVAudioPlayer?
     
     func play(_ song: Item?) {
-        state = .playing
         if let fullPath = song?.fullPath {
             let storageRef = Storage.storage().reference().child(fullPath)
             Task {
@@ -32,6 +30,10 @@ class MusicPlayerService: NSObject, PlayerProtocol {
             }
         }
         
+    }
+    
+    func play() {
+        player?.play()
     }
     
     func pause() {

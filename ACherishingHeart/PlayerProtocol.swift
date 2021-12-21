@@ -7,9 +7,8 @@
 
 protocol PlayerProtocol {
     
-    var state: PlayerState { get set }
-    
     func play(_ song: Item?)
+    func play()
     func pause()
     
 }
