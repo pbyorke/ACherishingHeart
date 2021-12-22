@@ -57,6 +57,7 @@
 		C185EEB926CEA41100E3AD7B /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEB826CEA41100E3AD7B /* FolderView.swift */; };
 		C185EEBB26CEA44E00E3AD7B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBA26CEA44E00E3AD7B /* ItemView.swift */; };
 		C185EEBD26CEA46500E3AD7B /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185EEBC26CEA46500E3AD7B /* AccountsView.swift */; };
+		C188BE2027730D34005A20C1 /* MusicPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188BE1F27730D34005A20C1 /* MusicPlayerDelegate.swift */; };
 		C192F8FC26D838E000EBF0FE /* CloudFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */; };
 		C192F8FE26D83B3A00EBF0FE /* CloudFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */; };
 		C193352F26B77B60005202D1 /* DocumentSnapshot+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C193352E26B77B60005202D1 /* DocumentSnapshot+Utils.swift */; };
@@ -161,6 +162,7 @@
 		C185EEB826CEA41100E3AD7B /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		C185EEBA26CEA44E00E3AD7B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		C185EEBC26CEA46500E3AD7B /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		C188BE1F27730D34005A20C1 /* MusicPlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerDelegate.swift; sourceTree = "<group>"; };
 		C192F8FB26D838E000EBF0FE /* CloudFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFilesView.swift; sourceTree = "<group>"; };
 		C192F8FD26D83B3A00EBF0FE /* CloudFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFileView.swift; sourceTree = "<group>"; };
 		C193352E26B77B60005202D1 /* DocumentSnapshot+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentSnapshot+Utils.swift"; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				C10E95A526AA0F53004CBEB8 /* Authenticator.swift */,
 				C1D3984226B3834C006BEE2D /* AuthService.swift */,
 				C1A665AD26B6434C0086001C /* FirestoreService.swift */,
+				C188BE1F27730D34005A20C1 /* MusicPlayerDelegate.swift */,
 				C1B16BE6276CD5C3002A2DC2 /* MusicPlayerService.swift */,
 				C1B16BE3276CD571002A2DC2 /* PlayerProtocol.swift */,
 				C1B16BE1276CD548002A2DC2 /* PlayerState.swift */,
@@ -674,6 +677,7 @@
 				C108987F26C3603200C941CE /* TitledInputPasswordFieldView.swift in Sources */,
 				C10E95A426A8AC9B004CBEB8 /* MainMenuView.swift in Sources */,
 				C10E95A126A8AAFA004CBEB8 /* MainTitleView.swift in Sources */,
+				C188BE2027730D34005A20C1 /* MusicPlayerDelegate.swift in Sources */,
 				C14A46AB26DAF23600FAAE9E /* FinanceView.swift in Sources */,
 				C1C0D89626E5BADA00DBE463 /* ItemsInFolder.swift in Sources */,
 				C10E95A826AF55CD004CBEB8 /* MainMenuBarView.swift in Sources */,

@@ -13,29 +13,35 @@ import SwiftUI
 class MusicListOfSongsModel: NSObject, ObservableObject {
     
     var storageService: StorageServiceProtocol = StorageService.shared
-    var musicPlayerService: PlayerProtocol = MusicPlayerService.shared
-    
+    private var service: PlayerProtocol = MusicPlayerService()
+
     @Published var state: PlayerState = .waiting
     @Published var songs = [Item]()
     @Published var selectedSong: Item?
+    @Published var length = ""
 
     private var priorSelectedSong: Item?
+    
+    override init() {
+        super.init()
+        service.delegate = self
+    }
 
     func select(_ song: Item) {
         priorSelectedSong = selectedSong
         selectedSong = song
         state = .playing
-        musicPlayerService.play(selectedSong)
+        service.play(selectedSong)
     }
     
     func playPause() {
         switch state {
         case .playing:
             state = .paused
-            musicPlayerService.pause()
+            service.pause()
         case .paused:
             state = .playing
-            musicPlayerService.play()
+            service.play()
         default:
             break
         }
@@ -56,6 +62,34 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
             return Image(systemName: "pause.fill")
         } else {
             return Image(systemName: "play.fill")
+        }
+    }
+    
+}
+
+// MARK: - MusicPlayerDelegate
+
+extension MusicListOfSongsModel: MusicPlayerDelegate {
+    
+    func setLength(_ length: Double) {
+        let l = Int(length)
+        let h = l / 3600
+        let m = (l - h * 3600) / 60
+        let s = (l - h * 3600) - m * 60
+        var ha = ""
+        if h > 0 {
+            ha = "\(h)h"
+        }
+        var ma = ""
+        if m > 0 {
+            ma = "\(m)m"
+        }
+        var sa = ""
+        if s > 0 {
+            sa = "\(s)s"
+        }
+        DispatchQueue.main.async {
+            self.length = "\(ha) \(ma) \(sa)"
         }
     }
     

@@ -93,9 +93,9 @@ class CoursesInPerson: ObservableObject {
     }
     
     func dump() {
-        print("* * *  Courses.dump()")
+        print("Courses.dump()")
         for course in courses {
-            print("  * * *  \(course)")
+            print("  \(course)")
         }
     }
     

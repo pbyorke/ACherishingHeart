@@ -11,8 +11,8 @@ import Firebase
 
 class MusicPlayerService: NSObject, PlayerProtocol {
 
-    static let shared = MusicPlayerService()
     private var player: AVAudioPlayer?
+    var delegate: MusicPlayerDelegate?
     
     func play(_ song: Item?) {
         if let fullPath = song?.fullPath {
@@ -22,10 +22,13 @@ class MusicPlayerService: NSObject, PlayerProtocol {
                     let url = try await storageRef.downloadURL()
                     async let (data, _) = URLSession.shared.data(from: url)
                     player = try await AVAudioPlayer(data: data)
-                    player?.numberOfLoops = 0
-                    player?.delegate = self
-                    player?.prepareToPlay()
-                    player?.play()
+                    if let player = player {
+                        player.numberOfLoops = 0
+                        player.delegate = self
+                        player.prepareToPlay()
+                        setLength(player.duration)
+                        player.play()
+                    }
                 } catch { }
             }
         }
@@ -45,5 +48,9 @@ class MusicPlayerService: NSObject, PlayerProtocol {
 // MARK: - AVAudioPlayerDelegate
 
 extension MusicPlayerService: AVAudioPlayerDelegate {
+    
+    func setLength(_ length: TimeInterval) {
+        delegate?.setLength(length)
+    }
     
 }

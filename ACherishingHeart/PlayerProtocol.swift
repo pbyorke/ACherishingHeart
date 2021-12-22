@@ -7,6 +7,8 @@
 
 protocol PlayerProtocol {
     
+    var delegate: MusicPlayerDelegate? { get set }
+
     func play(_ song: Item?)
     func play()
     func pause()

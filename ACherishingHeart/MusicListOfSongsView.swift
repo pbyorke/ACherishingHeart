@@ -9,32 +9,35 @@ import SwiftUI
 
 struct MusicListOfSongsView: View {
     
-    @StateObject private var musicListOfSongsModel = MusicListOfSongsModel()
+    @StateObject private var model = MusicListOfSongsModel()
     
-    @State private var position: Double = 0
+    @State var position: Double = 0
 
     var folder: Folder
     
     var body: some View {
         VStack {
             HStack {
-                Button { playPause() } label: {
-                    Image(systemName: musicListOfSongsModel.state == .paused ? "play.fill" : "pause.fill")
-                }
+                Button {playPause() } label: { Image(systemName: model.state == .paused ? "play.fill" : "pause.fill") }
                 .padding(5)
+                .frame(width: 40, height: 40)
                 .border(Color.black, width: 1)
-                .disabled(musicListOfSongsModel.state == .waiting)
-                Button { backward() } label: { Image(systemName: "backward.end") }
-                    .padding(5)
-                    .border(Color.black, width: 1)
-//                    .disabled(musicPlayerModel.state == .waiting)
-                Button { forward() } label: { Image(systemName: "forward.end") }
-                    .padding(5)
-                    .border(Color.black, width: 1)
-//                    .disabled(musicPlayerModel.state == .waiting)
+                .disabled(model.state == .waiting)
+//                Button { backward() } label: { Image(systemName: "backward.end") }
+//                .padding(5)
+//                .frame(width: 30, height: 30)
+//                .border(Color.black, width: 1)
+//                .disabled(musicListOfSongsModel.state == .waiting)
+//                Button { forward() } label: { Image(systemName: "forward.end") }
+//                .padding(5)
+//                .frame(width: 30, height: 30)
+//                .border(Color.black, width: 1)
+//                .disabled(musicListOfSongsModel.state == .waiting)
                 Slider(value: $position, in: 0...3.45)
                     .padding(5)
+                    .frame(height: 40)
                     .border(Color.black, width: 1)
+                    .disabled(model.state == .waiting)
 //                    .disabled(musicPlayerModel.state == .waiting)
 //                Button { shuffle() } label: { Image(systemNam   e: "shuffle.circle") }
 //                    .padding(5)
@@ -44,14 +47,16 @@ struct MusicListOfSongsView: View {
 //                    .padding(5)
 //                    .border(Color.black, width: 1)
 //                    .disabled(reptEnabled == false)
+                Text("\(model.length)")
+                    .font(.caption)
             }
             .padding()
-                .navigationTitle( Text("Songs") )
+            .navigationTitle( Text("Songs") )
             ScrollView {
                 VStack(spacing: 10) {
-                    ForEach(musicListOfSongsModel.songs) { song in
+                    ForEach(model.songs) { song in
                         HStack {
-                            if song == musicListOfSongsModel.selectedSong {
+                            if song == model.selectedSong {
                                 Image(systemName: "speaker.wave.3.fill")
                             } else {
                                 Image(systemName: "speaker.fill")
@@ -70,7 +75,7 @@ struct MusicListOfSongsView: View {
             .onAppear {
                 Task {
                     do {
-                        try await musicListOfSongsModel.getSongs(folder: folder)
+                        try await model.getSongs(folder: folder)
                     }
                 }
             }
@@ -81,15 +86,15 @@ struct MusicListOfSongsView: View {
     }
 
     private func tap(_ song: Item) {
-        musicListOfSongsModel.select(song)
+        model.select(song)
     }
     
     private func playPause() {
-        musicListOfSongsModel.playPause()
+        model.playPause()
     }
     
-    private func backward() { }
-    private func forward() { }
+//    private func backward() { }
+//    private func forward() { }
 //    private func shuffle() { }
 //    private func rept() { }
 

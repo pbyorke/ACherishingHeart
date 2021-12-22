@@ -15,12 +15,12 @@ struct CloudFile: Identifiable {
     var description: String
     
     func dump() {
-        print("* * *  id          \"\(id)\"")
-        print("* * *  fullPath    \"\(fullPath)\"")
-        print("* * *  bucket      \"\(bucket)\"")
-        print("* * *  name        \"\(name)\"")
-        print("* * *  description \"\(description)\"")
-        print("* * *  ")
+        print("id          \"\(id)\"")
+        print("fullPath    \"\(fullPath)\"")
+        print("bucket      \"\(bucket)\"")
+        print("name        \"\(name)\"")
+        print("description \"\(description)\"")
+        print("")
     }
     
 }

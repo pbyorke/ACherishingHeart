@@ -93,9 +93,9 @@ class ItemsInFolder: ObservableObject {
     }
     
     func dump() {
-        print("* * *  Items.dump()")
+        print("Items.dump()")
         for item in items {
-            print("  * * *  \(item)")
+            print("  \(item)")
         }
     }
     
