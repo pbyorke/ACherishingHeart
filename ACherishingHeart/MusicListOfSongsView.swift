@@ -11,7 +11,7 @@ struct MusicListOfSongsView: View {
     
     @StateObject private var model = MusicListOfSongsModel()
     
-    @State var position: Double = 0
+//    @State var position: Double = 0
 
     var folder: Folder
     
@@ -23,30 +23,11 @@ struct MusicListOfSongsView: View {
                 .frame(width: 40, height: 40)
                 .border(Color.black, width: 1)
                 .disabled(model.state == .waiting)
-//                Button { backward() } label: { Image(systemName: "backward.end") }
-//                .padding(5)
-//                .frame(width: 30, height: 30)
-//                .border(Color.black, width: 1)
-//                .disabled(musicListOfSongsModel.state == .waiting)
-//                Button { forward() } label: { Image(systemName: "forward.end") }
-//                .padding(5)
-//                .frame(width: 30, height: 30)
-//                .border(Color.black, width: 1)
-//                .disabled(musicListOfSongsModel.state == .waiting)
-                Slider(value: $position, in: 0...3.45)
+                Slider(value: $model.position, in: 0...1)
                     .padding(5)
                     .frame(height: 40)
                     .border(Color.black, width: 1)
                     .disabled(model.state == .waiting)
-//                    .disabled(musicPlayerModel.state == .waiting)
-//                Button { shuffle() } label: { Image(systemNam   e: "shuffle.circle") }
-//                    .padding(5)
-//                    .border(Color.black, width: 1)
-//                    .disabled(shuffleEnabled == false)
-//                Button { rept() } label: { Image(systemName: "repeat.circle") }
-//                    .padding(5)
-//                    .border(Color.black, width: 1)
-//                    .disabled(reptEnabled == false)
                 Text("\(model.length)")
                     .font(.caption)
             }
@@ -93,11 +74,6 @@ struct MusicListOfSongsView: View {
         model.playPause()
     }
     
-//    private func backward() { }
-//    private func forward() { }
-//    private func shuffle() { }
-//    private func rept() { }
-
 }
 
 // MARK: - Preview

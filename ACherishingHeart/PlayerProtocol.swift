@@ -8,6 +8,8 @@
 protocol PlayerProtocol {
     
     var delegate: MusicPlayerDelegate? { get set }
+    var position: Double { get }
+    var length: Double { get }
 
     func play(_ song: Item?)
     func play()

@@ -19,8 +19,10 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
     @Published var songs = [Item]()
     @Published var selectedSong: Item?
     @Published var length = ""
+    @Published var position: Double = 0
 
     private var priorSelectedSong: Item?
+    private var timer: Timer?
     
     override init() {
         super.init()
@@ -31,6 +33,9 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
         priorSelectedSong = selectedSong
         selectedSong = song
         state = .playing
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.position = self.service.position / self.service.length
+        }
         service.play(selectedSong)
     }
     

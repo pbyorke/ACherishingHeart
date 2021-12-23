@@ -13,7 +13,9 @@ class MusicPlayerService: NSObject, PlayerProtocol {
 
     private var player: AVAudioPlayer?
     var delegate: MusicPlayerDelegate?
-    
+    var position: Double { get { player?.currentTime ?? 0 } }
+    var length: Double { get { player?.duration ?? 0 } }
+
     func play(_ song: Item?) {
         if let fullPath = song?.fullPath {
             let storageRef = Storage.storage().reference().child(fullPath)
