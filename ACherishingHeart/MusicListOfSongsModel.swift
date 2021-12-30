@@ -18,7 +18,8 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
     @Published var state: PlayerState = .waiting
     @Published var songs = [Item]()
     @Published var selectedSong: Item?
-    @Published var length = ""
+    @Published var current = ""
+    @Published var remaining = ""
     @Published var position: Double = 0
 
     private var priorSelectedSong: Item?
@@ -33,10 +34,16 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
         priorSelectedSong = selectedSong
         selectedSong = song
         state = .playing
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.position = self.service.position / self.service.length
-        }
+        startTimer()
         service.play(selectedSong)
+    }
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.current = self.format(self.service.position)
+            self.position = self.service.position / self.service.length
+            self.remaining = self.format(self.service.length - self.service.position)
+        }
     }
     
     func playPause() {
@@ -70,14 +77,8 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
         }
     }
     
-}
-
-// MARK: - MusicPlayerDelegate
-
-extension MusicListOfSongsModel: MusicPlayerDelegate {
-    
-    func setLength(_ length: Double) {
-        let l = Int(length)
+    private func format(_ interval: Double) -> String {
+        let l = Int(interval)
         let h = l / 3600
         let m = (l - h * 3600) / 60
         let s = (l - h * 3600) - m * 60
@@ -93,9 +94,17 @@ extension MusicListOfSongsModel: MusicPlayerDelegate {
         if s > 0 {
             sa = "\(s)s"
         }
-        DispatchQueue.main.async {
-            self.length = "\(ha) \(ma) \(sa)"
+        return "\(ha) \(ma) \(sa)"
+    }
+    
+    func sliderMoved(_ editing: Bool) {
+        if !editing {
+            service.playAt(position)
         }
     }
     
 }
+
+// MARK: - MusicPlayerDelegate
+
+extension MusicListOfSongsModel: MusicPlayerDelegate { }

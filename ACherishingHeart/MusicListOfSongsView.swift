@@ -10,8 +10,6 @@ import SwiftUI
 struct MusicListOfSongsView: View {
     
     @StateObject private var model = MusicListOfSongsModel()
-    
-//    @State var position: Double = 0
 
     var folder: Folder
     
@@ -23,12 +21,14 @@ struct MusicListOfSongsView: View {
                 .frame(width: 40, height: 40)
                 .border(Color.black, width: 1)
                 .disabled(model.state == .waiting)
-                Slider(value: $model.position, in: 0...1)
+                Text(model.current)
+                    .font(.caption)
+                Slider(value: $model.position, in: 0...1) { editing in model.sliderMoved(editing) }
                     .padding(5)
                     .frame(height: 40)
                     .border(Color.black, width: 1)
                     .disabled(model.state == .waiting)
-                Text("\(model.length)")
+                Text(model.remaining)
                     .font(.caption)
             }
             .padding()

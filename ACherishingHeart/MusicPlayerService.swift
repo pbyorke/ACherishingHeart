@@ -28,7 +28,6 @@ class MusicPlayerService: NSObject, PlayerProtocol {
                         player.numberOfLoops = 0
                         player.delegate = self
                         player.prepareToPlay()
-                        setLength(player.duration)
                         player.play()
                     }
                 } catch { }
@@ -41,6 +40,12 @@ class MusicPlayerService: NSObject, PlayerProtocol {
         player?.play()
     }
     
+    func playAt(_ position: Double) {
+        if let player = player {
+            player.currentTime = player.duration * position
+        }
+    }
+    
     func pause() {
         player?.pause()
     }
@@ -49,10 +54,4 @@ class MusicPlayerService: NSObject, PlayerProtocol {
 
 // MARK: - AVAudioPlayerDelegate
 
-extension MusicPlayerService: AVAudioPlayerDelegate {
-    
-    func setLength(_ length: TimeInterval) {
-        delegate?.setLength(length)
-    }
-    
-}
+extension MusicPlayerService: AVAudioPlayerDelegate { }

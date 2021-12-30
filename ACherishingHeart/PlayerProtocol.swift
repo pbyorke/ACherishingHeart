@@ -13,6 +13,7 @@ protocol PlayerProtocol {
 
     func play(_ song: Item?)
     func play()
+    func playAt(_ position: Double)
     func pause()
     
 }
