@@ -119,7 +119,7 @@
 		C104B40726EDB59A00DF2AB1 /* CoursesInPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesInPerson.swift; sourceTree = "<group>"; };
 		C108987C26C35C0D00C941CE /* TitledInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputTextFieldView.swift; sourceTree = "<group>"; };
 		C108987E26C3603200C941CE /* TitledInputPasswordFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledInputPasswordFieldView.swift; sourceTree = "<group>"; };
-		C10E956326A8A242004CBEB8 /* ACherishingHeart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACherishingHeart.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10E956326A8A242004CBEB8 /* Cherish Heart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cherish Heart.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10E956626A8A242004CBEB8 /* ACherishingHeartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACherishingHeartApp.swift; sourceTree = "<group>"; };
 		C10E956826A8A242004CBEB8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C10E956A26A8A242004CBEB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 		C10E956426A8A242004CBEB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C10E956326A8A242004CBEB8 /* ACherishingHeart.app */,
+				C10E956326A8A242004CBEB8 /* Cherish Heart.app */,
 				C10E957326A8A242004CBEB8 /* ACherishingHeartTests.xctest */,
 				C10E957D26A8A242004CBEB8 /* ACherishingHeartUITests.xctest */,
 			);
@@ -538,7 +538,7 @@
 				C139CA8426DDA1A0007A05EB /* FirebaseStorageSwift-Beta */,
 			);
 			productName = ACherishingHeart;
-			productReference = C10E956326A8A242004CBEB8 /* ACherishingHeart.app */;
+			productReference = C10E956326A8A242004CBEB8 /* Cherish Heart.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C10E957226A8A242004CBEB8 /* ACherishingHeartTests */ = {
@@ -906,7 +906,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.storkebrothers.ACherishingHeart;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cherish Heart";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -936,7 +936,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.storkebrothers.ACherishingHeart;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cherish Heart";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -50,8 +50,18 @@ class MusicPlayerService: NSObject, PlayerProtocol {
         player?.pause()
     }
     
+    func stop() {
+        player?.stop()
+    }
+    
 }
 
 // MARK: - AVAudioPlayerDelegate
 
-extension MusicPlayerService: AVAudioPlayerDelegate { }
+extension MusicPlayerService: AVAudioPlayerDelegate {
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        delegate?.finishedPlaying()
+    }
+    
+}

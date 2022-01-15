@@ -15,5 +15,6 @@ protocol PlayerProtocol {
     func play()
     func playAt(_ position: Double)
     func pause()
+    func stop()
     
 }

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C10E956226A8A242004CBEB8"
-               BuildableName = "ACherishingHeart.app"
+               BuildableName = "Cherish Heart.app"
                BlueprintName = "ACherishingHeart"
                ReferencedContainer = "container:ACherishingHeart.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C10E956226A8A242004CBEB8"
-            BuildableName = "ACherishingHeart.app"
+            BuildableName = "Cherish Heart.app"
             BlueprintName = "ACherishingHeart"
             ReferencedContainer = "container:ACherishingHeart.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C10E956226A8A242004CBEB8"
-            BuildableName = "ACherishingHeart.app"
+            BuildableName = "Cherish Heart.app"
             BlueprintName = "ACherishingHeart"
             ReferencedContainer = "container:ACherishingHeart.xcodeproj">
          </BuildableReference>

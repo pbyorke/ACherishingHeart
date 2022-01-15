@@ -27,7 +27,7 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
     
     override init() {
         super.init()
-        service.delegate = self
+        service.delegate = self 
     }
 
     func select(_ song: Item) {
@@ -35,6 +35,7 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
         selectedSong = song
         state = .playing
         startTimer()
+        service.stop()
         service.play(selectedSong)
     }
     
@@ -99,7 +100,9 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
     
     func sliderMoved(_ editing: Bool) {
         if !editing {
+            timer?.invalidate()
             service.playAt(position)
+            startTimer()
         }
     }
     
@@ -107,4 +110,18 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
 
 // MARK: - MusicPlayerDelegate
 
-extension MusicListOfSongsModel: MusicPlayerDelegate { }
+extension MusicListOfSongsModel: MusicPlayerDelegate {
+    
+    func finishedPlaying() {
+        service.stop()
+        let thisSong = songs.firstIndex { $0.name == selectedSong?.name } ?? 0
+        if thisSong > songs.count - 2 {
+            priorSelectedSong = selectedSong
+            selectedSong = nil
+        } else {
+            selectedSong = songs[thisSong + 1]
+            service.play(selectedSong)
+        }
+    }
+    
+}
