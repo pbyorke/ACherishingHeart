@@ -60,6 +60,9 @@ struct MusicListOfSongsView: View {
                     }
                 }
             }
+            .onDisappear {
+                model.stop()
+            }
             if MainView.NAMES {
                 Names(name: "MusicListOfSongsView")
             } // NAMES

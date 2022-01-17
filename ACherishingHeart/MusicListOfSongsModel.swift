@@ -106,6 +106,11 @@ class MusicListOfSongsModel: NSObject, ObservableObject {
         }
     }
     
+    func stop() {
+        timer?.invalidate()
+        service.stop()
+    }
+    
 }
 
 // MARK: - MusicPlayerDelegate
