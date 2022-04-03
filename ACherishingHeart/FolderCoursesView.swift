@@ -41,10 +41,8 @@ struct FolderCoursesView: View {
     
 }
 
-#if DEBUG
 struct FolderCoursesView_Previews: PreviewProvider {
     static var previews: some View {
         FolderCoursesView()
     }
 }
-#endif

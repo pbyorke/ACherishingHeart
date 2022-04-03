@@ -22,9 +22,9 @@ struct Person: Identifiable, Codable {
     var admin:        Bool // has permission to deal with persons
     var finance:      Bool // can set promisedRate, etc
     var subscriber:   Bool // is paying for music
-    var joyCoach:     Bool
-    var JCTeacher:    Bool
-    var JCStudent:    Bool
+    var joyCoach:     Bool // is a registered Joy Coach
+    var JCTeacher:    Bool // is a registered Joy Coach Teacher
+    var JCStudent:    Bool // is a student Joy Coach
     var promisedRate: Int  // monthly subscription amount promised in cents
 }
 

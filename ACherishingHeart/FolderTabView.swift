@@ -21,7 +21,6 @@ struct FolderTabView: View {
     }
 }
 
-#if DEBUG
 struct FolderTabView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
@@ -29,4 +28,3 @@ struct FolderTabView_Previews: PreviewProvider {
             .preview(with: "Add or update a Folder")
     }
 }
-#endif

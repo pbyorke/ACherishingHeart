@@ -31,10 +31,8 @@ struct MasterView: View {
     }
 }
 
-#if DEBUG
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
         MasterView()
     }
 }
-#endif

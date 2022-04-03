@@ -64,12 +64,11 @@ struct SignInView: View {
     
 }
 
-#if DEBUG
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SignInView()
+                .environmentObject(Authenticator.shared)
         }
     }
 }
-#endif

@@ -13,10 +13,8 @@ struct EmbeddedCloudFilesView: View {
     }
 }
 
-#if DEBUG
 struct EmbeddedCloudFilesView_Previews: PreviewProvider {
     static var previews: some View {
         EmbeddedCloudFilesView()
     }
 }
-#endif

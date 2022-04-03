@@ -21,10 +21,8 @@ struct TitledText: View {
     }
 }
 
-#if DEBUG
 struct TitledText_Previews: PreviewProvider {
     static var previews: some View {
         TitledText(title: "title", text: "text")
     }
 }
-#endif

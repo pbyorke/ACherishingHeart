@@ -109,7 +109,6 @@ struct ItemView: View {
     
 }
 
-#if DEBUG
 struct ItemView_Previews: PreviewProvider {
     @State static var item = Item.new
     static var previews: some View {
@@ -117,4 +116,3 @@ struct ItemView_Previews: PreviewProvider {
             .preview(with: "Add or update an Item")
     }
 }
-#endif

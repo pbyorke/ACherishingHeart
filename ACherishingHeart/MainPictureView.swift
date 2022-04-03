@@ -19,7 +19,8 @@ struct MainPictureView: View {
                                height: UIScreen.main.bounds.width * 0.75)
                         .padding(.leading, 20)
                         .padding(.top, 40)
-                    Text("Karyn Lynn Grant-Turley").font(.title)
+                    Text("Karyn Lynn Grant-Turley")
+                        .font(.title)
                         .padding(.leading, 20)
                         .padding(.bottom, 0)
                 }
@@ -29,11 +30,11 @@ struct MainPictureView: View {
     }
 }
 
-#if DEBUG
+// MARK: - Preview
+
 struct MainPictureView_Previews: PreviewProvider {
     static var previews: some View {
         MainPictureView()
             .preview(with: "Main Picture")
     }
 }
-#endif

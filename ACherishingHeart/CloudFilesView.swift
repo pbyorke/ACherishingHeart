@@ -53,7 +53,6 @@ struct CloudFilesView: View {
     }
 }
 
-#if DEBUG
 struct CloudFilesView_Previews: PreviewProvider {
     @State static var url = ""
     @State static var fullPath = ""
@@ -61,4 +60,3 @@ struct CloudFilesView_Previews: PreviewProvider {
         CloudFilesView(url: $url, fullPath: $fullPath)
     }
 }
-#endif

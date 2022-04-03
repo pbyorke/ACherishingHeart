@@ -58,10 +58,8 @@ struct FoldersView: View {
     }
 }
 
-#if DEBUG
 struct FoldersView_Previews: PreviewProvider {
     static var previews: some View {
         FoldersView(type: .play)
     }
 }
-#endif

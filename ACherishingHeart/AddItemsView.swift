@@ -21,11 +21,9 @@ struct AddItemsView: View {
     }
 }
 
-#if DEBUG
 struct AddItemsView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
         AddItemsView(folder: $folder)
     }
 }
-#endif

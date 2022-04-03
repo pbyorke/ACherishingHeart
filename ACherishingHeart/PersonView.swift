@@ -1,5 +1,5 @@
 //
-//  PersonInfoView.swift
+//  PersonView.swift
 //  ACherishingHeart
 //
 //  Created by Peter Yorke on 8/4/21.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct PersonInfoView: View {
+struct PersonView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
     @EnvironmentObject var coursesInFolder: CoursesInFolder
+    
     var storageService: StorageServiceProtocol = StorageService.shared
-
     var add = false
     @Binding var person: Person
     var masterView: Bool
@@ -22,8 +22,10 @@ struct PersonInfoView: View {
         VStack {
             ScrollView {
                 VStack {
-                    Text(person.email)
-                        .font(.title)
+                    HStack {
+                        Spacer()
+                        Button("Save") { save() }
+                    }
                     TitledInputTextFieldView(
                         title: "First Name",
                         text: $person.firstName,
@@ -70,10 +72,7 @@ struct PersonInfoView: View {
             }
         }
         .padding(15)
-        .navigationTitle("Person")
-        .toolbar {
-            Button("Save") { save() }
-        }
+        .navigationTitle(person.email)
     }
     
     private func save() {
@@ -85,12 +84,11 @@ struct PersonInfoView: View {
     
 }
 
-#if DEBUG
-struct PersonInfoView_Previews: PreviewProvider {
+struct PersonView_Previews: PreviewProvider {
     @State static var person = Person.new
     static var previews: some View {
-        PersonInfoView(person: $person, masterView: true)
+        PersonView(person: $person, masterView: true)
+            .environmentObject(Authenticator.shared)
             .preview(with: "Add or update a Person")
     }
 }
-#endif

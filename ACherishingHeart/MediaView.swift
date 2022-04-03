@@ -33,10 +33,8 @@ struct MediaView: View {
     }
 }
 
-#if DEBUG
 struct MediaView_Previews: PreviewProvider {
     static var previews: some View {
         MediaView(type: .play)
     }
 }
-#endif

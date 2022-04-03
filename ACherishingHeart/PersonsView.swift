@@ -38,10 +38,9 @@ struct PersonsView: View {
     }
 }
 
-#if DEBUG
 struct PersonsView_Previews: PreviewProvider {
     static var previews: some View {
         PersonsView(masterView: true)
+            .environmentObject(Authenticator.shared)
     }
 }
-#endif

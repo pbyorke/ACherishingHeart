@@ -33,7 +33,6 @@ struct FolderInfoView: View {
     
 }
 
-#if DEBUG
 struct FolderInfoView_Previews: PreviewProvider {
     @State static var folder = Folder.new
     static var previews: some View {
@@ -41,4 +40,3 @@ struct FolderInfoView_Previews: PreviewProvider {
             .preview(with: "Add or update a Folder")
     }
 }
-#endif

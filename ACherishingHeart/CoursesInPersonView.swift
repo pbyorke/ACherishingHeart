@@ -41,10 +41,8 @@ struct CoursesInPersonView: View {
     
 }
 
-#if DEBUG
 struct CoursesInPersonView_Previews: PreviewProvider {
     static var previews: some View {
         CoursesInPersonView()
     }
 }
-#endif

@@ -32,11 +32,9 @@ struct CloudFileView: View {
     }
 }
 
-#if DEBUG
 struct CloudFIleView_Previews: PreviewProvider {
     @State static var file = CloudFile.new
     static var previews: some View {
         CloudFileView(file: $file)
     }
 }
-#endif

@@ -45,7 +45,8 @@ import Firebase
 @main
 struct ACherishingHeartApp: App {
 
-    var authenticator = Authenticator()
+    @StateObject private var authenticator = Authenticator.shared
+    
     var itemsInFolder = ItemsInFolder()
     var coursesInFolder = CoursesInFolder()
     var coursesInPerson = CoursesInPerson()

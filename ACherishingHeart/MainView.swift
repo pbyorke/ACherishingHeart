@@ -10,7 +10,9 @@ import SwiftUI
 struct MainView: View {
     
     static let NAMES = true
-
+    
+    @EnvironmentObject var authenticator: Authenticator
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -32,13 +34,12 @@ struct MainView: View {
     }
 }
 
-#if DEBUG
-let authenticator = Authenticator()
+// MARK: - Preview
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(authenticator)
+            .environmentObject(Authenticator.shared)
             .preview(with: "Main View")
     }
 }
-#endif

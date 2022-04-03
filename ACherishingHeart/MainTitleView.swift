@@ -22,11 +22,11 @@ struct MainTitleView: View {
     }
 }
 
-#if DEBUG
+// MARK: - Preview
+
 struct MainTitleView_Previews: PreviewProvider {
     static var previews: some View {
         MainTitleView()
             .preview(with: "Main Title")
     }
 }
-#endif

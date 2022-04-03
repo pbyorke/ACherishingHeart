@@ -38,7 +38,6 @@ struct TitledInputPasswordView: View {
     }
 }
 
-#if DEBUG
 struct TitledInputPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -59,4 +58,3 @@ struct TitledInputPasswordView_Previews: PreviewProvider {
         }
     }
 }
-#endif

@@ -67,7 +67,6 @@ struct CourseView: View {
     
 }
 
-#if DEBUG
 struct COurseView_Previews: PreviewProvider {
     @State static var course = Course.new
     static var previews: some View {
@@ -75,4 +74,3 @@ struct COurseView_Previews: PreviewProvider {
             .preview(with: "Add or update a Course")
     }
 }
-#endif

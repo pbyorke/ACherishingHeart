@@ -60,12 +60,10 @@ struct MainMenuBarView: View {
     
 }
 
-#if DEBUG
 struct MainMenuBarView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuBarView()
-            .environmentObject(authenticator)
+            .environmentObject(Authenticator.shared)
             .preview(with: "Main Menu Bar")
     }
 }
-#endif

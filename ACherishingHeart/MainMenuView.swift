@@ -54,7 +54,7 @@ struct MainMenuView: View {
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
-            .environmentObject(authenticator)
+            .environmentObject(Authenticator.shared)
             .preview(with: "Main Menu")
     }
 }

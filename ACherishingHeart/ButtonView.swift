@@ -49,7 +49,6 @@ struct ButtonView: View {
     }
 }
 
-#if DEBUG
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -64,4 +63,3 @@ struct ButtonView_Previews: PreviewProvider {
         }
     }
 }
-#endif

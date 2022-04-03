@@ -27,10 +27,8 @@ struct FinanceView: View {
     }
 }
 
-#if DEBUG
 struct FinanceView_Previews: PreviewProvider {
     static var previews: some View {
         FinanceView()
     }
 }
-#endif

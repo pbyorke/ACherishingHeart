@@ -10,6 +10,7 @@ import SwiftUI
 struct ForgotPasswordView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
         VStack {
@@ -41,10 +42,9 @@ struct ForgotPasswordView: View {
 
 }
 
-#if DEBUG
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         ForgotPasswordView()
+            .environmentObject(Authenticator.shared)
     }
 }
-#endif

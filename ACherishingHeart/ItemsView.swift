@@ -64,10 +64,8 @@ struct ItemsView: View {
     }
 }
 
-#if DEBUG
 struct ItemsView_Previews: PreviewProvider {
     static var previews: some View {
         ItemsView()
     }
 }
-#endif

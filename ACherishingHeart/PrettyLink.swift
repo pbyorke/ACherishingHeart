@@ -45,11 +45,9 @@ struct PrettyLink<Target: View>: View {
     }
 }
 
-#if DEBUG
 struct PrettyLink_Previews: PreviewProvider {
     static var previews: some View {
         PrettyLink(label: "Dummy", destination: Text("Dummy")) { }
         .preview(with: "some string")
     }
 }
-#endif

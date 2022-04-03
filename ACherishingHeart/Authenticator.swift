@@ -11,6 +11,10 @@ import FirebaseFirestore
 
 final class Authenticator: ObservableObject {
 
+    static let shared = Authenticator()
+    
+    private init() { }
+    
     @Published var isLoggedIn: Bool = false
     @Published var currentPerson: Person?
     @Published var persons = [Person]()

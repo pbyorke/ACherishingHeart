@@ -79,12 +79,11 @@ struct SignUpView: View {
     
 }
 
-#if DEBUG
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SignUpView()
+                .environmentObject(Authenticator.shared)
         }
     }
 }
-#endif

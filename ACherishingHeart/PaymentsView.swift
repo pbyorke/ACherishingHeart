@@ -18,10 +18,8 @@ struct PaymentsView: View {
     }
 }
 
-#if DEBUG
 struct PaymentsView_Previews: PreviewProvider {
     static var previews: some View {
         PaymentsView()
     }
 }
-#endif

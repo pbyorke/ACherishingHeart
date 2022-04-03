@@ -43,10 +43,9 @@ struct DebugView: View {
     }
 }
 
-#if DEBUG
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
         DebugView()
+            .environmentObject(Authenticator.shared)
     }
 }
-#endif

@@ -14,9 +14,8 @@ struct PersonTabView: View {
 
     var body: some View {
         TabView {
-            PersonInfoView(person: $person, masterView: masterView).tabItem { Label("Info", systemImage: "gearshape.fill") }
+            PersonView(person: $person, masterView: masterView).tabItem { Label("Info", systemImage: "gearshape.fill") }
             PersonCoursesView().tabItem { Label("Courses", systemImage: "books.vertical.fill") }
-            .navigationTitle("Person")
         }
     }
 }

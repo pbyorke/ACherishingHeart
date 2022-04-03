@@ -38,7 +38,6 @@ struct InputTextFieldView: View {
     }
 }
 
-#if DEBUG
 struct InputTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -59,4 +58,3 @@ struct InputTextFieldView_Previews: PreviewProvider {
         }
     }
 }
-#endif
