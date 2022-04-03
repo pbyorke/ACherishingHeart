@@ -141,6 +141,7 @@ final class Authenticator: ObservableObject {
                 firstName:      person.firstName,
                 lastName:       person.lastName,
                 phoneNumber:    person.phoneNumber,
+                anonymous:      false,
                 inactive:       false,
                 delinquent:     false,
                 media:          false,

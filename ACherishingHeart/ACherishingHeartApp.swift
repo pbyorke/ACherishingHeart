@@ -42,8 +42,7 @@
 import SwiftUI
 import Firebase
 
-@main
-struct ACherishingHeartApp: App {
+@main struct ACherishingHeartApp: App {
 
     @StateObject private var authenticator = Authenticator.shared
     

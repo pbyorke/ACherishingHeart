@@ -15,6 +15,7 @@ struct Person: Identifiable, Codable {
     var firstName:    String { didSet { firstName   = firstName.trim() } }
     var lastName:     String { didSet { lastName    = lastName.trim() } }
     var phoneNumber:  String { didSet { phoneNumber = phoneNumber.trim() } }
+    var anonymous:    Bool // has not created an individual account
     var inactive:     Bool // been made inactive on purpose
     var delinquent:   Bool // behind on monthly dues
     var media:        Bool // has permission to change items and folders and courses
@@ -38,6 +39,7 @@ extension Person {
             firstName:      "",
             lastName:       "",
             phoneNumber:    "",
+            anonymous:      false,
             inactive:       false,
             delinquent:     false,
             media:          false,

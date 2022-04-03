@@ -11,10 +11,7 @@ struct PersonView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authenticator: Authenticator
-    @EnvironmentObject var coursesInFolder: CoursesInFolder
     
-    var storageService: StorageServiceProtocol = StorageService.shared
-    var add = false
     @Binding var person: Person
     var masterView: Bool
     
@@ -51,6 +48,8 @@ struct PersonView: View {
                 .padding(.trailing, 10)
                 VStack {
                     if masterView {
+                        Toggle("Anonymous", isOn: $person.anonymous)
+                            .disabled(true)
                         Toggle("Inactive", isOn: $person.inactive)
                         Toggle("Delinquent", isOn: $person.delinquent)
                     }
