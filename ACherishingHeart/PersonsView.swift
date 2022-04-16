@@ -13,8 +13,9 @@ struct PersonsView: View {
     @EnvironmentObject var coursesInPerson: CoursesInPerson
 
     var masterView: Bool
-    @State private var person = Person.new
-    
+//    @State private var person = Person.new
+    @State private var person = Person()
+
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {

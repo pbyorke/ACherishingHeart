@@ -84,7 +84,8 @@ struct PersonView: View {
 }
 
 struct PersonView_Previews: PreviewProvider {
-    @State static var person = Person.new
+//    @State static var person = Person.new
+    @State static var person = Person()
     static var previews: some View {
         PersonView(person: $person, masterView: true)
             .environmentObject(Authenticator.shared)

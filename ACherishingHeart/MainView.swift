@@ -21,7 +21,7 @@ struct MainView: View {
                     MainTitleView()
                     MainMenuView()
                     Spacer()
-//                    DebugView()
+                    DebugView()
                     MainMenuBarView()
                 }
                 if MainView.NAMES {

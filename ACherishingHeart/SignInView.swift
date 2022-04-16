@@ -15,8 +15,9 @@ struct SignInView: View {
     @State private var showForgotPassword = false
     @State private var showSigninError = false
     @State private var errorMessage = ""
-    @State private var person = Person.new
-    
+//    @State private var person = Person.new
+    @State private var person = Person()
+
     var erase: Bool = false
 
     var body: some View {

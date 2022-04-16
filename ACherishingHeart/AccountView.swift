@@ -11,6 +11,7 @@ struct AccountView: View {
     var body: some View {
         VStack {
             Text("AccountView")
+            DebugView()
         }
         if MainView.NAMES {
             Names(name: "AccountView")

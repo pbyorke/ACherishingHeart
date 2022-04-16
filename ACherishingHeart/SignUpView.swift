@@ -14,8 +14,9 @@ struct SignUpView: View {
 
     @State private var showSignupError = false
     @State private var errorMessage = ""
-    @State private var person = Person.new
-    
+//    @State private var person = Person.new
+    @State private var person = Person()
+
     var erase: Bool = false
 
     var body: some View {

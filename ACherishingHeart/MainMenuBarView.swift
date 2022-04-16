@@ -40,6 +40,14 @@ struct MainMenuBarView: View {
                             signOut()
                         }
                     }
+                    
+                    
+                    
+                    NavigationLink("Account", destination: AccountView())
+                    
+                    
+                    
+                    
                 }
             }
         }

@@ -11,9 +11,10 @@ import FirebaseFirestore
 
 final class Authenticator: ObservableObject {
 
-    static let shared = Authenticator()
-    
-    private init() { }
+    static let shared = Authenticator()    
+    private let dataStore = DataStore()
+    private let authService: AuthServiceProtocol = AuthService.shared
+    private let firestoreService: FirestoreServiceProtocol = FirestoreService.shared
     
     @Published var isLoggedIn: Bool = false
     @Published var currentPerson: Person?
@@ -22,8 +23,13 @@ final class Authenticator: ObservableObject {
     private var currentId = ""
     private var personListener: ListenerRegistration?
     
-    var authService: AuthServiceProtocol = AuthService.shared
-    var firestoreService: FirestoreServiceProtocol = FirestoreService.shared
+    var isAnonymous: Bool {
+        if let currentPerson = currentPerson {
+            return currentPerson.anonymous
+        } else {
+            return false
+        }
+    }
     
     var isInactive: Bool {
         if let currentPerson = currentPerson {
@@ -105,6 +111,8 @@ final class Authenticator: ObservableObject {
         }
     }
     
+    private init() { }
+    
     func setup() {
         Task.init {
             if let user = Auth.auth().currentUser {
@@ -112,8 +120,52 @@ final class Authenticator: ObservableObject {
                 isLoggedIn = true
                 listenAllPersons()
             } else {
-                isLoggedIn = false
-                personListener?.remove()
+                if let person = dataStore.getDefaultPerson() {
+                    print("* * *  there was a default person")
+                    currentId = person.userUID
+                    isLoggedIn = true
+                    listenAllPersons()
+                } else {
+                    do {
+                        let authResult = try await Auth.auth().signInAnonymously()
+                        let user = authResult.user
+                        let uid = user.uid
+                        let email = "thecherishingplaceapp+\(uid)@gmail.com"
+                        let password = "password"
+                        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+                        try await user.link(with: credential)
+                        let person = Person(userUID: uid, email: email, password: password, anonymous: true, promisedRate: 0)
+                        try await firestoreService.create(person, collection: .persons)
+                        await dataStore.setDefaultPerson(person)
+                        DispatchQueue.main.async { [self] in
+                            currentId = person.userUID
+                            isLoggedIn = true
+                            listenAllPersons()
+                        }
+                    } catch {
+                        print("* * *  Authenticator setup error \"\(error.localizedDescription)\"")
+                    }
+                }
+            }
+        }
+    }
+    
+    private func listenAllPersons() {
+        personListener = Firestore.firestore().collection("persons").addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            do {
+                var objects = [Person]()
+                for document in snapshot.documents {
+                    let object = try document.decode(as: Person.self, includingId: true)
+                    objects.append(object)
+                }
+                DispatchQueue.main.async { [self] in
+                    persons = objects
+                    let person = self.persons.first { $0.userUID == self.currentId }
+                    currentPerson = person
+                }
+            } catch {
+                print("* * *  listenAllPersons error \"\(error.localizedDescription)\"")
             }
         }
     }
@@ -133,27 +185,37 @@ final class Authenticator: ObservableObject {
     func signup(person: Person) async throws {
         do {
             let uid = try await authService.signup(email: person.email, password: person.password)
+//            let person = Person.namedPerson(
             let person = Person(
-                id:             "",
-                userUID:        uid,
-                email:          person.email,
-                password:       person.password,
-                firstName:      person.firstName,
-                lastName:       person.lastName,
-                phoneNumber:    person.phoneNumber,
-                anonymous:      false,
-                inactive:       false,
-                delinquent:     false,
-                media:          false,
-                master:         false,
-                admin:          false,
-                finance:        false,
-                subscriber:     false,
-                joyCoach:       false,
-                JCTeacher:      false,
-                JCStudent:      false,
-                promisedRate:   person.promisedRate
+                userUID: uid,
+                email: person.email,
+                password: person.password,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                phoneNumber: person.phoneNumber,
+                promisedRate: person.promisedRate
             )
+//            let person = Person(
+//                id:             "",
+//                userUID:        uid,
+//                email:          person.email,
+//                password:       person.password,
+//                firstName:      person.firstName,
+//                lastName:       person.lastName,
+//                phoneNumber:    person.phoneNumber,
+//                anonymous:      false,
+//                inactive:       false,
+//                delinquent:     false,
+//                media:          false,
+//                master:         false,
+//                admin:          false,
+//                finance:        false,
+//                subscriber:     false,
+//                joyCoach:       false,
+//                JCTeacher:      false,
+//                JCStudent:      false,
+//                promisedRate:   person.promisedRate
+//            )
             try await firestoreService.create(person, collection: .persons)
             DispatchQueue.main.async {
                 self.listenAllPersons()
@@ -204,24 +266,6 @@ final class Authenticator: ObservableObject {
             try firestoreService.update(person, collection: .persons)
         } catch {
             throw error
-        }
-    }
-    
-    private func listenAllPersons() {
-        personListener = Firestore.firestore().collection("persons").addSnapshotListener { snapshot, error in
-            guard let snapshot = snapshot else { return }
-            do {
-                var objects = [Person]()
-                for document in snapshot.documents {
-                    let object = try document.decode(as: Person.self, includingId: true)
-                    objects.append(object)
-                }
-                DispatchQueue.main.async {
-                    self.persons = objects
-                    let person = self.persons.first { $0.userUID == self.currentId }
-                    self.currentPerson = person
-                }
-            } catch { }
         }
     }
     

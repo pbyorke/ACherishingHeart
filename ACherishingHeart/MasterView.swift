@@ -9,8 +9,9 @@ import SwiftUI
 
 struct MasterView: View {
     
-    @State private var person = Person.new
-    
+//    @State private var person = Person.new
+    @State private var person = Person()
+
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {

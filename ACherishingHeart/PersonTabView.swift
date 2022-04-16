@@ -21,7 +21,8 @@ struct PersonTabView: View {
 }
 
 struct PersonTabView_Previews: PreviewProvider {
-    @State static var person = Person.new
+//    @State static var person = Person.new
+    @State static var person = Person()
     static var previews: some View {
         PersonTabView(person: $person, masterView: true)
             .preview(with: "Add or update a Person")
